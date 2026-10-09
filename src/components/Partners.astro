@@ -1,0 +1,4 @@
+---
+import { partners } from '../data.js';
+---
+<ul class="de-partners">{partners.map((p) => <li class="de-reveal"><img src={p.src} alt={p.name} loading="lazy"></li>)}</ul>

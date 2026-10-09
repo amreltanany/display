@@ -1,0 +1,12 @@
+---
+const { eyebrow, title, text, image, alt = '', short = false, cta = false } = Astro.props;
+---
+<section class={`de-page-hero${short ? ' de-page-hero--short' : ''}`}>
+  <div class="de-page-hero__media"><img src={image} alt={alt} width="1920" height="1080" fetchpriority="high"></div>
+  <div class="de-container de-page-hero__content">
+    <p class="de-eyebrow de-reveal">{eyebrow}</p>
+    <h1 class="de-reveal" set:html={title} />
+    <p class="de-reveal">{text}</p>
+    {cta && <div class="de-hero__actions de-reveal"><a class="de-btn de-btn--primary" href="/contact-us/">Contact Us</a></div>}
+  </div>
+</section>

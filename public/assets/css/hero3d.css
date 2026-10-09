@@ -1,0 +1,170 @@
+/* Home hero: layered 3D scene (sky / DISPLAY letters / building+ground). main.js sets --y and --s on each .de-layer. */
+.de-hero--3d {
+	--nav-pad: 5.5rem;                         /* the scene starts below the floating navbar */
+	--scene-h: calc(100vw * 1116 / 2000);      /* the artwork is 2000x1116, always shown full width (no cropped letters) */
+	box-sizing: border-box;
+	min-height: max(100svh, calc(var(--scene-h) + var(--nav-pad)));
+	background: #0b0c0e;
+	padding: var(--nav-pad) 0 2.25rem;
+}
+
+.de-scene {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+
+.de-layer {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: auto;
+	max-width: none;
+	will-change: transform;
+	transform: translate3d(0, var(--y, 0px), 0) scale(var(--s, 1));
+	pointer-events: none;
+	user-select: none;
+}
+
+/* farthest: smooth storm sky. Taller than the hero so it can slide without exposing an edge. */
+.de-layer--sky {
+	top: -22%;
+	height: 150%;
+	object-fit: cover;
+	transform-origin: 50% 0;
+}
+
+.de-scene__frame {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: var(--nav-pad);
+	height: var(--scene-h);
+}
+
+.de-layer--letters {
+	top: 0;
+	transform-origin: 50% 0;
+}
+
+.de-layer--fg {
+	top: 0;
+	transform-origin: 50% 100%;
+	/* the ground melts into the page colour, so lifting the layer on scroll never shows an edge */
+	-webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+	mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}
+
+.de-scene__frame::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100%;
+	height: 40vh;
+	background: #0b0c0e;
+}
+
+/* soft haze at the horizon, a bit faster than the building so it reads as closest to the viewer */
+.de-layer--mist {
+	top: 52%;
+	height: 36%;
+	background:
+		radial-gradient(60% 55% at 50% 60%, rgba(150, 168, 188, 0.28), transparent 70%),
+		linear-gradient(to bottom, transparent, rgba(11, 12, 14, 0.35));
+	filter: blur(6px);
+	mix-blend-mode: screen;
+}
+
+/* the ground sinks into the page colour so the buttons stay readable and there is no hard bottom edge */
+.de-hero--3d .de-hero__overlay {
+	background:
+		linear-gradient(to bottom, rgba(11, 12, 14, 0.7) 0%, rgba(11, 12, 14, 0) 18%), /* keeps the white nav links readable over the light facade */
+		linear-gradient(to top, rgba(11, 12, 14, 0.92) 0%, rgba(11, 12, 14, 0.7) 26%, rgba(11, 12, 14, 0) 55%);
+	z-index: 1;
+}
+
+.de-hero--3d .de-hero__content {
+	position: relative;
+	z-index: 2;
+	max-width: none; /* use the full container, text blocks below set their own width */
+}
+
+/* readable even where the text sits over the building base */
+.de-hero--3d .de-hero__content > * {
+	text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75);
+}
+
+.de-hero--3d .de-hero__actions .de-btn {
+	text-shadow: none;
+}
+
+.de-hero--3d .de-eyebrow {
+	font-size: clamp(0.8rem, 0.95vw, 0.95rem);
+	margin-bottom: 0.9rem;
+	color: #ff3a2d; /* a brighter red so it stays readable over the dark building base */
+	text-shadow: 0 1px 14px rgba(0, 0, 0, 0.9);
+}
+
+.de-hero--3d .de-hero__title {
+	font-size: clamp(2.1rem, 3.9vw, 3.7rem);
+	line-height: 1.06;
+	max-width: none;
+	margin-bottom: 1rem;
+}
+
+.de-hero--3d .de-hero__lead {
+	max-width: 56rem;
+	font-size: clamp(1rem, 1.2vw, 1.15rem);
+	line-height: 1.6;
+	margin-bottom: 1.5rem;
+}
+
+.de-hero--3d .de-hero__actions .de-btn {
+	font-size: clamp(0.82rem, 0.95vw, 0.95rem);
+}
+
+/* phones / small tablets: stack the scene above the text instead of overlaying it */
+@media (max-width: 899px) {
+	.de-hero--3d {
+		min-height: 0;
+		display: block;
+		padding: var(--nav-pad) 0 3rem;
+	}
+
+	.de-scene {
+		position: relative;
+		inset: auto;
+		height: var(--scene-h);
+		overflow: visible;
+	}
+
+	.de-scene__frame {
+		top: 0;
+	}
+
+	.de-hero--3d {
+		--nav-pad: 4.75rem;
+	}
+
+	.de-layer--sky {
+		top: calc(var(--nav-pad) * -1);
+		height: calc(100% + var(--nav-pad));
+	}
+
+	.de-hero--3d .de-hero__overlay {
+		display: none;
+	}
+
+	.de-hero--3d .de-hero__content {
+		padding-top: 1.75rem;
+	}
+
+	.de-hero--3d .de-hero__title {
+		max-width: none;
+	}
+}
+
+html.reduce-motion .de-layer {
+	transform: none !important;
+}

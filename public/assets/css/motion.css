@@ -1,0 +1,33 @@
+/* Lenis (from its docs) */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+/* Start state for the clip-path reveals. Only when JS runs, motion is allowed (no OS reduce-motion) and the script did not fail. */
+html.js:not(.no-motion):not(.reduce-motion) .de-service__media,
+html.js:not(.no-motion):not(.reduce-motion) .de-portfolio__media,
+html.js:not(.no-motion):not(.reduce-motion) .de-about__media,
+html.js:not(.no-motion):not(.reduce-motion) .de-frame {
+	clip-path: inset(0 0 100% 0);
+}
+
+/* GSAP drives the hero image transform, so the old CSS transition must not fight it */
+html:not(.reduce-motion) .de-hero__media img,
+html:not(.reduce-motion) .de-page-hero__media img,
+html:not(.reduce-motion) .de-cta__media img {
+	transition: none !important;
+	will-change: transform;
+}

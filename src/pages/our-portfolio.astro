@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Cta from '../components/Cta.astro';
+import Portfolio from '../components/Portfolio.astro';
+import { portfolio } from '../data.js';
+---
+<Base title="Portfolio — Display Egypt" description="Selected projects across event production, outdoor media, exhibition branding, and print.">
+  <Hero eyebrow="Portfolio" title="Work that holds a room — and a roadside." text="Selected projects across event production, outdoor media, exhibition branding, and print. Crafted for major brands and delivered with unparalleled commitment." image="/uploads/2025/07/1751824485698.jpeg" alt="Premium branded gala produced by Display Egypt" />
+  <section class="de-section"><div class="de-container"><Portfolio items={portfolio} page /></div></section>
+  <Cta />
+</Base>

@@ -1,0 +1,81 @@
+---
+import { contact, services } from '../data.js';
+const { solid = false, title, description ='Display Egypt is a professional advertising and outdoor media company specialising in OOH campaigns, event production, printing, and creative services in Cairo and across Egypt.', image = '/assets/images/hero-cairo-ooh.jpg' } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [['/', 'Home'], ['/about/', 'About'], ['/services/', 'Services'], ['/our-portfolio/', 'Portfolio']];
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="website">
+<meta property="og:image" content={new URL(image, Astro.site)}>
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/nav.css">
+<link rel="stylesheet" href="/assets/css/motion.css">
+<link rel="stylesheet" href="/assets/css/hero3d.css">
+<script is:inline>var d=document.documentElement,k="de-motion",off=/[?&]motion=off/.test(location.search);try{if(off)localStorage.setItem(k,"off");if(/[?&]motion=on/.test(location.search)){localStorage.removeItem(k);off=false}else if(!off)off=localStorage.getItem(k)==="off"}catch(e){}d.classList.add("js");if(off)d.classList.add("reduce-motion")</script>
+</head>
+<body class="de-site de-redesign">
+<a class="de-skip" href="#content">Skip to content</a>
+<header class={`de-header${solid ? ' is-solid' : ''}`} id="masthead">
+  <div class="de-header__bar">
+    <nav class="de-nav" id="site-navigation" aria-label="Primary">
+      <ul class="de-nav__list">
+        {nav.map(([href, label]) => <li class={`menu-item de-nav__item${path === href ? ' current-menu-item' : ''}`}><a class="de-nav__link" href={href}>{label}</a></li>)}
+      </ul>
+    </nav>
+    <a class="de-logo" href="/" aria-label="Display Egypt">
+      <img class="de-logo__img de-logo__img--light" src="/assets/images/logo.svg" alt="Display Egypt" decoding="async">
+      <img class="de-logo__img de-logo__img--dark" src="/assets/images/logo-dark.svg" alt="" aria-hidden="true" decoding="async">
+    </a>
+    <div class="de-header__end">
+      <a class="de-btn de-btn--header" href="/contact-us/"><span>Contact Us</span><svg class="de-btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="de-nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Open menu"><span class="de-nav-toggle__bars" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</header>
+<div class="de-nav-overlay" hidden></div>
+<div id="content" class="de-content"><slot /></div>
+<footer class="de-footer" id="colophon">
+  <div class="de-container de-footer__grid">
+    <div class="de-footer__brand">
+      <a class="de-logo de-logo--footer" href="/" aria-label="Display Egypt"><img src="/assets/images/logo.svg" alt="Display Egypt" decoding="async"></a>
+      <p>Premium Egyptian advertising and outdoor media. OOH campaigns, events, printing, and creative production — planned and executed with precision.</p>
+    </div>
+    <nav class="de-footer__col" aria-label="Quick links">
+      <h2>Navigate</h2>
+      <ul>
+        {[...nav, ['/contact-us/', 'Contact']].map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+      </ul>
+    </nav>
+    <nav class="de-footer__col" aria-label="Services">
+      <h2>Services</h2>
+      <ul>{services.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
+    </nav>
+    <div class="de-footer__col">
+      <h2>Contact</h2>
+      <ul class="de-footer__contact">
+        <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+        <li>{contact.address}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="de-footer__bar"><div class="de-container de-footer__bar-inner"><p>&copy; {year} Display Egypt. All rights reserved.</p></div></div>
+</footer>
+<button class="de-totop" type="button" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
+<script is:inline src="/assets/js/main.js" defer></script>
+<script>import "../scripts/motion.js";</script>
+</body>
+</html>

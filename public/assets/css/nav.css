@@ -1,0 +1,357 @@
+/* Navbar v2: floating pill, transparent at the top, hides on scroll down, returns white on scroll up.
+   Loaded after main.css so it overrides the old header rules. State classes are set by main.js:
+   .is-scrolled (past 40% of viewport height), .is-up (last scroll direction was up), .menu-open. */
+
+/* neutralise the old dark bar */
+.de-header,
+.de-header.is-scrolled,
+.de-site:not(.de-home) .de-header {
+	background: transparent;
+	box-shadow: none;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+}
+
+.de-header {
+	--bar-bg: transparent;
+	--bar-fg: #fff;
+	--bar-shadow: none;
+	--logo-light: 1;
+	--logo-dark: 0;
+	--shoulder: 0;
+	--bar-r: 1.5rem; /* bottom-corner radius, also the size of the concave "shoulders" */
+	padding-top: 0;
+	pointer-events: none; /* only the bar itself is clickable */
+	transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1) !important;
+}
+
+/* white-pill state: scrolling up, hovered (devices with hover), menu open, or pages with no dark hero */
+.de-header.is-up,
+.de-header.is-solid,
+.de-header.menu-open {
+	--bar-bg: #fff;
+	--bar-fg: var(--de-text);
+	--bar-shadow: 0 10px 40px rgba(10, 10, 11, 0.18);
+	--logo-light: 0;
+	--logo-dark: 1;
+	--shoulder: 1;
+}
+
+@media (hover: hover) {
+	.de-header:hover {
+		--bar-bg: #fff;
+		--bar-fg: var(--de-text);
+		--bar-shadow: 0 10px 40px rgba(10, 10, 11, 0.18);
+		--logo-light: 0;
+		--logo-dark: 1;
+		--shoulder: 1;
+	}
+}
+
+/* hidden while scrolling down (past 40% of the first screen) */
+.de-header.is-scrolled:not(.is-up):not(.menu-open) {
+	transform: translateY(calc(-100% - 1rem));
+}
+
+.de-header__bar {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 1rem;
+	position: relative;
+	min-height: 4.25rem;
+	padding: 0.5rem 0.75rem 0.5rem 1.75rem;
+	border-radius: 0 0 var(--bar-r) var(--bar-r);
+	pointer-events: auto;
+	background: var(--bar-bg);
+	box-shadow: var(--bar-shadow);
+	transition: background-color 0.9s var(--de-ease) 0.1s, box-shadow 0.9s var(--de-ease) 0.1s;
+}
+
+/* concave shoulders: the bar hangs from the top edge and flares out into it on both sides */
+.de-header__bar::before,
+.de-header__bar::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: var(--bar-r);
+	height: var(--bar-r);
+	background: #fff;
+	opacity: var(--shoulder);
+	pointer-events: none;
+	transition: opacity 0.9s var(--de-ease) 0.1s;
+}
+
+.de-header__bar::before {
+	right: 100%;
+	-webkit-mask: radial-gradient(circle at 0 100%, transparent var(--bar-r), #000 calc(var(--bar-r) + 0.5px));
+	mask: radial-gradient(circle at 0 100%, transparent var(--bar-r), #000 calc(var(--bar-r) + 0.5px));
+}
+
+.de-header__bar::after {
+	left: 100%;
+	-webkit-mask: radial-gradient(circle at 100% 100%, transparent var(--bar-r), #000 calc(var(--bar-r) + 0.5px));
+	mask: radial-gradient(circle at 100% 100%, transparent var(--bar-r), #000 calc(var(--bar-r) + 0.5px));
+}
+
+.de-logo {
+	justify-self: center;
+	max-width: none;
+}
+
+.de-header .de-logo img {
+	height: 2.6rem;
+	width: auto;
+	max-width: none;
+}
+
+.de-logo {
+	position: relative;
+}
+
+/* both logos stay in the DOM and cross-fade (no hard display swap) */
+.de-header .de-logo .de-logo__img {
+	display: block;
+	transition: opacity 0.8s var(--de-ease) !important;
+}
+
+.de-header .de-logo .de-logo__img--light {
+	opacity: var(--logo-light);
+}
+
+.de-header .de-logo .de-logo__img--dark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: var(--logo-dark);
+}
+
+.de-nav {
+	margin-left: 0;
+	justify-self: start;
+}
+
+.de-nav__list {
+	gap: 0.15rem 1.75rem;
+}
+
+.de-header__end {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	justify-self: end;
+}
+
+.de-nav-toggle {
+	margin-left: 0;
+	border-color: color-mix(in srgb, var(--bar-fg) 30%, transparent);
+}
+
+.de-nav-toggle:not([aria-expanded="true"]) .de-nav-toggle__bars,
+.de-nav-toggle__bars::before,
+.de-nav-toggle__bars::after {
+	background: var(--bar-fg);
+}
+
+/* link colour follows the pill state on desktop; the mobile drawer stays dark with white links */
+@media (min-width: 861px) {
+	body.de-redesign .de-header .de-nav .menu-item a,
+	body.de-redesign .de-header .de-nav .menu-item a:hover,
+	body.de-redesign .de-header .de-nav .current-menu-item a,
+	body.de-redesign .de-header .de-nav__link {
+		color: var(--bar-fg) !important;
+	}
+}
+
+@media (max-width: 860px) {
+	.de-header {
+		--bar-r: 1.1rem;
+	}
+
+	.de-header__bar {
+		grid-template-columns: auto 1fr;
+		padding: 0.4rem 0.6rem 0.4rem 1.1rem;
+		min-height: 3.75rem;
+	}
+
+	.de-logo {
+		justify-self: start;
+	}
+
+	.de-header .de-logo img {
+		height: 2.25rem;
+	}
+
+	/* the drawer is position:fixed; justify-self would shift it to the left edge */
+	.de-nav {
+		justify-self: auto;
+		box-sizing: border-box;
+	}
+
+	/* keep the toggle (now an X) above the open drawer, on a transparent bar with light colours */
+	.de-header__end {
+		position: relative;
+		z-index: 990;
+	}
+
+	.de-header.menu-open,
+	.de-header.menu-open:hover {
+		--bar-bg: transparent;
+		--bar-fg: #fff;
+		--bar-shadow: none;
+		--logo-light: 1;
+		--logo-dark: 0;
+		--shoulder: 0;
+	}
+}
+
+/* ---- hover transitions ---- */
+.de-nav__link::after {
+	transform-origin: right; /* underline leaves to the right ... */
+}
+
+.de-nav__link:hover::after,
+.de-nav__link:focus-visible::after {
+	transform-origin: left; /* ... and grows in from the left */
+}
+
+@media (min-width: 861px) {
+	body.de-redesign .de-header .de-nav .menu-item a:hover,
+	body.de-redesign .de-header .de-nav .menu-item a:focus-visible {
+		color: var(--de-red) !important;
+	}
+
+	body.de-redesign .de-header .de-nav__list > .menu-item > .de-nav__link:hover {
+		opacity: 1;
+	}
+}
+
+/* Contact button: a black fill slides up from the bottom, with a small lift */
+.de-header .de-btn--header {
+	gap: 0.6rem;
+	min-height: 0;
+	padding: 13px 24px;
+	border-radius: 0.875rem; /* concentric with the bar: bar radius minus its padding */
+	font-size: 0.75rem;
+	background-color: var(--de-red);
+	background-image: linear-gradient(var(--de-black), var(--de-black));
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: 100% 0%;
+	transition: background-size 0.4s var(--de-ease), transform 0.3s var(--de-ease), box-shadow 0.3s var(--de-ease) !important;
+}
+
+.de-btn__arrow {
+	flex: 0 0 auto;
+	width: 1rem;
+	height: 1rem;
+	transition: transform 0.35s var(--de-ease);
+}
+
+.de-header .de-btn--header:hover .de-btn__arrow,
+.de-header .de-btn--header:focus-visible .de-btn__arrow {
+	transform: translateX(4px);
+}
+
+.de-header .de-btn--header:hover,
+.de-header .de-btn--header:focus-visible {
+	background-color: var(--de-red);
+	background-image: linear-gradient(var(--de-black), var(--de-black));
+	background-size: 100% 100%;
+	transform: translateY(-2px);
+	box-shadow: 0 10px 22px rgba(10, 10, 11, 0.28);
+}
+
+.de-header .de-btn--header:active {
+	transform: translateY(0);
+}
+
+.de-header .de-logo {
+	transition: opacity 0.3s var(--de-ease), transform 0.3s var(--de-ease) !important;
+}
+
+@media (max-width: 480px) {
+	.de-header__end .de-btn--header {
+		display: none;
+	}
+}
+
+/* ---- hand-drawn arrow divider (draws itself when it scrolls into view) ---- */
+.de-arrow {
+	display: flex;
+	justify-content: center;
+	margin: -1.5rem 0;
+	color: var(--de-red);
+	pointer-events: none;
+}
+
+.de-arrow svg {
+	height: clamp(7rem, 12vw + 3rem, 12rem);
+	width: auto;
+	max-width: 66vw;
+	overflow: visible;
+}
+
+.de-arrow path {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 1000;
+	opacity: 0;
+}
+
+.de-arrow.is-drawn .line {
+	animation: de-draw 0.9s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s both;
+}
+
+.de-arrow.is-drawn .tip {
+	animation: de-draw 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1.37s both;
+}
+
+@keyframes de-draw {
+	from {
+		stroke-dashoffset: 1000;
+		opacity: 0;
+	}
+	1% {
+		stroke-dashoffset: 1000;
+		opacity: 1;
+	}
+	to {
+		stroke-dashoffset: 0;
+		opacity: 1;
+	}
+}
+
+html.reduce-motion .de-arrow path {
+	stroke-dashoffset: 0;
+	opacity: 1;
+	animation: none !important;
+}
+
+/* ---- OS "reduce motion": drop big movement only (header slide, keyframe animations); hover transitions stay ---- */
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+	animation: none !important;
+}
+
+html.reduce-motion .de-header {
+	transition: none !important;
+}
+
+/* home hero buttons (Explore Our Services / View Our Work) */
+.de-hero .de-hero__actions .de-btn {
+	min-height: 0;
+}
+
+.de-hero .de-hero__actions .de-btn--primary {
+	padding: 20px 20px; /* Explore Our Services */
+}
+
+.de-hero .de-hero__actions .de-btn--ghost {
+	padding: 20px 24px; /* View Our Work */
+}

@@ -1,0 +1,14 @@
+---
+const { items, page = false } = Astro.props;
+const H = page ? 'h2' : 'h3';
+---
+<div class={`de-portfolio${page ? ' de-portfolio--page' : ''}`}>
+  {items.map((it, i) => (
+    <article class="de-portfolio__item de-reveal" style={`--de-delay: ${i * 60}ms`}>
+      <div class="de-portfolio__media">
+        <img src={it.image} alt={it.alt} width="1200" height="800" loading="lazy">
+        <div class="de-portfolio__overlay"><p class="de-portfolio__cat">{it.category}</p><H>{it.title}</H></div>
+      </div>
+    </article>
+  ))}
+</div>

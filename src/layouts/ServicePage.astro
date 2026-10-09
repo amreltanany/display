@@ -1,0 +1,31 @@
+---
+import Base from './Base.astro';
+import Hero from '../components/Hero.astro';
+import Cta from '../components/Cta.astro';
+import Partners from '../components/Partners.astro';
+const { title, hero, intro, heading, items, whyTitle, why, whyImage } = Astro.props;
+---
+<Base title={`${title} — Display Egypt`} description={hero.text}>
+  <Hero {...hero} cta />
+  <section class="de-section">
+    <div class="de-container de-prose de-reveal">{intro.map((p) => <p>{p}</p>)}</div>
+    <div class="de-container">
+      <div class="de-section__head de-reveal"><h2>{heading}</h2></div>
+      <div class="de-feature-grid">
+        {items.map(([t, x], i) => <article class="de-feature de-reveal" style={`--de-delay: ${i * 50}ms`}><h3>{t}</h3><p>{x}</p></article>)}
+      </div>
+    </div>
+  </section>
+  <section class="de-section de-section--ink">
+    <div class="de-container de-split">
+      <div class="de-reveal">
+        <p class="de-eyebrow">Why Display Egypt</p>
+        <h2>{whyTitle}</h2>
+        <ul class="de-ticks">{why.map((w) => <li>{w}</li>)}</ul>
+      </div>
+      <div class="de-reveal"><img class="de-frame" src={whyImage.src} alt={whyImage.alt} width="1200" height="675" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="de-section de-section--paper"><div class="de-container"><Partners /></div></section>
+  <Cta />
+</Base>

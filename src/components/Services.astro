@@ -1,0 +1,18 @@
+---
+import { services } from '../data.js';
+const { page = false, linkText = 'Learn more' } = Astro.props;
+const H = page ? 'h2' : 'h3';
+---
+<div class={`de-services${page ? ' de-services--page' : ''}`}>
+  {services.map((s, i) => (
+    <a class="de-service de-reveal" href={s.href} style={`--de-delay: ${i * 70}ms`}>
+      <span class="de-service__media"><img src={s.image} alt={s.alt} width="800" height="600" loading="lazy"></span>
+      <span class="de-service__body">
+        <span class="de-service__index">{String(i + 1).padStart(2, '0')}</span>
+        <H>{s.title}</H>
+        <p>{s.text}</p>
+        <span class="de-link">{linkText}</span>
+      </span>
+    </a>
+  ))}
+</div>

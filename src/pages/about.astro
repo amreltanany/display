@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Cta from '../components/Cta.astro';
+import Partners from '../components/Partners.astro';
+---
+<Base title="About — Display Egypt" description="Display Egypt is a fully integrated advertising company: outdoor media, events, printing, and brand environments.">
+  <Hero eyebrow="About the company" title="We create — and turn it into reality." text="Display Egypt is a fully integrated advertising company. We pump creativity, style, and precision into outdoor media, events, printing, and brand environments." image="/assets/images/about-cairo.jpg" alt="Cairo skyline along the Nile at night" />
+
+  <section class="de-section">
+    <div class="de-container de-split">
+      <div class="de-reveal">
+        <p class="de-eyebrow">Who we are</p>
+        <h2>Passion, skill, and dedication — held to the highest standard.</h2>
+        <p>The innovation unique to Display is powered by deep passion, concrete skills, and utmost dedication. We strongly believe in what we do and how we do it.</p>
+        <p>That belief, together with our experience and understanding of the market, the region, the industry, and our partners’ needs, keeps our work outstanding. Our departments are fully equipped to work in sync — so partners receive a complete, unique experience.</p>
+      </div>
+      <div class="de-reveal"><img class="de-frame" src="/assets/images/service-campaigns.jpg" alt="Campaign planning and outdoor media operations" width="900" height="675" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="de-section de-section--ink">
+    <div class="de-container">
+      <div class="de-section__head de-reveal">
+        <p class="de-eyebrow">Our philosophy</p>
+        <h2>Mission, vision, and the way we work.</h2>
+      </div>
+      <div class="de-cards">
+        <article class="de-card de-reveal"><h3>Mission</h3><p>Inspire, influence, and positively impact our clients with the most effective results and the most suitable solutions — through services that actually get made and installed.</p></article>
+        <article class="de-card de-reveal"><h3>Vision</h3><p>Build a business environment vibrant with prosperity and meaning, delivering measurable results for clients and a place people are proud to work. We aim to be the partner that holds a special place through an epic experience.</p></article>
+        <article class="de-card de-reveal"><h3>Values</h3><ul class="de-values"><li>Excellence</li><li>Talent</li><li>Passion</li></ul></article>
+      </div>
+      <div class="de-stats de-stats--row de-reveal">
+        <div><strong>10+</strong><span>Years in industry</span></div>
+        <div><strong>OOH</strong><span>Outdoor media at national scale</span></div>
+        <div><strong>Live</strong><span>Events executed end to end</span></div>
+        <div><strong>Print</strong><span>In-house production capability</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="de-section de-section--paper">
+    <div class="de-container">
+      <div class="de-section__head de-section__head--center de-reveal">
+        <p class="de-eyebrow">Clients &amp; partners</p>
+        <h2>Brands we have stood beside.</h2>
+      </div>
+      <Partners />
+    </div>
+  </section>
+
+  <Cta />
+</Base>
