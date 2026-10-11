@@ -577,3 +577,26 @@ html.reduce-motion .de-marquee__track {
 	padding-top: 1.1rem;
 	align-self: flex-start;
 }
+
+/* footer: Navigate and Services lists in two columns each */
+.de-footer__grid {
+	grid-template-columns: minmax(8rem, 0.7fr) minmax(0, 1.25fr) minmax(0, 1.6fr) minmax(0, 1.3fr);
+}
+
+.de-footer__col[aria-label="Quick links"] ul,
+.de-footer__col[aria-label="Services"] ul {
+	grid-template-columns: repeat(2, max-content);
+	gap: 0.45rem 2rem;
+}
+
+@media (max-width: 860px) {
+	.de-footer__grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 560px) {
+	.de-footer__grid {
+		grid-template-columns: 1fr;
+	}
+}
