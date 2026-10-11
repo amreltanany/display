@@ -215,16 +215,6 @@
 	transform-origin: left; /* ... and grows in from the left */
 }
 
-@media (min-width: 861px) {
-	body.de-redesign .de-header .de-nav .menu-item a:hover,
-	body.de-redesign .de-header .de-nav .menu-item a:focus-visible {
-		color: var(--de-red) !important;
-	}
-
-	body.de-redesign .de-header .de-nav__list > .menu-item > .de-nav__link:hover {
-		opacity: 1;
-	}
-}
 
 /* Contact button: a black fill slides up from the bottom, with a small lift */
 .de-header .de-btn--header {

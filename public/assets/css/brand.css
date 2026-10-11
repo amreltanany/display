@@ -55,12 +55,19 @@
 }
 
 /* UI text: nav, buttons, labels */
+/* identical in every state: hovering must not change size or spacing (the underline is the only hover effect) */
 body.de-redesign .de-nav__link,
-body.de-redesign .de-nav .menu-item a {
+body.de-redesign .de-nav__link:hover,
+body.de-redesign .de-nav__link:focus-visible,
+body.de-redesign .de-nav .menu-item a,
+body.de-redesign .de-nav .menu-item a:hover,
+body.de-redesign .de-nav .menu-item a:focus-visible,
+body.de-redesign .de-nav .current-menu-item a {
 	font-family: var(--de-display) !important;
 	font-weight: 700 !important;
 	font-size: 0.72rem !important;
 	letter-spacing: 0.1em !important;
+	transform: none !important;
 }
 
 .de-btn,
