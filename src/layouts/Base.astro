@@ -55,28 +55,27 @@ const year = new Date().getFullYear();
   <div class="de-container de-footer__grid">
     <div class="de-footer__brand">
       <a class="de-logo de-logo--footer" href="/" aria-label="Display Egypt"><img src="/assets/images/logo-dea-light.webp" alt="Display Egypt Advertising" width="498" height="357" decoding="async"></a>
-      
+      <div class="de-social">
+        {contact.social.map((s) => <a class="de-social__link" href={s.href} target="_blank" rel="noopener" aria-label={s.name}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d={s.icon}/></svg></a>)}
+      </div>
     </div>
     <nav class="de-footer__col" aria-label="Quick links">
       <h2>Navigate</h2>
       <ul>
-        {[...nav, ['/contact-us/', 'Contact']].map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+        {[...nav, ['/contact-us/', 'Contact']].map(([href, label]) => <li><a class="de-flink" href={href}>{label}</a></li>)}
       </ul>
     </nav>
     <nav class="de-footer__col" aria-label="Services">
       <h2>Services</h2>
-      <ul>{services.map((s) => <li><a href={s.href}>{s.short ?? s.title}</a></li>)}</ul>
+      <ul>{services.map((s) => <li><a class="de-flink" href={s.href}>{s.short ?? s.title}</a></li>)}</ul>
     </nav>
-    <div class="de-footer__col">
-      <h2>Contact</h2>
-      <ul class="de-footer__contact">
-        <li><a href={contact.phoneHref} target="_blank" rel="noopener">WhatsApp {contact.phone}</a></li>
-        <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-        <li>{contact.address}</li>
+    <div class="de-footer__col de-footer__contact">
+      <h2>Get in touch</h2>
+      <ul>
+        <li><small>WhatsApp</small><a class="de-flink" href={contact.phoneHref} target="_blank" rel="noopener">{contact.phone}</a></li>
+        <li><small>Email</small><a class="de-flink" href={`mailto:${contact.email}`}>{contact.email}</a></li>
+        <li><small>Studio</small><span>{contact.address}</span></li>
       </ul>
-      <div class="de-social">
-        {contact.social.map((s) => <a class="de-social__link" href={s.href} target="_blank" rel="noopener" aria-label={s.name}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d={s.icon}/></svg></a>)}
-      </div>
     </div>
   </div>
   <div class="de-footer__bar"><div class="de-container de-footer__bar-inner"><p>&copy; {year} Display Egypt Advertising. All rights reserved.</p></div></div>
