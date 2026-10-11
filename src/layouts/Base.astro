@@ -32,8 +32,16 @@ const year = new Date().getFullYear();
 <script is:inline>var d=document.documentElement,k="de-motion",off=/[?&]motion=off/.test(location.search);try{if(off)localStorage.setItem(k,"off");if(/[?&]motion=on/.test(location.search)){localStorage.removeItem(k);off=false}else if(!off)off=localStorage.getItem(k)==="off"}catch(e){}d.classList.add("js");if(off)d.classList.add("reduce-motion")</script>
 </head>
 <script is:inline>
-/* intro loader: once per browser session (add ?loader=1 to the URL to replay it) */
-(function(){var d=document.documentElement;try{var q=/[?&]loader=1/.test(location.search);if((q||!sessionStorage.getItem("de-loader"))&&!d.classList.contains("reduce-motion")){d.classList.add("de-loading");sessionStorage.setItem("de-loader","1");setTimeout(function(){d.classList.remove("de-loading")},3400)}}catch(e){}})();
+/* intro loader: only when someone OPENS the site from a link (home page, fresh navigation from outside).
+   Reload, back/forward and clicking around inside the site open normally. ?loader=1 forces it for previews. */
+(function(){var d=document.documentElement;try{
+var force=/[?&]loader=1/.test(location.search);
+var nav=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];
+var fresh=!nav||nav.type==="navigate";
+var internal=document.referrer&&document.referrer.indexOf(location.origin)===0;
+var home=location.pathname==="/"||location.pathname==="/index.html";
+if((force||(home&&fresh&&!internal))&&!d.classList.contains("reduce-motion")){d.classList.add("de-loading");setTimeout(function(){d.classList.remove("de-loading")},3400)}
+}catch(e){}})();
 </script>
 <body class="de-site de-redesign">
 <div class="de-loader" aria-hidden="true">
