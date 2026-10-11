@@ -145,6 +145,88 @@
 		update3d();
 	}
 
+	// Lightbox: click a project card to browse all its photos (arrows, keys, swipe, thumbnails).
+	var lb = document.querySelector('.de-lb');
+	if (lb) {
+		var lbImg = lb.querySelector('.de-lb__img');
+		var lbThumbs = lb.querySelector('.de-lb__thumbs');
+		var lbCount = lb.querySelector('.de-lb__count');
+		var lbList = [];
+		var lbIdx = 0;
+		var lbOpener = null;
+		var thumbOf = function (src) { return src.replace(/\.webp/, '-t.webp'); };
+
+		var lbShow = function (i) {
+			lbIdx = (i + lbList.length) % lbList.length;
+			lbImg.classList.remove('is-in');
+			lbImg.src = lbList[lbIdx];
+			lbCount.textContent = lbList.length > 1 ? lbIdx + 1 + ' / ' + lbList.length : '';
+			lbThumbs.querySelectorAll('button').forEach(function (b, n) {
+				b.classList.toggle('is-active', n === lbIdx);
+				if (n === lbIdx) b.scrollIntoView({ block: 'nearest', inline: 'center' });
+			});
+			// preload the neighbours so arrows feel instant
+			[lbIdx + 1, lbIdx - 1].forEach(function (n) { if (lbList.length > 1) new Image().src = lbList[(n + lbList.length) % lbList.length]; });
+		};
+		lbImg.addEventListener('load', function () { lbImg.classList.add('is-in'); });
+
+		var lbOpen = function (card, btn) {
+			lbList = JSON.parse(card.getAttribute('data-gallery') || '[]');
+			if (!lbList.length) return;
+			lbOpener = btn;
+			lb.querySelector('.de-lb__title').textContent = card.getAttribute('data-title') || '';
+			lb.querySelector('.de-lb__client').textContent = card.getAttribute('data-client') || '';
+			lb.querySelector('.de-lb__text').textContent = card.getAttribute('data-text') || '';
+			lbImg.alt = card.getAttribute('data-title') || '';
+			lbThumbs.innerHTML = '';
+			lbThumbs.hidden = lbList.length < 2;
+			lb.classList.toggle('is-single', lbList.length < 2);
+			lbList.forEach(function (src, n) {
+				var t = document.createElement('button');
+				t.type = 'button';
+				t.setAttribute('aria-label', 'Photo ' + (n + 1));
+				t.innerHTML = '<img alt="" loading="lazy" src="' + (src.indexOf('/assets/work/p/') === 0 ? thumbOf(src) : src) + '">';
+				t.addEventListener('click', function () { lbShow(n); });
+				lbThumbs.appendChild(t);
+			});
+			lb.hidden = false;
+			document.body.style.overflow = 'hidden';
+			if (window.lenis) window.lenis.stop();
+			lbShow(0);
+			lb.querySelector('.de-lb__close').focus();
+		};
+		var lbClose = function () {
+			if (lb.hidden) return;
+			lb.hidden = true;
+			document.body.style.overflow = '';
+			if (window.lenis) window.lenis.start();
+			if (lbOpener) lbOpener.focus();
+		};
+
+		document.addEventListener('click', function (e) {
+			var btn = e.target.closest && e.target.closest('.de-portfolio__open');
+			if (btn) { lbOpen(btn.closest('[data-gallery]'), btn); return; }
+			if (lb.hidden) return;
+			if (e.target.closest('.de-lb__close') || e.target === lb || e.target.classList.contains('de-lb__stage')) lbClose();
+			else if (e.target.closest('.de-lb__nav--next')) lbShow(lbIdx + 1);
+			else if (e.target.closest('.de-lb__nav--prev')) lbShow(lbIdx - 1);
+		});
+		document.addEventListener('keydown', function (e) {
+			if (lb.hidden) return;
+			if (e.key === 'Escape') lbClose();
+			else if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+			else if (e.key === 'ArrowLeft') lbShow(lbIdx - 1);
+		});
+		var sx = null;
+		lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+		lb.addEventListener('touchend', function (e) {
+			if (sx === null) return;
+			var dx = e.changedTouches[0].clientX - sx;
+			if (Math.abs(dx) > 50) lbShow(lbIdx + (dx < 0 ? 1 : -1));
+			sx = null;
+		}, { passive: true });
+	}
+
 	// Portfolio filter chips: show/hide projects by category.
 	var filterBtns = document.querySelectorAll('.de-filter');
 	if (filterBtns.length) {

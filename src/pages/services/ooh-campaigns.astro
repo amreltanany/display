@@ -1,30 +1,32 @@
 ---
 import ServicePage from '../../layouts/ServicePage.astro';
+import { hero } from '../../data.js';
 ---
 <ServicePage
   title="Outdoor Campaigns"
-  hero={{ eyebrow: 'Outdoor Campaigns', title: 'Take over the streets.', text: 'Billboards, LED screens, building wraps, and transit ads across Egypt’s most premium locations — planned, produced, installed, and watched through to the last day of flight.', image: '/assets/work/outdoor-noll-kleek.webp?v=1', alt: 'Noll and Kleek billboard above a New Cairo street' }}
+  hero={{ eyebrow: 'Outdoor Campaigns', title: 'Take over the streets.', text: 'Billboards, LED screens, building wraps, and transit ads across Egypt’s most premium locations, planned, produced, installed, and watched through to the last day of flight.', image: hero('001'), alt: 'Noll billboard on a New Cairo highway' }}
   intro={[
-    'Outdoor is where we started and where we are strongest. We don’t just place ads; we create presence — from billboards on New Cairo’s busiest roads to LED screens and building wraps across the country.',
+    'Outdoor is where we started and where we are strongest. We don’t just place ads; we create presence, from billboards on New Cairo’s busiest roads to LED screens and building wraps across the country.',
     'Egypt’s out-of-home market grew nearly four times in three years, from EGP 3.2 billion in 2022 to EGP 12.7 billion in 2025. We help brands capture attention in an increasingly competitive and data-driven outdoor landscape.',
   ]}
   heading="What we deliver outdoors"
   items={[
-    ['Billboards & unipoles', 'Large-format placements on high-traffic roads, bridges, and junctions, selected for audience and visibility.'],
-    ['LED & digital screens', 'Bright, animated faces that keep your message on air day and night.'],
-    ['Building wraps', 'Full-façade branding that turns buildings into landmarks.'],
-    ['Transit & street media', 'Reach commuters and pedestrians along Egypt’s main corridors.'],
-    ['Location strategy & booking', 'South 90, 6th October Bridge, Nasr City, the Ring Road, and beyond. We secure the spots that matter for your goals.'],
-    ['Production & installation', 'In-house printing, fabrication, and on-site installation, coordinated with your campaign calendar.'],
+    ['Billboards (static & digital)', 'Premium locations at New Cairo (South 90), 6 October Bridge, Oroba Street, Nasr Road, Al Tharwa Road, Mosher Road, Nasr City, El Kattamya Heights, Ring Road, Mohamed Naguib, Doki Bridge, and Giza Bridge.'],
+    ['LED screens', 'Bright, animated faces that keep your message on air day and night.'],
+    ['Bridge banners & lampposts', 'Repeated visibility along the routes your audience drives every day.'],
+    ['Building wraps & mega posters', 'Full-façade branding that turns buildings into landmarks.'],
+    ['Transit ads', 'Bus, metro, and taxi advertising that reaches commuters across the city.'],
+    ['Roadshows & street activations', 'Street-level activations, mall branding, and pop-up installations that bring the campaign to people.'],
+    ['Custom OOH planning', 'Formats, locations, and timing selected for your audience and goals, with photo reporting you can use.'],
   ]}
-  gallery={['Noll × Kleek Billboard', 'Maskoon Billboards', 'Night LED Screens']}
+  gallery={['Noll Billboards', 'Riverton Billboards', 'Town Writers: Developing Narratives', 'Notion: A Home, Not a House']}
   whyTitle="A trusted name in outdoor."
   why={[
-    'A premium network across New Cairo’s South 90, 6th October Bridge, Nasr City, and the Ring Road.',
+    'A premium network across New Cairo, Nasr City, 6th October Bridge, and the Ring Road.',
     '15+ years of presence and relationships with the country’s key media owners.',
     'Outdoor, digital, and experiential under one roof, so a single billboard can grow into a full activation.',
+    'Featured work for Kleek Developments (NOLL), Maskoon Developments, and Inertia.',
     'In-house creative and production for fast turnarounds.',
-    'Photo documentation and reporting you can actually use.',
   ]}
-  whyImage={{ src: '/assets/work/outdoor-night-led.webp?v=1', alt: 'LED screens on a pole beside the highway at night' }}
+  whyImage={{ src: hero('002'), alt: 'Noll billboard along a Cairo ring road' }}
 />

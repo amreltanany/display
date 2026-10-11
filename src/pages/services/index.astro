@@ -4,9 +4,10 @@ import Hero from '../../components/Hero.astro';
 import Cta from '../../components/Cta.astro';
 import Services from '../../components/Services.astro';
 import ClientsMarquee from '../../components/ClientsMarquee.astro';
+import { hero } from '../../data.js';
 ---
 <Base title="Services — Display Egypt Advertising" description="Outdoor campaigns, events and activations, exhibition booths, digital advertising, social media, and branding: one partner for every touchpoint.">
-  <Hero eyebrow="Services" title="One partner for every touchpoint." text="Outdoor campaigns, events and activations, exhibition booths, digital, social, and creative: designed as one system, not a list of add-ons." image="/assets/work/gv-booth-night.webp?v=1" alt="GV Investments exhibition booth with gold ring lighting" />
+  <Hero eyebrow="Services" title="One partner for every touchpoint." text="Outdoor campaigns, events and activations, exhibition booths, digital, social, and creative: designed as one system, not a list of add-ons." image={hero('010')} alt="GV Investments exhibition booth with gold ring lighting" />
   <section class="de-section"><div class="de-container"><Services page linkText="View service" /></div></section>
   <section class="de-section de-section--ink de-clients">
     <div class="de-container"><div class="de-section__head de-section__head--center de-reveal"><p class="de-eyebrow">Clients &amp; partners</p><h2>Trusted across industries.</h2></div></div>

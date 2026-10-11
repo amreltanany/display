@@ -1,23 +1,24 @@
 ---
 import ServicePage from '../../layouts/ServicePage.astro';
+import { hero } from '../../data.js';
 ---
 <ServicePage
   title="Events & Activations"
-  hero={{ eyebrow: 'Events & Activations', title: 'From concept to curtain.', text: 'Full event planning, brand launches, concerts, and on-ground activations — strategy, production, and execution under one team.', image: '/assets/work/event-amr-diab.webp?v=1', alt: 'Concert production with stage flames at AlDau Strand Hurghada' }}
+  hero={{ eyebrow: 'Events & Activations', title: 'From concept to curtain.', text: 'Full event planning, brand launches, concerts, and on-ground activations: strategy, production, and execution under one team.', image: hero('204'), alt: 'Live concert stage at the Solen North Coast event' }}
   intro={[
     'We’ve expanded into full-scale event planning and execution, from the Amr Diab concert production at AlDau Strand Hurghada to multi-day beach takeovers, developer events, and corporate conferences.',
     'We own every step: concept, design, fabrication, staffing, logistics, and live management. One partner, zero gaps, full accountability.',
   ]}
   heading="Our event and activation services"
   items={[
-    ['Concerts & live shows', 'Stage, sound, lighting, and LED production for large audiences, as at AlDau Strand with Amr Diab and at Solen North Coast.'],
-    ['Corporate conferences', 'Management conferences and summits with expansive LED walls and precision staging, like Beyti’s Billion Stars.'],
-    ['Brand launches & milestones', 'Immersive experiences such as Nestlé’s 100-year celebration with projection mapping and a custom dome.'],
-    ['Developer & Iftar events', 'Indoor and outdoor events for Maskoon, Mercon, Kleek, Noll, and Trivium that reflect each brand’s identity.'],
-    ['BTL activations & roadshows', 'Mall, street, and club activations for Jumia, Ariel, Duracell, and Luna, with multi-city logistics.'],
-    ['Beach takeovers', 'Monumental installations on the sands of the North Coast, like HDB’s summer takeover.'],
+    ['Full event planning & execution', 'Concept, venue setup, décor, lighting, and on-ground coordination, handled A to Z.'],
+    ['Brand launches & corporate events', 'Conferences, milestones, and launches such as Beyti’s Billion Stars and Nestlé’s 100 years.'],
+    ['Concerts & live shows', 'Stage, sound, lighting, and LED production, as at AlDau Strand with Amr Diab and at Solen North Coast.'],
+    ['Ramadan Iftar events', 'Iftar events for Mercon, Noll, Kleek, and Maskoon, planned and executed end to end.'],
+    ['Booth & exhibition design', 'Custom booths and activation structures for malls, exhibitions, and roadshows.'],
+    ['Sampling, sponsorships & beach management', 'On-ground sampling and promotions, sponsorship management, and beach takeovers on the North Coast.'],
   ]}
-  gallery={['Amr Diab at AlDau Strand', 'Nestlé 100 Years', 'Billion Stars Conference']}
+  gallery={['Solen North Coast', 'Maskoon Developer Event', 'Mercon Indoor Event', 'Mercon Conference', 'Amr Diab at AlDau Strand', 'Ramadan Iftar: Mercon', 'Nestlé 100 Years', 'Billion Stars Conference']}
   whyTitle="Detail-oriented. Delivery-obsessed."
   why={[
     '50+ events delivered, from intimate launches to large-scale exhibitions.',
@@ -26,5 +27,5 @@ import ServicePage from '../../layouts/ServicePage.astro';
     'Strict commitment to timelines and budgets without compromising quality.',
     'Dedicated technical and on-site support throughout.',
   ]}
-  whyImage={{ src: '/assets/work/event-maskoon.webp?v=1', alt: 'Light beams over the Maskoon event stage' }}
+  whyImage={{ src: hero('201'), alt: 'Stage lighting and crowd at a Display-produced event' }}
 />

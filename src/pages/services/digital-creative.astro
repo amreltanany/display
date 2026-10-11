@@ -1,20 +1,21 @@
 ---
 import ServicePage from '../../layouts/ServicePage.astro';
+import { hero } from '../../data.js';
 ---
 <ServicePage
   title="Digital, Social & Creative"
-  hero={{ eyebrow: 'Digital · Social · Creative', title: 'Ideas people remember.', text: 'Branding, media production, digital advertising, social media management, and consultancy: a single partner for every touchpoint of your brand journey.', image: '/assets/work/social-media.webp?v=1', alt: 'Social media content grid for a North Coast beach club' }}
+  hero={{ eyebrow: 'Digital · Social · Creative', title: 'Ideas people remember.', text: 'Branding, media production, digital advertising, social media management, and consultancy: a single partner for every touchpoint of your brand journey.', image: hero('013'), alt: '3D concept render of a branded exhibition environment' }}
   intro={[
     'We blend creativity, strategy, and innovation into every campaign, from brand identity to content that keeps your brand present and engaged, with performance campaigns optimized for real results.',
   ]}
   heading="What we deliver"
   items={[
-    ['Branding & creative', 'Brand identity, campaign concepts, art direction, and copywriting that turn ideas into visuals people remember.', 'branding'],
-    ['Media production', 'Commercial video production, motion graphics, drone shoots, and short-form content built for impact.', 'media'],
-    ['Digital advertising', 'Meta, Google, TikTok, and YouTube campaigns planned, targeted, and optimized for real results.', 'digital'],
-    ['Social media management', 'Content strategy, community management, and performance reporting that keep your brand present and engaged.', 'social'],
-    ['Consultancy services', 'Marketing strategy, brand audits, and go-to-market planning to guide every decision with clarity.', 'consultancy'],
-    ['Websites', 'Brand websites and landing pages designed to convert, built to match your campaigns.', 'websites'],
+    ['Branding & creative', 'Brand identity creation, campaign concepts and art direction, logo design, key visuals and outdoor design, social media creatives, and Arabic/English copywriting. Featured: P&G office branding at the October 6th plant (Fairy) and Souq.com HQ.', 'branding'],
+    ['Media production', 'Commercial video production, motion graphics and animation, drone shoots, event recaps, reels and short-form videos, scriptwriting and storyboarding.', 'media'],
+    ['Digital advertising', 'Meta (Facebook and Instagram) ads, Google display and search, TikTok and Snapchat ads, YouTube video campaigns, retargeting and remarketing, and programmatic buying.', 'digital'],
+    ['Social media management', 'Content strategy and monthly calendars, community management, performance reports, paid campaign management, influencer marketing, and crisis handling. Sensodyne Egypt won GSK’s Global Award for the highest social media page (2014).', 'social'],
+    ['Consultancy services', 'Marketing strategy development, brand audit and diagnosis, campaign planning and media buying advisory, go-to-market strategy, creative direction, and performance analysis with optimization recommendations.', 'consultancy'],
+    ['Websites', 'Corporate websites for FAW Vehicles, Miele Home Appliances, and Panacea Stars, designed to convert and built to match the campaign.', 'websites'],
   ]}
   gallery={['Digital Ad Creatives', 'Brand Identity', 'Social Media Content']}
   whyTitle="Creative that connects to outdoor."
@@ -22,6 +23,7 @@ import ServicePage from '../../layouts/ServicePage.astro';
     'Strategy, creative, and media planned together, so digital and outdoor reinforce each other.',
     'In-house production for video, motion, and content.',
     'Clear reporting that connects activity to results.',
+    'Clients include Luna, Amalfi, Agrado, Brinker, Hona Radio, and Sensodyne.',
     'One team across outdoor, digital, and experiential.',
   ]}
   whyImage={{ src: '/assets/work/branding-mockups.webp?v=1', alt: 'Brand identity mockups: business cards, signage and stationery' }}

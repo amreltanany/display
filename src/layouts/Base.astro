@@ -1,5 +1,6 @@
 ---
 import { contact, services } from '../data.js';
+import Lightbox from '../components/Lightbox.astro';
 const { solid = false, title, description ='Display Egypt is a professional advertising and outdoor media company specialising in OOH campaigns, event production, printing, and creative services in Cairo and across Egypt.', image = '/assets/images/hero-cairo-ooh.jpg' } = Astro.props;
 const path = Astro.url.pathname;
 const nav = [['/', 'Home'], ['/about/', 'About'], ['/services/', 'Services'], ['/our-portfolio/', 'Portfolio']];
@@ -54,7 +55,7 @@ const year = new Date().getFullYear();
   <div class="de-container de-footer__grid">
     <div class="de-footer__brand">
       <a class="de-logo de-logo--footer" href="/" aria-label="Display Egypt"><img src="/assets/images/logo-dea-light.webp" alt="Display Egypt Advertising" width="498" height="357" decoding="async"></a>
-      <p>A full-service outdoor and integrated marketing partner for 15+ years. Outdoor campaigns, events and activations, exhibition booths, digital, and creative, planned and executed with precision.</p>
+      
     </div>
     <nav class="de-footer__col" aria-label="Quick links">
       <h2>Navigate</h2>
@@ -64,12 +65,12 @@ const year = new Date().getFullYear();
     </nav>
     <nav class="de-footer__col" aria-label="Services">
       <h2>Services</h2>
-      <ul>{services.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
+      <ul>{services.map((s) => <li><a href={s.href}>{s.short ?? s.title}</a></li>)}</ul>
     </nav>
     <div class="de-footer__col">
       <h2>Contact</h2>
       <ul class="de-footer__contact">
-        <li><a href={contact.phoneHref}>{contact.phone}</a></li>
+        <li><a href={contact.phoneHref} target="_blank" rel="noopener">WhatsApp {contact.phone}</a></li>
         <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
         <li>{contact.address}</li>
       </ul>
@@ -80,6 +81,7 @@ const year = new Date().getFullYear();
   </div>
   <div class="de-footer__bar"><div class="de-container de-footer__bar-inner"><p>&copy; {year} Display Egypt Advertising. All rights reserved.</p></div></div>
 </footer>
+<Lightbox />
 <button class="de-totop" type="button" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
 <script is:inline src="/assets/js/main.js" defer></script>
 <script>import "../scripts/motion.js";</script>

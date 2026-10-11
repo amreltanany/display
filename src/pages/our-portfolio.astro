@@ -3,10 +3,10 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Cta from '../components/Cta.astro';
 import Portfolio from '../components/Portfolio.astro';
-import { portfolio, filters } from '../data.js';
+import { portfolio, filters, hero } from '../data.js';
 ---
 <Base title="Portfolio — Display Egypt Advertising" description="Selected outdoor campaigns, events, exhibition booths, activations, and creative work by Display Egypt Advertising.">
-  <Hero eyebrow="Portfolio" title="Work that holds a room — and a roadside." text="Outdoor campaigns, concerts and conferences, exhibition booths, mall and beach activations, and digital creative. Crafted for major brands and delivered with unparalleled commitment." image="/assets/work/event-maskoon.webp?v=1" alt="Maskoon indoor event stage with light beams" />
+  <Hero eyebrow="Portfolio" title="Work that holds a room — and a roadside." text="Outdoor campaigns, concerts and conferences, exhibition booths, mall and beach activations, and digital creative. Crafted for major brands and delivered with unparalleled commitment." image={hero('200')} alt="Event stage and lights at the Solen North Coast event" />
   <section class="de-section">
     <div class="de-container">
       <div class="de-filters" role="group" aria-label="Filter projects">

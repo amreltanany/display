@@ -4,15 +4,18 @@ const H = page ? 'h2' : 'h3';
 ---
 <div class={`de-portfolio${page ? ' de-portfolio--page' : ''}`} data-portfolio>
   {items.map((it, i) => (
-    <article class="de-portfolio__item de-reveal" data-category={it.category} style={`--de-delay: ${(i % 6) * 60}ms`}>
-      <div class="de-portfolio__media">
-        <img src={it.image} alt={it.alt} width="1200" height="800" loading="lazy" decoding="async">
-        <div class="de-portfolio__overlay">
-          <p class="de-portfolio__cat">{it.label}</p>
-          <H>{it.title}</H>
-          <p class="de-portfolio__client">{it.client}</p>
+    <article class="de-portfolio__item de-reveal" data-category={it.category} data-title={it.title} data-client={it.client} data-text={it.text} data-gallery={JSON.stringify(it.full)} style={`--de-delay: ${(i % 6) * 60}ms`}>
+      <button type="button" class="de-portfolio__open" aria-label={`View ${it.title}${it.full.length > 1 ? ` (${it.full.length} photos)` : ''}`}>
+        <div class="de-portfolio__media">
+          <img src={it.image} alt={it.alt} width="960" height="640" loading="lazy" decoding="async" style={`object-position:${it.pos}`}>
+          {it.full.length > 1 && <span class="de-portfolio__count" aria-hidden="true">{it.full.length}</span>}
+          <div class="de-portfolio__overlay">
+            <p class="de-portfolio__cat">{it.label}</p>
+            <H>{it.title}</H>
+            <p class="de-portfolio__client">{it.client}</p>
+          </div>
         </div>
-      </div>
+      </button>
     </article>
   ))}
 </div>

@@ -1,9 +1,10 @@
 ---
 import ServicePage from '../../layouts/ServicePage.astro';
+import { hero } from '../../data.js';
 ---
 <ServicePage
   title="Exhibition Booths & Fabrication"
-  hero={{ eyebrow: 'Exhibition Booths', title: 'Where architecture meets brand storytelling.', text: 'Architectural booth design and in-house fabrication for exhibitions like Cityscape and ICT, engineered for impact and built for memory.', image: '/assets/work/gv-booth.webp?v=1', alt: 'GV Investments booth with gold lighting at Cityscape' }}
+  hero={{ eyebrow: 'Exhibition Booths', title: 'Where architecture meets brand storytelling.', text: 'Architectural booth design and in-house fabrication for exhibitions like Cityscape and ICT, engineered for impact and built for memory.', image: hero('009'), alt: 'GV Investments booth with gold lighting at Cityscape' }}
   intro={[
     'We transform brand visions into immersive real-world experiences. From concept to execution, every touchpoint is crafted to engage, convert, and leave a lasting impression.',
     'Display Egypt delivers 360-degree execution, from initial concept through fabrication, logistics, and live activation. We own every step, so you own every result.',
@@ -17,7 +18,7 @@ import ServicePage from '../../layouts/ServicePage.astro';
     ['In-house fabrication', 'Full ownership of production, with no outsourcing and no compromise.'],
     ['Events', 'End-to-end production for launches and summits.'],
   ]}
-  gallery={['SODIC at ICT', 'Real Mark at Cityscape', 'GV Investments', 'Al Dau at Cityscape', 'Johnson & Johnson', 'Stopadol']}
+  gallery={['GV Investments', 'SODIC at ICT', 'Real Mark at Cityscape', 'Al Dau at Cityscape', 'Johnson & Johnson', 'Stopadol', 'Profhilo', 'HDB Beach Takeover', 'Jumia Black Friday']}
   whyTitle="One partner. Zero gaps."
   why={[
     '100% in-house ownership: design, fabrication, and execution.',
@@ -26,5 +27,5 @@ import ServicePage from '../../layouts/ServicePage.astro';
     'Nationwide footprint with Cairo as headquarters and primary production hub.',
     'Strategic spatial design that drives action and intent.',
   ]}
-  whyImage={{ src: '/assets/work/real-mark-booth.webp?v=1', alt: 'Real Mark black and white exhibition stand' }}
+  whyImage={{ src: hero('013'), alt: '3D concept render of the GV exhibition booth' }}
 />

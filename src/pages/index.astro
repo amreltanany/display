@@ -4,7 +4,7 @@ import Services from '../components/Services.astro';
 import Portfolio from '../components/Portfolio.astro';
 import ClientsMarquee from '../components/ClientsMarquee.astro';
 import ArrowDivider from '../components/ArrowDivider.astro';
-import { portfolio, homeWork, stats } from '../data.js';
+import { portfolio, homeWork, stats, hero } from '../data.js';
 const work = homeWork.map((t) => portfolio.find((p) => p.title === t)).filter(Boolean);
 const homeStats = [stats[0], stats[1], stats[2]];
 ---
@@ -57,7 +57,7 @@ const homeStats = [stats[0], stats[1], stats[2]];
         <a class="de-btn de-btn--primary" href="/about/">About the company</a>
       </div>
       <div class="de-about__media de-reveal">
-        <img src="/assets/work/outdoor-maskoon.webp?v=1" alt="Maskoon Developments billboard above a busy Cairo junction" width="1193" height="1080" loading="lazy">
+        <img src={hero('002')} alt="Noll billboard on a New Cairo highway" width="2560" height="1697" loading="lazy">
       </div>
     </div>
   </section>
@@ -108,7 +108,7 @@ const homeStats = [stats[0], stats[1], stats[2]];
   </section>
 
   <section class="de-cta">
-    <div class="de-cta__media"><img src="/assets/work/event-maskoon.webp?v=1" alt="" width="1248" height="594" loading="lazy"></div>
+    <div class="de-cta__media"><img src={hero('200')} alt="" width="2560" height="1707" loading="lazy"></div>
     <div class="de-container de-cta__content de-reveal">
       <p class="de-eyebrow">Start a project</p>
       <h2>Have a campaign, event, or production brief?</h2>
