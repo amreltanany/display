@@ -556,3 +556,24 @@ html.reduce-motion .de-marquee__track {
 		grid-template-columns: 1fr;
 	}
 }
+
+/* service cards: equal height, "Learn more" always on the same line at the bottom */
+.de-services {
+	align-items: stretch;
+}
+
+.de-service {
+	height: 100%;
+}
+
+.de-service__body {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.de-service__body .de-link {
+	margin-top: auto;
+	padding-top: 1.1rem;
+	align-self: flex-start;
+}
