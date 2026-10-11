@@ -5,7 +5,10 @@
 	box-sizing: border-box;
 	min-height: max(100svh, calc(var(--scene-h) + var(--nav-pad)));
 	background: #0b0c0e;
-	padding: var(--nav-pad) 0 2.25rem;
+	padding: var(--nav-pad) 0 calc(2.25rem + var(--slant) * 0.55);
+	/* slanted bottom edge into the white services section: higher on the right, so the buttons on the left are never cut */
+	--slant: clamp(2.5rem, 5.5vw, 5.5rem);
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant)), 0 100%);
 }
 
 .de-scene {
@@ -100,10 +103,20 @@
 }
 
 .de-hero--3d .de-eyebrow {
-	font-size: clamp(0.8rem, 0.95vw, 0.95rem);
+	font-size: clamp(0.78rem, 0.9vw, 0.9rem);
 	margin-bottom: 0.9rem;
-	color: #ff3a2d; /* a brighter red so it stays readable over the dark building base */
+	color: #fff; /* white text + red rule: readable over the building, red stays the accent */
 	text-shadow: 0 1px 14px rgba(0, 0, 0, 0.9);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.de-hero--3d .de-eyebrow::before {
+	content: "";
+	width: 2.25rem;
+	height: 3px;
+	background: var(--de-red);
 }
 
 .de-hero--3d .de-hero__title {
@@ -129,7 +142,7 @@
 	.de-hero--3d {
 		min-height: 0;
 		display: block;
-		padding: var(--nav-pad) 0 3rem;
+		padding: var(--nav-pad) 0 calc(3rem + var(--slant) * 0.55);
 	}
 
 	.de-scene {

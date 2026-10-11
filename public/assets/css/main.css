@@ -1,10 +1,10 @@
 :root {
-	--de-red: #e10600;
-	--de-red-dark: #b80500;
-	--de-black: #0a0a0b;
-	--de-ink: #121214;
-	--de-elev: #1b1b1e;
-	--de-paper: #f4f1ea;
+	--de-red: #ff0000;       /* Display Red (brand guide 2026) */
+	--de-red-dark: #cc0000;
+	--de-black: #000000;     /* Carbon Black */
+	--de-ink: #050505;
+	--de-elev: #141414;
+	--de-paper: #f3f3f3;
 	--de-white: #fff;
 	--de-muted: #6d6d68;
 	--de-text: #161616;
@@ -314,7 +314,7 @@ body.de-redesign .de-nav .sub-menu .de-nav__link {
 
 body.de-redesign .de-nav .sub-menu .menu-item a:hover,
 body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
-	background: rgba(225, 6, 0, 0.16) !important;
+	background: rgba(255, 0, 0, 0.16) !important;
 	color: #fff !important;
 	padding-left: 1.15rem !important;
 }
@@ -380,7 +380,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 	background: var(--de-red-dark);
 	border-color: var(--de-red-dark);
 	transform: translateY(-2px);
-	box-shadow: 0 10px 24px rgba(225, 6, 0, 0.28);
+	box-shadow: 0 10px 24px rgba(255, 0, 0, 0.28);
 }
 
 .de-btn--primary:active {
@@ -425,7 +425,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 .de-btn--header:focus-visible {
 	background: var(--de-red-dark);
 	transform: translateY(-1px);
-	box-shadow: 0 8px 18px rgba(225, 6, 0, 0.3);
+	box-shadow: 0 8px 18px rgba(255, 0, 0, 0.3);
 }
 
 .de-nav-toggle {
@@ -444,7 +444,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 .de-nav-toggle:hover,
 .de-nav-toggle:focus-visible {
 	border-color: var(--de-red);
-	background: rgba(225, 6, 0, 0.12);
+	background: rgba(255, 0, 0, 0.12);
 }
 
 .de-nav-toggle__bars,
@@ -943,7 +943,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 }
 
 .de-partners li:hover {
-	border-color: rgba(225, 6, 0, 0.35);
+	border-color: rgba(255, 0, 0, 0.35);
 	box-shadow: var(--de-shadow);
 }
 
@@ -996,7 +996,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 .de-card:hover,
 .de-feature:hover {
 	transform: translateY(-4px);
-	border-color: rgba(225, 6, 0, 0.45);
+	border-color: rgba(255, 0, 0, 0.45);
 	box-shadow: var(--de-shadow);
 }
 
@@ -1116,7 +1116,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 
 .wpcf7 input:hover,
 .wpcf7 textarea:hover {
-	border-color: rgba(225, 6, 0, 0.35);
+	border-color: rgba(255, 0, 0, 0.35);
 }
 
 .wpcf7 input:focus,
@@ -1144,7 +1144,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 .wpcf7 .wpcf7-submit:hover {
 	background: var(--de-red-dark);
 	transform: translateY(-1px);
-	box-shadow: 0 8px 18px rgba(225, 6, 0, 0.28);
+	box-shadow: 0 8px 18px rgba(255, 0, 0, 0.28);
 }
 
 .wpcf7-response-output {
@@ -1378,7 +1378,7 @@ body.de-redesign .de-nav .sub-menu .menu-item a:focus-visible {
 .de-totop:focus-visible {
 	background: var(--de-red-dark);
 	transform: translateY(-2px);
-	box-shadow: 0 14px 32px rgba(225, 6, 0, 0.35);
+	box-shadow: 0 14px 32px rgba(255, 0, 0, 0.35);
 }
 
 body.de-redesign.admin-bar .de-totop {
