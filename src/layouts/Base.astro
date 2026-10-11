@@ -5,6 +5,7 @@ const { solid = false, title, description ='Display Egypt is a professional adve
 const path = Astro.url.pathname;
 const nav = [['/', 'Home'], ['/about/', 'About'], ['/services/', 'Services'], ['/our-portfolio/', 'Portfolio']];
 const year = new Date().getFullYear();
+const v = Date.now().toString(36); // cache-bust css/js on every build
 ---
 <!doctype html>
 <html lang="en">
@@ -22,13 +23,13 @@ const year = new Date().getFullYear();
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="/assets/css/nav.css">
-<link rel="stylesheet" href="/assets/css/motion.css">
-<link rel="stylesheet" href="/assets/css/hero3d.css">
-<link rel="stylesheet" href="/assets/css/brand.css">
-<link rel="stylesheet" href="/assets/css/sections.css">
-<link rel="stylesheet" href="/assets/css/loader.css">
+<link rel="stylesheet" href={`/assets/css/main.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/nav.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/motion.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/hero3d.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/brand.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/sections.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/loader.css?v=${v}`}>
 <script is:inline>var d=document.documentElement,k="de-motion",off=/[?&]motion=off/.test(location.search);try{if(off)localStorage.setItem(k,"off");if(/[?&]motion=on/.test(location.search)){localStorage.removeItem(k);off=false}else if(!off)off=localStorage.getItem(k)==="off"}catch(e){}d.classList.add("js");if(off)d.classList.add("reduce-motion")</script>
 </head>
 <script is:inline>
@@ -101,7 +102,7 @@ if((force||(home&&fresh&&!internal))&&!d.classList.contains("reduce-motion")){d.
 </footer>
 <Lightbox />
 <button class="de-totop" type="button" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
-<script is:inline src="/assets/js/main.js" defer></script>
+<script is:inline src={`/assets/js/main.js?v=${v}`} defer></script>
 <script>import "../scripts/motion.js";</script>
 </body>
 </html>
