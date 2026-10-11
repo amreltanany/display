@@ -254,6 +254,12 @@
 		});
 	}
 
+	// /our-portfolio/#events (etc.) opens with that filter already selected.
+	if (filterBtns.length && location.hash) {
+		var pre = document.querySelector('.de-filter[data-filter="' + location.hash.slice(1) + '"]');
+		if (pre) pre.click();
+	}
+
 	// Arrow dividers draw themselves once when they scroll into view.
 	var arrows = document.querySelectorAll('.de-arrow');
 	if (arrows.length) {

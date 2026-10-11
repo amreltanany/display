@@ -1,0 +1,22 @@
+---
+import { serviceDetails } from '../data.js';
+---
+<div class="de-srows">
+  {serviceDetails.map((s, i) => (
+    <article class={`de-srow${i % 2 ? ' de-srow--flip' : ''} de-reveal`} id={s.id}>
+      <div class="de-srow__media">
+        <img src={s.image} alt={s.alt} width="960" height="720" loading="lazy" decoding="async" style={`object-position:${s.pos};${s.zoom ? `transform:scale(${s.zoom});transform-origin:${s.pos}` : ''}`}>
+        <span class="de-srow__num">{String(i + 1).padStart(2, '0')}</span>
+      </div>
+      <div class="de-srow__body">
+        <h2>{s.title}</h2>
+        <p class="de-srow__lead">{s.lead}</p>
+        <ul class="de-srow__list">{s.points.map((p) => <li>{p}</li>)}</ul>
+        <div class="de-srow__actions">
+          <a class="de-btn de-btn--primary" href={s.href}>Service details</a>
+          <a class="de-link" href={`/our-portfolio/#${s.filter}`}>See projects</a>
+        </div>
+      </div>
+    </article>
+  ))}
+</div>

@@ -93,6 +93,28 @@ export const clients = [
 	['panacea-stars', 'Panacea Stars'], ['emblem-v', 'Client'],
 ].map(([file, name]) => ({ name, src: c(file) }));
 
+// Detailed service rows (Services page): different layout and photos from the six summary cards on the home page.
+export const serviceDetails = [
+	{ id: 'outdoor', title: 'Outdoor Campaigns', href: '/services/ooh-campaigns/', filter: 'outdoor', image: P('004', '-t'), alt: 'Riverton billboard above a busy Cairo road', pos: 'center',
+		lead: 'Where we started and where we are strongest. Premium sites across New Cairo and Greater Cairo, planned, produced, and installed by one team.',
+		points: ['Billboards, static and digital', 'LED screens', 'Bridge banners and lampposts', 'Building wraps and mega posters', 'Transit ads: bus, metro, taxi', 'Custom OOH planning and reporting'] },
+	{ id: 'events', title: 'Events & Activations', href: '/services/event-management/', filter: 'events', image: P('201', '-t'), alt: 'Stage lights and crowd at a Display-produced night event', pos: 'center',
+		lead: 'Concerts, conferences, launches, Iftar events, and beach takeovers, run from concept to the last guest leaving.',
+		points: ['Full event planning and execution', 'Concerts and live shows', 'Brand launches and corporate events', 'On-ground sampling and promotions', 'Sponsorship management', 'Beach management'] },
+	{ id: 'booths', title: 'Exhibition Booths & Fabrication', href: '/services/exhibition-booths/', filter: 'booths', image: P('032', '-t'), alt: 'SODIC exhibition booth at ICT', pos: 'center',
+		lead: 'Architectural booths for Cityscape, ICT, and more, designed and fabricated in our own workshop with no outsourcing.',
+		points: ['Booth and exhibition design', '3D concepts before fabrication', 'In-house fabrication', 'BTL activations and roadshows', 'In-store activations', 'Installation and on-site support'] },
+	{ id: 'digital', title: 'Digital Advertising', href: '/services/digital-creative/#digital', filter: 'creative', image: '/assets/work/digital-ads.webp?v=1', alt: 'Agrado digital advertising creatives', pos: 'center 85%', zoom: 1.45,
+		lead: 'Performance campaigns planned, targeted, and optimized for real results.',
+		points: ['Meta (Facebook and Instagram) ads', 'Google display and search', 'TikTok and Snapchat ads', 'YouTube video campaigns', 'Retargeting and remarketing', 'Programmatic buying'] },
+	{ id: 'social', title: 'Social Media Management', href: '/services/digital-creative/#social', filter: 'creative', image: '/assets/work/social-media.webp?v=1', alt: 'Social media posts for a beach club', pos: 'left bottom', zoom: 1.6,
+		lead: 'A consistent voice and a community that responds. Sensodyne Egypt won GSK’s Global Award for the highest social media page (2014).',
+		points: ['Content strategy and monthly calendars', 'Community management', 'Performance reports and analytics', 'Paid campaign management', 'Influencer marketing', 'Crisis handling and fast response'] },
+	{ id: 'branding', title: 'Branding & Creative', href: '/services/digital-creative/#branding', filter: 'creative', image: '/assets/work/branding-mockups.webp?v=1', alt: 'Brand identity mockups', pos: 'right bottom', zoom: 1.6,
+		lead: 'Identity, campaign ideas, and the copy that carries them, in Arabic and English.',
+		points: ['Brand identity creation and logo design', 'Campaign concept and art direction', 'Key visuals and outdoor design', 'Social media creatives', 'Arabic and English copywriting', 'Commercial video, motion, and drone shoots'] },
+];
+
 export const stats = [
 	{ value: '15+', label: 'Years of presence in Egyptian outdoor and integrated marketing' },
 	{ value: '150+', label: 'Satisfied clients across real estate, FMCG, tech, and hospitality' },
