@@ -3,21 +3,28 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import { contact } from '../data.js';
 ---
-<Base title="Contact — Display Egypt" description="Have a project in mind? Talk to Display Egypt about OOH, events, print, or a full campaign.">
-  <Hero short eyebrow="Contact" title="Let’s talk. We’d love to hear from you." text="Have a project in mind? Looking for a reliable partner to bring your vision to life? At Display Egypt, we’re always ready to listen, brainstorm, and build something extraordinary together." image="/assets/images/contact-cairo.jpg" alt="New Cairo architecture at dusk" />
+<Base title="Contact — Display Egypt Advertising" description="Talk to Display Egypt Advertising about outdoor, events, exhibition booths, digital, and creative. Call +20 10 3694 9949 or email info@displayegypt.com.">
+  <Hero short eyebrow="Contact" title="Let’s talk. We’d love to hear from you." text="Have a project in mind? Looking for a reliable partner to bring your vision to life? We’re always ready to listen, brainstorm, and build something extraordinary together." image="/assets/work/outdoor-night-led.webp?v=1" alt="Illuminated LED screens beside a Cairo highway at night" />
   <section class="de-section">
     <div class="de-container de-contact">
       <div class="de-contact__info de-reveal">
         <h2>Direct channels</h2>
-        <p>Reach us through the form or any of the details below — we’ll get back to you as soon as possible.</p>
+        <p>Reach us through the form or any of the details below. We’ll get back to you as soon as possible.</p>
         <ul class="de-contact__list">
+          <li><span>Phone</span><a href={contact.phoneHref}>{contact.phone}</a></li>
           <li><span>Email</span><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
           <li><span>Studio</span><address>{contact.address}</address></li>
+          <li>
+            <span>Follow us</span>
+            <div class="de-social">
+              {contact.social.map((s) => <a class="de-social__link" href={s.href} target="_blank" rel="noopener" aria-label={s.name}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d={s.icon}/></svg></a>)}
+            </div>
+          </li>
         </ul>
       </div>
       <div class="de-contact__form de-reveal">
         <h2>Send a brief</h2>
-        <!-- ponytail: mailto form, no backend. Swap action for Formspree/Web3Forms URL for real submissions. -->
+        <!-- ponytail: mailto form, no backend. Swap action for a Formspree/Web3Forms URL for real submissions. -->
         <form action={`mailto:${contact.email}`} method="post" enctype="text/plain">
           <p><label>Your name<br><input type="text" name="name" required></label></p>
           <p><label>Your email<br><input type="email" name="email" required></label></p>

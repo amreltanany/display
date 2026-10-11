@@ -2,11 +2,13 @@
 import Base from '../layouts/Base.astro';
 import Services from '../components/Services.astro';
 import Portfolio from '../components/Portfolio.astro';
-import Partners from '../components/Partners.astro';
+import ClientsMarquee from '../components/ClientsMarquee.astro';
 import ArrowDivider from '../components/ArrowDivider.astro';
-import { portfolio } from '../data.js';
+import { portfolio, homeWork, stats } from '../data.js';
+const work = homeWork.map((t) => portfolio.find((p) => p.title === t)).filter(Boolean);
+const homeStats = [stats[0], stats[1], stats[2]];
 ---
-<Base title="Display Egypt — Advertising & Outdoor Media">
+<Base title="Display Egypt Advertising — Outdoor, Events & Integrated Marketing" description="For 15+ years Display Egypt Advertising has turned spaces into stories: outdoor campaigns, events and activations, exhibition booths, digital, and creative for Egypt’s best-known brands.">
   <section class="de-hero de-hero--3d" aria-label="Introduction">
     <!-- 3 layers cut from one photo: sky < DISPLAY letters < building + ground. main.js moves them at different speeds on scroll. -->
     <div class="de-scene" aria-hidden="true">
@@ -19,9 +21,9 @@ import { portfolio } from '../data.js';
     </div>
     <div class="de-hero__overlay"></div>
     <div class="de-container de-hero__content">
-      <p class="de-eyebrow de-reveal">Outdoor media · Events · Print · Creative</p>
+      <p class="de-eyebrow de-reveal">Outdoor · Events · Activations · Digital</p>
       <h1 class="de-hero__title de-reveal">Perfectly displayed.<br>Built for the street.</h1>
-      <p class="de-hero__lead de-reveal">Display Egypt is a professional advertising and outdoor media company. We plan, produce, and execute OOH campaigns, events, printing, and creative work that puts brands in front of real audiences.</p>
+      <p class="de-hero__lead de-reveal">For more than 15 years, Display Egypt Advertising has turned spaces into stories — billboards on New Cairo’s busiest roads, LED screens, exhibition booths, live events, and digital campaigns for some of the region’s most recognized brands.</p>
       <div class="de-hero__actions de-reveal">
         <a class="de-btn de-btn--primary" href="/services/">Explore Our Services</a>
         <a class="de-btn de-btn--ghost" href="/our-portfolio/">View Our Work</a>
@@ -34,7 +36,7 @@ import { portfolio } from '../data.js';
       <div class="de-section__head de-reveal">
         <p class="de-eyebrow">What we do</p>
         <h2>Full-service advertising, built for impact.</h2>
-        <p class="de-lede">From outdoor media to live events and print production, one team owns the idea, the making, and the install.</p>
+        <p class="de-lede">Outdoor, events, booths, digital, and creative. One partner for every touchpoint of your brand journey.</p>
       </div>
       <Services />
     </div>
@@ -45,19 +47,39 @@ import { portfolio } from '../data.js';
   <section class="de-section de-section--ink" id="about">
     <div class="de-container de-about">
       <div class="de-about__copy de-reveal">
-        <p class="de-eyebrow">About Display Egypt</p>
+        <p class="de-eyebrow">About Display Egypt Advertising</p>
         <h2>We turn ideas into reality — on streets, stages, and surfaces.</h2>
-        <p>Innovation here is driven by passion, proven expertise, and precision. We turn insights into strategies, and strategies into actions that deliver measurable growth.</p>
-        <p><strong>We solve challenges, not just run campaigns.</strong> We analyse, strategise, and execute with one goal: real business impact. Our team works to ensure every project achieves what matters most — results, not promises.</p>
+        <p>We’ve been at the forefront of Egypt’s outdoor and integrated marketing scene for more than 15 years, transforming spaces into stories and brands into movements. We don’t just place ads; we create presence.</p>
+        <p><strong>Creativity, strategy, and innovation in every campaign.</strong> From P&amp;G and Nestlé to Jumia, L’Oréal, and Sensodyne, we deliver work that consistently exceeds expectations and drives measurable impact.</p>
         <div class="de-stats">
-          <div><strong>10+</strong><span>Years producing work across Egypt</span></div>
-          <div><strong>5</strong><span>Core disciplines, one execution team</span></div>
-          <div><strong>EG</strong><span>National outdoor and event coverage</span></div>
+          {homeStats.map((s) => <div><strong>{s.value}</strong><span>{s.label}</span></div>)}
         </div>
         <a class="de-btn de-btn--primary" href="/about/">About the company</a>
       </div>
       <div class="de-about__media de-reveal">
-        <img src="/assets/images/about-cairo.jpg" alt="Cairo skyline along the Nile at night" width="1200" height="675" loading="lazy">
+        <img src="/assets/work/outdoor-maskoon.webp?v=1" alt="Maskoon Developments billboard above a busy Cairo junction" width="1193" height="1080" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="de-section de-section--ink de-results" aria-label="Results">
+    <div class="de-container">
+      <div class="de-results__grid">
+        <article class="de-result de-reveal">
+          <strong class="de-result__num de-result__num--red">+32%</strong>
+          <h3>Market share in 45 days</h3>
+          <p>Our Duracell mall activation campaign proved that creative execution translates into real business results.</p>
+        </article>
+        <article class="de-result de-reveal" style="--de-delay: 80ms">
+          <strong class="de-result__num de-result__num--cyan">4×</strong>
+          <h3>Growth of Egypt’s OOH market</h3>
+          <p>From EGP 3.2 billion in 2022 to EGP 12.7 billion in 2025. We help brands capture attention at the center of that momentum.</p>
+        </article>
+        <article class="de-result de-reveal" style="--de-delay: 160ms">
+          <strong class="de-result__num de-result__num--orange">100%</strong>
+          <h3>In-house ownership</h3>
+          <p>Design, fabrication, and execution under one roof. One partner, zero gaps, full accountability.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -67,25 +89,26 @@ import { portfolio } from '../data.js';
       <div class="de-section__head de-reveal">
         <p class="de-eyebrow">Selected work</p>
         <h2>Campaigns, events, and environments that occupy space.</h2>
-        <p class="de-lede">As Display Egypt, we have contributed to the success of major brands with craft, commitment, and execution that holds up in the real world.</p>
+        <p class="de-lede">Real projects delivered for developers, FMCG, tech, and retail brands across Egypt.</p>
       </div>
-      <Portfolio items={portfolio.slice(0, 6)} />
-      <div class="de-section__foot de-reveal"><a class="de-btn de-btn--primary" href="/our-portfolio/">View Our Work</a></div>
+      <Portfolio items={work} />
+      <div class="de-section__foot de-reveal"><a class="de-btn de-btn--primary" href="/our-portfolio/">View All Work</a></div>
     </div>
   </section>
 
-  <section class="de-section de-section--paper" id="clients">
+  <section class="de-section de-section--ink de-clients" id="clients">
     <div class="de-container">
       <div class="de-section__head de-section__head--center de-reveal">
         <p class="de-eyebrow">Clients &amp; partners</p>
         <h2>Trusted by brands that need to be seen.</h2>
+        <p class="de-lede">Real estate, FMCG, tech, and hospitality. Partners in creation, every day.</p>
       </div>
-      <Partners />
     </div>
+    <ClientsMarquee />
   </section>
 
   <section class="de-cta">
-    <div class="de-cta__media"><img src="/assets/images/contact-cairo.jpg" alt="New Cairo architecture at dusk" width="1920" height="1080" loading="lazy"></div>
+    <div class="de-cta__media"><img src="/assets/work/event-maskoon.webp?v=1" alt="" width="1248" height="594" loading="lazy"></div>
     <div class="de-container de-cta__content de-reveal">
       <p class="de-eyebrow">Start a project</p>
       <h2>Have a campaign, event, or production brief?</h2>

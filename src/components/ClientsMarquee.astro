@@ -1,0 +1,10 @@
+---
+import { clients } from '../data.js';
+---
+<!-- One row that keeps scrolling left. The list is rendered twice so the loop is seamless (the 2nd copy is hidden from assistive tech). -->
+<div class="de-marquee" role="group" aria-label="Brands we have worked with">
+  <ul class="de-marquee__track">
+    {clients.map((c) => <li><img src={c.src} alt={c.name} width="140" height="162" loading="lazy" decoding="async"></li>)}
+    {clients.map((c) => <li aria-hidden="true"><img src={c.src} alt="" width="140" height="162" loading="lazy" decoding="async"></li>)}
+  </ul>
+</div>

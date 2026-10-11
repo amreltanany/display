@@ -26,6 +26,7 @@ const year = new Date().getFullYear();
 <link rel="stylesheet" href="/assets/css/motion.css">
 <link rel="stylesheet" href="/assets/css/hero3d.css">
 <link rel="stylesheet" href="/assets/css/brand.css">
+<link rel="stylesheet" href="/assets/css/sections.css">
 <script is:inline>var d=document.documentElement,k="de-motion",off=/[?&]motion=off/.test(location.search);try{if(off)localStorage.setItem(k,"off");if(/[?&]motion=on/.test(location.search)){localStorage.removeItem(k);off=false}else if(!off)off=localStorage.getItem(k)==="off"}catch(e){}d.classList.add("js");if(off)d.classList.add("reduce-motion")</script>
 </head>
 <body class="de-site de-redesign">
@@ -53,7 +54,7 @@ const year = new Date().getFullYear();
   <div class="de-container de-footer__grid">
     <div class="de-footer__brand">
       <a class="de-logo de-logo--footer" href="/" aria-label="Display Egypt"><img src="/assets/images/logo-dea-light.webp" alt="Display Egypt Advertising" width="498" height="357" decoding="async"></a>
-      <p>Premium Egyptian advertising and outdoor media. OOH campaigns, events, printing, and creative production — planned and executed with precision.</p>
+      <p>A full-service outdoor and integrated marketing partner for 15+ years. Outdoor campaigns, events and activations, exhibition booths, digital, and creative, planned and executed with precision.</p>
     </div>
     <nav class="de-footer__col" aria-label="Quick links">
       <h2>Navigate</h2>
@@ -68,12 +69,16 @@ const year = new Date().getFullYear();
     <div class="de-footer__col">
       <h2>Contact</h2>
       <ul class="de-footer__contact">
+        <li><a href={contact.phoneHref}>{contact.phone}</a></li>
         <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
         <li>{contact.address}</li>
       </ul>
+      <div class="de-social">
+        {contact.social.map((s) => <a class="de-social__link" href={s.href} target="_blank" rel="noopener" aria-label={s.name}><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d={s.icon}/></svg></a>)}
+      </div>
     </div>
   </div>
-  <div class="de-footer__bar"><div class="de-container de-footer__bar-inner"><p>&copy; {year} Display Egypt. All rights reserved.</p></div></div>
+  <div class="de-footer__bar"><div class="de-container de-footer__bar-inner"><p>&copy; {year} Display Egypt Advertising. All rights reserved.</p></div></div>
 </footer>
 <button class="de-totop" type="button" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
 <script is:inline src="/assets/js/main.js" defer></script>

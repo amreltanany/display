@@ -2,20 +2,31 @@
 import Base from './Base.astro';
 import Hero from '../components/Hero.astro';
 import Cta from '../components/Cta.astro';
-import Partners from '../components/Partners.astro';
-const { title, hero, intro, heading, items, whyTitle, why, whyImage } = Astro.props;
+import ClientsMarquee from '../components/ClientsMarquee.astro';
+import Portfolio from '../components/Portfolio.astro';
+import { portfolio } from '../data.js';
+const { title, hero, intro, heading, items, gallery = [], galleryTitle = 'Selected work', whyTitle, why, whyImage } = Astro.props;
+const work = gallery.map((t) => portfolio.find((p) => p.title === t)).filter(Boolean);
 ---
-<Base title={`${title} — Display Egypt`} description={hero.text}>
+<Base title={`${title} — Display Egypt Advertising`} description={hero.text}>
   <Hero {...hero} cta />
   <section class="de-section">
     <div class="de-container de-prose de-reveal">{intro.map((p) => <p>{p}</p>)}</div>
     <div class="de-container">
       <div class="de-section__head de-reveal"><h2>{heading}</h2></div>
       <div class="de-feature-grid">
-        {items.map(([t, x], i) => <article class="de-feature de-reveal" style={`--de-delay: ${i * 50}ms`}><h3>{t}</h3><p>{x}</p></article>)}
+        {items.map(([t, x, id], i) => <article class="de-feature de-reveal" id={id} style={`--de-delay: ${i * 50}ms`}><h3>{t}</h3><p>{x}</p></article>)}
       </div>
     </div>
   </section>
+  {work.length > 0 && (
+    <section class="de-section de-section--paper">
+      <div class="de-container">
+        <div class="de-section__head de-reveal"><h2>{galleryTitle}</h2></div>
+        <Portfolio items={work} />
+      </div>
+    </section>
+  )}
   <section class="de-section de-section--ink">
     <div class="de-container de-split">
       <div class="de-reveal">
@@ -23,9 +34,12 @@ const { title, hero, intro, heading, items, whyTitle, why, whyImage } = Astro.pr
         <h2>{whyTitle}</h2>
         <ul class="de-ticks">{why.map((w) => <li>{w}</li>)}</ul>
       </div>
-      <div class="de-reveal"><img class="de-frame" src={whyImage.src} alt={whyImage.alt} width="1200" height="675" loading="lazy"></div>
+      <div class="de-reveal"><img class="de-frame" src={whyImage.src} alt={whyImage.alt} width="1200" height="800" loading="lazy"></div>
     </div>
   </section>
-  <section class="de-section de-section--paper"><div class="de-container"><Partners /></div></section>
+  <section class="de-section de-section--ink de-clients">
+    <div class="de-container"><div class="de-section__head de-section__head--center de-reveal"><p class="de-eyebrow">Clients &amp; partners</p><h2>Brands we build with.</h2></div></div>
+    <ClientsMarquee />
+  </section>
   <Cta />
 </Base>

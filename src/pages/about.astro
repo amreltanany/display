@@ -2,52 +2,78 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Cta from '../components/Cta.astro';
-import Partners from '../components/Partners.astro';
+import ClientsMarquee from '../components/ClientsMarquee.astro';
+import { stats } from '../data.js';
+const milestones = [
+	['15+ years of presence', 'Display Egypt Advertising has grown from a local outdoor advertising player into a full-service marketing partner, shaping how brands show up across Egypt’s streets, screens, and social feeds.'],
+	['Nationwide outdoor network', 'A premium presence across Egypt’s key locations, from New Cairo’s South 90 and 6th October Bridge to Nasr City and the Ring Road.'],
+	['Trusted by industry leaders', 'We’ve partnered with names like P&G, Nestlé, Souq.com, and L’Oréal, delivering everything from office branding to nationwide activations.'],
+	['Measurable impact', 'Our Duracell mall activation raised the brand’s market share by 32% within 45 days, proof that creative execution translates into real business results.'],
+	['Large-scale events', 'From the Amr Diab concert production at AlDau Strand Hurghada to multi-day beach takeovers and corporate conferences.'],
+	['A growing portfolio', 'Our roster spans real estate, FMCG, tech, and hospitality, including Kleek Developments, Jumia, Miele, and Housing & Development Bank (HDB).'],
+];
 ---
-<Base title="About — Display Egypt" description="Display Egypt is a fully integrated advertising company: outdoor media, events, printing, and brand environments.">
-  <Hero eyebrow="About the company" title="We create — and turn it into reality." text="Display Egypt is a fully integrated advertising company. We pump creativity, style, and precision into outdoor media, events, printing, and brand environments." image="/assets/images/about-cairo.jpg" alt="Cairo skyline along the Nile at night" />
+<Base title="About — Display Egypt Advertising" description="For 15+ years Display Egypt Advertising has been at the forefront of Egypt’s outdoor and integrated marketing scene, working with brands from P&G and Nestlé to Jumia and L’Oréal.">
+  <Hero eyebrow="About the company" title="We create — and turn it into reality." text="Display Egypt Advertising is a full-service outdoor and integrated marketing partner: outdoor campaigns, events and activations, exhibition booths, digital, branding, and consultancy." image="/assets/work/outdoor-night-led.webp?v=1" alt="Illuminated LED screens beside a Cairo highway at night" />
 
   <section class="de-section">
     <div class="de-container de-split">
       <div class="de-reveal">
-        <p class="de-eyebrow">Who we are</p>
-        <h2>Passion, skill, and dedication — held to the highest standard.</h2>
-        <p>The innovation unique to Display is powered by deep passion, concrete skills, and utmost dedication. We strongly believe in what we do and how we do it.</p>
-        <p>That belief, together with our experience and understanding of the market, the region, the industry, and our partners’ needs, keeps our work outstanding. Our departments are fully equipped to work in sync — so partners receive a complete, unique experience.</p>
+        <p class="de-eyebrow">Our journey</p>
+        <h2>We don’t just place ads. We create presence.</h2>
+        <p>For more than 15 years, Display Egypt Advertising has been at the forefront of Egypt’s outdoor and integrated marketing scene, transforming spaces into stories and brands into movements. From billboards on New Cairo’s busiest roads to LED screens and building wraps across the country, we create presence.</p>
+        <p>We blend creativity, strategy, and innovation into every campaign, working with some of the region’s most recognized names from P&amp;G and Nestlé to Jumia, L’Oréal, and Sensodyne, delivering work that consistently exceeds expectations and drives measurable impact.</p>
+        <p>Our services span outdoor campaigns, digital advertising, media production, branding, social media management, events and activations, and consultancy, giving our clients a single partner for every touchpoint of their brand journey.</p>
       </div>
-      <div class="de-reveal"><img class="de-frame" src="/assets/images/service-campaigns.jpg" alt="Campaign planning and outdoor media operations" width="900" height="675" loading="lazy"></div>
+      <div class="de-reveal"><img class="de-frame" src="/assets/work/outdoor-maskoon.webp?v=1" alt="Maskoon Developments billboard above a Cairo junction" width="1193" height="1080" loading="lazy"></div>
     </div>
   </section>
 
   <section class="de-section de-section--ink">
     <div class="de-container">
       <div class="de-section__head de-reveal">
-        <p class="de-eyebrow">Our philosophy</p>
-        <h2>Mission, vision, and the way we work.</h2>
+        <p class="de-eyebrow">Vision, mission & philosophy</p>
+        <h2>More than an agency. A brand partner.</h2>
       </div>
       <div class="de-cards">
-        <article class="de-card de-reveal"><h3>Mission</h3><p>Inspire, influence, and positively impact our clients with the most effective results and the most suitable solutions — through services that actually get made and installed.</p></article>
-        <article class="de-card de-reveal"><h3>Vision</h3><p>Build a business environment vibrant with prosperity and meaning, delivering measurable results for clients and a place people are proud to work. We aim to be the partner that holds a special place through an epic experience.</p></article>
-        <article class="de-card de-reveal"><h3>Values</h3><ul class="de-values"><li>Excellence</li><li>Talent</li><li>Passion</li></ul></article>
+        <article class="de-card de-reveal"><h3>Our vision</h3><p>To build a bold, vibrant business world where results matter and every campaign creates real impact. We’re more than an agency; we’re a brand partner that lives in the hearts of our clients, pushing boundaries and redefining standards.</p></article>
+        <article class="de-card de-reveal"><h3>Our mission</h3><p>At Display, we don’t just fuel brands; we electrify them. We blend creativity, strategy, and innovation to inspire, influence, and ignite real impact through sharp ideas and tailor-made solutions. We break the monotony, challenge dull thinking, and build campaigns that feel unforgettable.</p></article>
+        <article class="de-card de-reveal"><h3>Our philosophy</h3><p>With a growing portfolio of trusted clients and a track record spanning outdoor, digital, and experiential marketing, Display Egypt Advertising continues to push boundaries and redefine what a modern advertising partner can be.</p></article>
       </div>
       <div class="de-stats de-stats--row de-reveal">
-        <div><strong>10+</strong><span>Years in industry</span></div>
-        <div><strong>OOH</strong><span>Outdoor media at national scale</span></div>
-        <div><strong>Live</strong><span>Events executed end to end</span></div>
-        <div><strong>Print</strong><span>In-house production capability</span></div>
+        {stats.map((s) => <div><strong>{s.value}</strong><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="de-section">
+    <div class="de-container">
+      <div class="de-section__head de-reveal">
+        <p class="de-eyebrow">Milestones</p>
+        <h2>The foundation we’ve built.</h2>
+      </div>
+      <div class="de-feature-grid">
+        {milestones.map(([t, x], i) => <article class="de-feature de-reveal" style={`--de-delay: ${i * 50}ms`}><h3>{t}</h3><p>{x}</p></article>)}
       </div>
     </div>
   </section>
 
   <section class="de-section de-section--paper">
-    <div class="de-container">
-      <div class="de-section__head de-section__head--center de-reveal">
-        <p class="de-eyebrow">Clients &amp; partners</p>
-        <h2>Brands we have stood beside.</h2>
+    <div class="de-container de-split">
+      <div class="de-reveal">
+        <p class="de-eyebrow">Market analysis</p>
+        <h2>Out-of-home is at the center of the momentum.</h2>
+        <p>Egypt’s advertising landscape has grown increasingly competitive, with brands demanding integrated solutions that combine outdoor presence, digital reach, and on-ground experience.</p>
+        <p>Egypt’s out-of-home market expanded nearly 4× in just three years, from <strong>EGP 3.2 billion in 2022</strong> to <strong>EGP 12.7 billion in 2025</strong>. As one of the country’s established OOH players, Display Egypt Advertising is positioned at the center of this momentum, helping brands capture attention in an increasingly data-driven outdoor landscape.</p>
+        <p>Our clients, from industry leaders like P&amp;G, Nestlé, and Jumia to fast-growing developers like Kleek and Maskoon, reflect a market shift toward agencies that can execute end to end: from a single billboard to a full-scale activation.</p>
       </div>
-      <Partners />
+      <div class="de-reveal"><img class="de-frame" src="/assets/work/event-amr-diab.webp?v=1" alt="Amr Diab concert production with stage flames" width="1224" height="607" loading="lazy"></div>
     </div>
   </section>
 
+  <section class="de-section de-section--ink de-clients">
+    <div class="de-container"><div class="de-section__head de-section__head--center de-reveal"><p class="de-eyebrow">Clients &amp; partners</p><h2>Brands we have stood beside.</h2></div></div>
+    <ClientsMarquee />
+  </section>
   <Cta />
 </Base>
