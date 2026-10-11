@@ -28,9 +28,20 @@ const year = new Date().getFullYear();
 <link rel="stylesheet" href="/assets/css/hero3d.css">
 <link rel="stylesheet" href="/assets/css/brand.css">
 <link rel="stylesheet" href="/assets/css/sections.css">
+<link rel="stylesheet" href="/assets/css/loader.css">
 <script is:inline>var d=document.documentElement,k="de-motion",off=/[?&]motion=off/.test(location.search);try{if(off)localStorage.setItem(k,"off");if(/[?&]motion=on/.test(location.search)){localStorage.removeItem(k);off=false}else if(!off)off=localStorage.getItem(k)==="off"}catch(e){}d.classList.add("js");if(off)d.classList.add("reduce-motion")</script>
 </head>
+<script is:inline>
+/* intro loader: once per browser session (add ?loader=1 to the URL to replay it) */
+(function(){var d=document.documentElement;try{var q=/[?&]loader=1/.test(location.search);if((q||!sessionStorage.getItem("de-loader"))&&!d.classList.contains("reduce-motion")){d.classList.add("de-loading");sessionStorage.setItem("de-loader","1");setTimeout(function(){d.classList.remove("de-loading")},3400)}}catch(e){}})();
+</script>
 <body class="de-site de-redesign">
+<div class="de-loader" aria-hidden="true">
+  <div class="de-loader__pair">
+    <div class="de-loader__mark"><img src="/assets/images/logo-mark.webp" alt="" width="486" height="288"></div>
+    <div class="de-loader__name"><div><div class="de-loader__text"><strong>Display Egypt</strong><span>Advertising</span></div></div></div>
+  </div>
+</div>
 <a class="de-skip" href="#content">Skip to content</a>
 <header class={`de-header${solid ? ' is-solid' : ''}`} id="masthead">
   <div class="de-header__bar">
