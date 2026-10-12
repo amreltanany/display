@@ -310,7 +310,10 @@
   .screen[data-ch="brb"] .ch-brb,
   .screen[data-ch="sad"] .ch-sad,
   .screen[data-ch="cat"] .ch-cat,
-  .screen[data-ch="stop"] .ch-stop { display: grid; }
+  .screen[data-ch="stop"] .ch-stop,
+  .screen[data-ch="zap"] .ch-zap,
+  .screen[data-ch="dizzy"] .ch-dizzy,
+  .screen[data-ch="found"] .ch-found { display: grid; }
   .screen[data-ch="static"] canvas { display: block; }
   .screen:not([data-ch="static"]) canvas { display: none; }
   .ch-static b {
@@ -326,7 +329,7 @@
   .ch-bars {
     background: linear-gradient(90deg, #c0c0c0 0 14.28%, #c0c000 0 28.57%, #00c0c0 0 42.85%, #00c000 0 57.14%, #c000c0 0 71.42%, #c00000 0 85.71%, #0000c0 0);
   }
-  .ch-bars b, .ch-brb b, .ch-cat b, .ch-sad b, .ch-stop b {
+  .ch-bars b, .ch-brb b, .ch-cat b, .ch-sad b, .ch-stop b, .ch-zap b, .ch-dizzy b, .ch-found b {
     font: 400 clamp(10px, 1.3vw, 15px)/1.2 Bungee, sans-serif;
     color: #fff;
     padding: 0 8%;
@@ -356,6 +359,79 @@
     70% { transform: rotate(4deg); }
     100% { transform: rotate(0); }
   }
+
+  /* ---------- the unplugged-cable gag ---------- */
+  .mascot > img { position: relative; z-index: 1; }
+  .head-turn { z-index: 2; }
+  .rig, .bones, .fx {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .rig { z-index: 0; }
+  .bones, .fx { z-index: 3; opacity: 0; }
+  .cable { fill: none; stroke: var(--ink); stroke-width: 9; stroke-linecap: round; }
+  .cable-live { fill: none; stroke: #ffd400; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 18 26; opacity: 0; }
+  .spark { opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .mascot.zap .cable-live { opacity: 1; animation: current .25s linear infinite; }
+  .mascot.zap .spark { animation: sparkPop .16s steps(2) infinite; }
+  @keyframes current { to { stroke-dashoffset: -44; } }
+  @keyframes sparkPop { 0% { opacity: 1; transform: scale(1); } 50% { opacity: .6; transform: scale(1.5) rotate(20deg); } }
+
+  /* X-ray zap: alternate glowing frame and dark silhouette with bones */
+  .mascot.zap { animation: jitter .08s steps(2) infinite; }
+  .mascot.zap > img { animation: xray .16s steps(1) infinite; }
+  .mascot.zap .bones { animation: xrayOn .16s steps(1) infinite; }
+  .mascot.zap .head-turn { animation: xrayOff .16s steps(1) infinite; }
+  .mascot.zap .fx { opacity: 1; }
+  @keyframes xray {
+    0% { filter: brightness(1.25) drop-shadow(0 0 10px #ffd400) drop-shadow(0 0 22px #ffd400); }
+    50% { filter: brightness(0) drop-shadow(0 0 12px #ffd400) drop-shadow(0 0 26px #ffb000); }
+  }
+  @keyframes xrayOn { 0% { opacity: 0; } 50% { opacity: 1; } }
+  @keyframes xrayOff { 0% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes jitter { 0% { transform: translate(-3px, 1px); } 50% { transform: translate(3px, -2px); } }
+  .mascot.launch { animation: launch .85s cubic-bezier(.2, .7, .3, 1) 1; }
+  @keyframes launch {
+    0% { transform: translateY(0) rotate(0); }
+    40% { transform: translateY(-110px) rotate(-14deg); }
+    75% { transform: translateY(0) rotate(4deg) scale(1.06, .9); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  .zap-flash {
+    position: fixed; inset: 0;
+    background: #fff6b0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 30;
+  }
+  .zap-flash.on { animation: flash .16s steps(1) infinite; }
+  @keyframes flash { 0% { opacity: .35; } 50% { opacity: 0; } }
+  .puff {
+    position: absolute;
+    width: 9%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: #d6d6d0;
+    border: 3px solid var(--ink);
+    pointer-events: none;
+    z-index: 4;
+    animation: puffUp 1.4s ease-out forwards;
+  }
+  @keyframes puffUp {
+    0% { opacity: 0; transform: translate(0, 0) scale(.4); }
+    20% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--dx), -110px) scale(1.6); }
+  }
+  .ch-zap { background: #ffd400; }
+  .ch-zap b { color: var(--ink) !important; font-size: clamp(22px, 3.4vw, 40px) !important; animation: shake .1s linear infinite; }
+  .ch-dizzy { background: #050505; }
+  .ch-dizzy b { font-size: clamp(18px, 2.6vw, 30px) !important; animation: spinWobble .6s ease-in-out infinite; filter: drop-shadow(0 0 6px var(--cyan)); }
+  @keyframes spinWobble { 50% { transform: rotate(14deg) scale(1.1); } }
+  .ch-found { background: #0b1d12; }
+  .ch-found b { color: #5dff8f !important; text-shadow: 0 0 8px #5dff8f; }
+  .ch-found b small { display: block; font: 600 clamp(8px, .9vw, 11px)/1.4 Inter, sans-serif; color: #b8ffd0; }
 
   /* map in hand, upside-down obviously */
   .map {
@@ -480,6 +556,23 @@
   <section class="stage">
     <div class="floor" aria-hidden="true"></div>
     <div class="mascot" id="mascot">
+      <svg class="rig" viewBox="0 0 544 1028" aria-hidden="true">
+        <g class="strip">
+          <rect x="-300" y="972" width="104" height="40" rx="10" fill="#f0f0ea" stroke="#0a0a0a" stroke-width="5"/>
+          <rect x="-196" y="982" width="10" height="20" rx="2" fill="#0a0a0a"/>
+          <circle cx="-282" cy="992" r="5" fill="#b01e23"/>
+          <path d="M-300 1000 C-330 1004 -340 1012 -380 1012" class="cable"/>
+          <g class="spark"><path d="M-186 992l18-26-4 18 22-8-16 20 22 2-26 10 8 18-20-14-6 22-4-24z" fill="#ffd400" stroke="#0a0a0a" stroke-width="3" stroke-linejoin="round"/></g>
+        </g>
+        <path id="cable" class="cable" d=""/>
+        <path id="cableLive" class="cable-live" d=""/>
+        <g id="plug">
+          <rect x="-16" y="-9" width="18" height="5" rx="1.5" fill="#bdbdbd" stroke="#0a0a0a" stroke-width="2"/>
+          <rect x="-16" y="4" width="18" height="5" rx="1.5" fill="#bdbdbd" stroke="#0a0a0a" stroke-width="2"/>
+          <rect x="0" y="-17" width="34" height="34" rx="7" fill="#0a0a0a"/>
+          <rect x="6" y="-11" width="6" height="22" rx="2" fill="#b01e23"/>
+        </g>
+      </svg>
       <img src="/assets/images/mascot-404.webp" alt="Display mascot with a TV for a head, looking lost" width="544" height="1028">
       <div class="head-turn" aria-hidden="true">
         <div class="eye l"><div class="pupil"></div></div>
@@ -492,6 +585,9 @@
           <div class="ch ch-sad"><b>( ._. )</b></div>
           <div class="ch ch-cat"><b>🐈 CH 404:<br>cats only</b></div>
           <div class="ch ch-stop"><b>PLEASE STOP 😭</b></div>
+          <div class="ch ch-zap"><b>⚡⚡⚡</b></div>
+          <div class="ch ch-dizzy"><b>@ _ @</b></div>
+          <div class="ch ch-found"><b>SIGNAL FOUND:<br>404<small>(oh no)</small></b></div>
         </div>
       </div>
       <svg class="map" viewBox="0 0 120 90" aria-hidden="true">
@@ -501,12 +597,45 @@
         <path d="M96 16l10 10M106 16 96 26" stroke="#b01e23" stroke-width="4" stroke-linecap="round"/>
         <text x="60" y="84" font-family="Inter, sans-serif" font-size="8" font-weight="800" text-anchor="middle" fill="#0a0a0a">YOU ARE HERE?</text>
       </svg>
+      <svg class="bones" viewBox="0 0 544 1028" aria-hidden="true">
+        <g fill="none" stroke="#fffbe6" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M272 330V590"/>
+          <path d="M210 420c30 14 94 14 124 0M204 462c34 14 102 14 136 0M210 504c30 12 94 12 124 0"/>
+          <path d="M130 420H414"/>
+          <path d="M130 420 98 540 80 650M414 420l34 120 18 110"/>
+          <path d="M215 600h114"/>
+          <path d="M215 600l-28 180-22 110M329 600l30 180 22 110"/>
+        </g>
+        <g fill="#fffbe6">
+          <circle cx="98" cy="540" r="13"/><circle cx="448" cy="540" r="13"/>
+          <circle cx="187" cy="780" r="14"/><circle cx="359" cy="780" r="14"/>
+          <circle cx="80" cy="660" r="20"/><circle cx="466" cy="660" r="20"/>
+          <ellipse cx="160" cy="900" rx="30" ry="14"/><ellipse cx="386" cy="900" rx="30" ry="14"/>
+        </g>
+        <g>
+          <circle cx="272" cy="198" r="58" fill="#fffbe6"/>
+          <rect x="240" y="232" width="64" height="40" rx="10" fill="#fffbe6"/>
+          <circle cx="250" cy="196" r="16" fill="#050505"/>
+          <circle cx="294" cy="196" r="16" fill="#050505"/>
+          <path d="M272 214l-8 16h16z" fill="#050505"/>
+          <path d="M256 250v20M272 250v20M288 250v20" stroke="#050505" stroke-width="5"/>
+        </g>
+      </svg>
+      <svg class="fx" viewBox="0 0 544 1028" aria-hidden="true">
+        <g fill="#ffd400" stroke="#0a0a0a" stroke-width="4" stroke-linejoin="round">
+          <path d="M40 120l40 40-22 6 34 44-58-36 22-8z"/>
+          <path d="M520 110l-44 44 24 4-36 48 60-38-22-10z"/>
+          <path d="M10 520l46 18-18 14 44 24-62-8 16-16z"/>
+          <path d="M540 520l-46 18 18 14-44 24 62-8-16-16z"/>
+        </g>
+      </svg>
       <div class="qmark" aria-hidden="true">?</div>
       <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
     </div>
   </section>
 </main>
 <canvas id="confetti" aria-hidden="true"></canvas>
+<div class="zap-flash" id="zapFlash" aria-hidden="true"></div>
 
 <script>
 (() => {
@@ -555,11 +684,13 @@
   let forced = null;     // a channel picked via the remote
   let faceUntil = 0;     // smack keeps the face on until this time
   let autoFace = false;
+  let sceneCh = null;    // the cable gag takes over the screen while it runs
+  let sceneFace = false;
 
   function render() {
-    const faceOn = Date.now() < faceUntil || (!forced && autoFace) || (reduceMotion && !forced);
+    const faceOn = !sceneCh && (sceneFace || Date.now() < faceUntil || (!forced && autoFace) || (reduceMotion && !forced));
     screen.classList.toggle('off', faceOn);
-    if (!faceOn) screen.dataset.ch = forced || 'static';
+    if (!faceOn) screen.dataset.ch = sceneCh || forced || 'static';
   }
   function glitch() {
     if (reduceMotion) return;
@@ -580,7 +711,9 @@
 
   // ---------- eyes follow cursor ----------
   const pupils = document.querySelectorAll('.pupil');
+  let lookingAtPlug = false;
   addEventListener('pointermove', (e) => {
+    if (lookingAtPlug) return;
     pupils.forEach((p) => {
       const r = p.parentElement.getBoundingClientRect();
       const dx = e.clientX - (r.left + r.width / 2);
@@ -696,6 +829,109 @@
       mascot.appendChild(n);
       n.addEventListener('animationend', () => n.remove());
     }, 900);
+  }
+
+  // ---------- the unplugged-cable gag ----------
+  // His TV cord runs from the back of his head to a plug on the floor.
+  // Every so often the plug sneaks into the power strip and zaps him.
+  const plug = $('#plug');
+  const cable = $('#cable');
+  const cableLive = $('#cableLive');
+  const PLUG_REST = { x: -95, y: 1004 };
+  const PLUG_IN = { x: -170, y: 992 };
+  function setPlug(x, y, rot = 0) {
+    plug.setAttribute('transform', `translate(${x} ${y}) rotate(${rot})`);
+    const d = `M70 300 C-20 340 -40 620 -36 860 S${x + 70} ${y} ${x + 34} ${y}`;
+    cable.setAttribute('d', d);
+    cableLive.setAttribute('d', d);
+  }
+  setPlug(PLUG_REST.x, PLUG_REST.y);
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  function tween(ms, fn) {
+    return new Promise((done) => {
+      const t0 = performance.now();
+      (function step(t) {
+        const k = Math.min(1, (t - t0) / ms);
+        fn(k);
+        k < 1 ? requestAnimationFrame(step) : done();
+      })(t0);
+    });
+  }
+  function lookAtPlug(on) {
+    lookingAtPlug = on;
+    pupils.forEach((p) => {
+      const w = p.parentElement.getBoundingClientRect().width;
+      p.style.transform = on ? `translate(${-w * 0.2}px, ${w * 0.14}px)` : '';
+    });
+  }
+  function puffs() {
+    for (let i = 0; i < 4; i++) {
+      const el = document.createElement('span');
+      el.className = 'puff';
+      el.style.left = 28 + i * 13 + '%';
+      el.style.top = '6%';
+      el.style.animationDelay = i * 90 + 'ms';
+      el.style.setProperty('--dx', (i - 1.5) * 18 + 'px');
+      mascot.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }
+  }
+  let sceneRunning = false;
+  async function cableGag() {
+    if (sceneRunning || document.hidden) return;
+    sceneRunning = true;
+    const flash = $('#zapFlash');
+
+    // 1. the plug twitches; he notices
+    sceneFace = true; render(); lookAtPlug(true);
+    say('Uh… is that thing moving?', 1800);
+    await tween(500, (k) => setPlug(PLUG_REST.x, PLUG_REST.y - Math.abs(Math.sin(k * Math.PI * 3)) * 8, Math.sin(k * Math.PI * 6) * 12));
+    await sleep(500);
+
+    // 2. it hops toward the power strip
+    say('Hey. HEY. Don’t you dare—', 2200);
+    for (let i = 0; i < 3; i++) {
+      const x0 = PLUG_REST.x + (PLUG_IN.x - PLUG_REST.x) * (i / 3);
+      const x1 = PLUG_REST.x + (PLUG_IN.x - PLUG_REST.x) * ((i + 1) / 3);
+      const y0 = PLUG_REST.y + (PLUG_IN.y - PLUG_REST.y) * (i / 3);
+      const y1 = PLUG_REST.y + (PLUG_IN.y - PLUG_REST.y) * ((i + 1) / 3);
+      await tween(320, (k) => setPlug(x0 + (x1 - x0) * k, y0 + (y1 - y0) * k - Math.sin(k * Math.PI) * 30, -10 * Math.sin(k * Math.PI)));
+      await sleep(i === 2 ? 0 : 160);
+    }
+
+    // 3. ZAP
+    bubble.classList.remove('show');
+    sceneFace = false; sceneCh = 'zap'; render();
+    mascot.classList.add('zap');
+    flash.classList.add('on');
+    await sleep(1300);
+    mascot.classList.remove('zap');
+    flash.classList.remove('on');
+
+    // 4. launched, lands, smoking; plug pops back out
+    sceneCh = 'dizzy'; render();
+    mascot.classList.add('launch');
+    tween(600, (k) => setPlug(PLUG_IN.x + (PLUG_REST.x - PLUG_IN.x) * k, PLUG_IN.y + (PLUG_REST.y - PLUG_IN.y) * k - Math.sin(k * Math.PI) * 60, 360 * k));
+    await sleep(650);
+    puffs();
+    await sleep(250);
+    mascot.classList.remove('launch');
+    lookAtPlug(false);
+    await sleep(1300);
+
+    // 5. punchline
+    sceneCh = 'found'; glitch(); render();
+    say('Great. Full signal. Still a 404.', 2600);
+    await sleep(2600);
+    sceneCh = null; glitch(); render();
+    sceneRunning = false;
+  }
+  if (!reduceMotion) {
+    setTimeout(function loop() {
+      cableGag();
+      setTimeout(loop, 16000 + Math.random() * 4000);
+    }, 3500);
   }
 
   // ---------- konami: breakdance + confetti ----------
