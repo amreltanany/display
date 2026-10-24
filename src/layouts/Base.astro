@@ -3,7 +3,7 @@ import { contact, services } from '../data.js';
 import Lightbox from '../components/Lightbox.astro';
 const { solid = false, title, description ='Display Egypt is a professional advertising and outdoor media company specialising in OOH campaigns, event production, printing, and creative services in Cairo and across Egypt.', image = '/assets/images/hero-cairo-ooh.jpg' } = Astro.props;
 const path = Astro.url.pathname;
-const nav = [['/', 'Home'], ['/about/', 'About'], ['/services/', 'Services'], ['/our-portfolio/', 'Portfolio']];
+const nav = [['/', 'Home'], ['/about/', 'About'], ['/services/', 'Services'], ['/our-portfolio/', 'Portfolio'], ['/pricing/', 'Pricing']];
 const year = new Date().getFullYear();
 const v = Date.now().toString(36); // cache-bust css/js on every build
 ---
@@ -30,6 +30,7 @@ const v = Date.now().toString(36); // cache-bust css/js on every build
 <link rel="stylesheet" href={`/assets/css/brand.css?v=${v}`}>
 <link rel="stylesheet" href={`/assets/css/sections.css?v=${v}`}>
 <link rel="stylesheet" href={`/assets/css/loader.css?v=${v}`}>
+<link rel="stylesheet" href={`/assets/css/pricing.css?v=${v}`}>
 <script is:inline>var d=document.documentElement,k="de-motion",off=/[?&]motion=off/.test(location.search);try{if(off)localStorage.setItem(k,"off");if(/[?&]motion=on/.test(location.search)){localStorage.removeItem(k);off=false}else if(!off)off=localStorage.getItem(k)==="off"}catch(e){}d.classList.add("js");if(off)d.classList.add("reduce-motion")</script>
 </head>
 <script is:inline>

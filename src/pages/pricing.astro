@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Cta from '../components/Cta.astro';
+import { hero, contact } from '../data.js';
+
+// Prices are approximate placeholders (EGP / month). Change them here only.
+const periods = [
+  { id: 1, label: 'Monthly', months: 1, off: 0 },
+  { id: 3, label: '3 months', months: 3, off: 0.1 },
+  { id: 6, label: '6 months', months: 6, off: 0.15 },
+  { id: 12, label: 'Yearly', months: 12, off: 0.2 },
+];
+
+const plans = [
+  {
+    key: 'starter', name: 'Starter', tag: 'New brands', price: 12000,
+    line: 'Get consistent and visible on social.',
+    intro: null,
+    features: [
+      'Social media management on 2 platforms',
+      '12 designed posts + 4 stories a month',
+      'Monthly content calendar',
+      'Community management: comments and DMs',
+      'Meta Business Suite and profile setup',
+      '1 paid campaign managed (Meta)',
+      'Monthly performance report',
+    ],
+  },
+  {
+    key: 'growth', name: 'Growth', tag: 'Most popular', price: 25000, featured: true,
+    line: 'Turn attention into leads and sales.',
+    intro: 'Everything in Starter, plus:',
+    features: [
+      '3 platforms, 20 posts + 6 Reels a month',
+      'Paid ads on Meta and Google or TikTok',
+      'Retargeting, Meta Pixel and conversion tracking',
+      'Half-day content shoot every month',
+      'Influencer coordination (up to 3 a month)',
+      'Monthly strategy call',
+    ],
+  },
+  {
+    key: 'scale', name: 'Scale', tag: 'Market leaders', price: 45000,
+    line: 'Full-funnel marketing with a team behind it.',
+    intro: 'Everything in Growth, plus:',
+    features: [
+      '4 platforms, 30 posts + 10 Reels a month',
+      'Full-funnel ads: Meta, Google, TikTok, Snapchat, YouTube',
+      'A/B creative testing and landing-page advice',
+      'SEO basics and Google Business Profile',
+      'Email and WhatsApp marketing automation',
+      'Full-day shoot every month',
+      'Dedicated account manager and weekly live dashboard',
+    ],
+  },
+];
+
+const faq = [
+  ['Is the ad budget included in the price?', 'No. Your ad budget is paid straight to Meta, Google, TikTok and the other platforms from your own ad account. Our fee covers strategy, creative, setup, optimisation and reporting.'],
+  ['Why is the yearly plan cheaper per month?', 'Longer commitments let us plan content, shoots and campaigns ahead, and we pass that saving on: 10% for 3 months, 15% for 6 months and 20% for a year.'],
+  ['Can I change my plan later?', 'Yes. You can move up at any time. Moving down or pausing takes effect at the start of the next billing period.'],
+  ['How accurate is the custom plan price?', 'It is an estimate built from the same rates we use in proposals. After a short call about your goals we send a final quote, usually within 24 hours.'],
+  ['Do you work with small businesses?', 'Yes. Starter is built for that. If your needs are narrower, build a custom plan with just the services you want.'],
+];
+
+const wa = contact.phoneHref;
+const cfg = { periods, wa, plans: plans.map(({ key, name, price }) => ({ key, name, price })) };
+---
+<Base title="Pricing — Display Egypt Advertising" description="Marketing plans for every stage of growth, or build your own custom plan and see the price instantly.">
+  <Hero eyebrow="Pricing" title="Marketing plans that grow with you." text="Pick a ready plan, or build your own and watch the price update as you go. No hidden fees, ad budget stays yours." image={hero('010')} alt="" />
+
+  <section class="de-section de-section--ink pr" id="plans">
+    <div class="de-container">
+      <div class="pr-toggle de-reveal" role="radiogroup" aria-label="Billing period">
+        {periods.map((p, i) => (
+          <button type="button" role="radio" aria-checked={i === 0 ? 'true' : 'false'} class={`pr-toggle__btn${i === 0 ? ' is-on' : ''}`} data-period={p.id}>
+            {p.label}{p.off > 0 && <em>-{Math.round(p.off * 100)}%</em>}
+          </button>
+        ))}
+      </div>
+
+      <div class="pr-grid">
+        {plans.map((p) => (
+          <article class={`pr-card de-reveal${p.featured ? ' is-featured' : ''}`} data-plan={p.key}>
+            <p class="pr-card__tag">{p.tag}</p>
+            <h2>{p.name}</h2>
+            <p class="pr-card__line">{p.line}</p>
+            <p class="pr-card__price"><span class="pr-card__cur">EGP</span> <strong data-price>{p.price.toLocaleString('en-US')}</strong> <small>/ month</small></p>
+            <p class="pr-card__bill" data-bill>Billed monthly</p>
+            <a class="de-btn de-btn--primary pr-card__cta" href={wa} target="_blank" rel="noopener" data-cta>Start with {p.name}</a>
+            <hr>
+            {p.intro && <p class="pr-card__intro">{p.intro}</p>}
+            <ul class="pr-list">
+              {p.features.map((f) => <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>{f}</span></li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <p class="pr-note de-reveal">Ad budget is paid directly to the platforms and is not included in these prices. Prices are in Egyptian pounds and shown per month.</p>
+
+      <a class="pr-custom de-reveal" href="#builder">
+        <div><p class="pr-card__tag">Custom</p><h2>Need something different?</h2><p>Choose only the services you need and see your price update live.</p></div>
+        <span class="de-btn de-btn--ghost">Build your plan <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="de-section de-section--ink pr pr--builder" id="builder">
+    <div class="de-container">
+      <div class="de-section__head de-reveal"><p class="de-eyebrow">Custom plan</p><h2>Build your own plan.</h2><p>Switch on what you need, adjust the amounts, and get an instant estimate.</p></div>
+
+      <div class="pb">
+        <div class="pb__controls">
+          <fieldset class="pb-svc is-on" data-svc="social">
+            <legend><label class="pb-sw"><input type="checkbox" checked><i></i><span>Social media management</span></label></legend>
+            <div class="pb-body">
+              <label class="pb-rng">Platforms <output></output><input type="range" min="1" max="5" step="1" value="2" data-k="platforms"></label>
+              <label class="pb-rng">Posts per month <output></output><input type="range" min="8" max="40" step="4" value="12" data-k="posts"></label>
+              <label class="pb-rng">Reels per month <output></output><input type="range" min="0" max="16" step="2" value="4" data-k="reels"></label>
+              <p class="pb-hint">Content calendar, design, captions, community management and a monthly report.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="pb-svc is-on" data-svc="ads">
+            <legend><label class="pb-sw"><input type="checkbox" checked><i></i><span>Paid advertising management</span></label></legend>
+            <div class="pb-body">
+              <label class="pb-rng">Ad platforms <output></output><input type="range" min="1" max="5" step="1" value="2" data-k="platforms"></label>
+              <label class="pb-rng">Monthly ad budget <output></output><input type="range" min="10000" max="200000" step="5000" value="30000" data-k="budget"></label>
+              <p class="pb-hint">Our fee covers strategy, creative, tracking and optimisation. The ad budget goes straight to the platforms and is not part of the total.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="pb-svc" data-svc="content">
+            <legend><label class="pb-sw"><input type="checkbox"><i></i><span>Photo and video production</span></label></legend>
+            <div class="pb-body">
+              <label class="pb-rng">Shoot days per month <output></output><input type="range" min="1" max="4" step="1" value="1" data-k="shoots"></label>
+              <p class="pb-hint">Crew, equipment, directing and editing for your Reels, ads and product content.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="pb-svc" data-svc="influencer">
+            <legend><label class="pb-sw"><input type="checkbox"><i></i><span>Influencer marketing</span></label></legend>
+            <div class="pb-body">
+              <label class="pb-rng">Influencers per month <output></output><input type="range" min="1" max="10" step="1" value="3" data-k="count"></label>
+              <p class="pb-hint">Sourcing, briefing, contracts and reporting. The influencers' own fees are paid separately.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="pb-svc" data-svc="seo">
+            <legend><label class="pb-sw"><input type="checkbox"><i></i><span>SEO and Google Business Profile</span></label></legend>
+            <div class="pb-body"><p class="pb-hint">On-page fixes, keywords, local listings and monthly ranking reports.</p></div>
+          </fieldset>
+
+          <fieldset class="pb-svc" data-svc="auto">
+            <legend><label class="pb-sw"><input type="checkbox"><i></i><span>Email and WhatsApp automation</span></label></legend>
+            <div class="pb-body"><p class="pb-hint">Welcome flows, abandoned-lead follow-ups and broadcast campaigns.</p></div>
+          </fieldset>
+
+          <div class="pb-add">
+            <p>Add-ons</p>
+            <label class="pb-chk"><input type="checkbox" data-add="dash"><span>Live reporting dashboard <em>+ EGP 2,000</em></span></label>
+            <label class="pb-chk"><input type="checkbox" data-add="am"><span>Dedicated account manager <em>+ EGP 4,000</em></span></label>
+          </div>
+        </div>
+
+        <aside class="pb__sum" aria-live="polite">
+          <p class="pr-card__tag">Your estimate</p>
+          <ul class="pb-lines" data-lines></ul>
+          <div class="pb-row"><span>Subtotal</span><b data-sub>EGP 0</b></div>
+          <div class="pb-row pb-row--off" data-bundle-row><span data-bundle-label>Bundle discount</span><b data-bundle>-EGP 0</b></div>
+          <div class="pb-row pb-row--off" data-period-row><span data-period-label>Plan discount</span><b data-pdisc>-EGP 0</b></div>
+          <p class="pr-card__price"><span class="pr-card__cur">EGP</span> <strong data-total>0</strong> <small>/ month</small></p>
+          <p class="pr-card__bill" data-total-bill>Billed monthly</p>
+          <div class="pb-period" role="radiogroup" aria-label="Billing period">
+            {periods.map((p, i) => <button type="button" role="radio" aria-checked={i === 0 ? 'true' : 'false'} class={`pb-period__btn${i === 0 ? ' is-on' : ''}`} data-period={p.id}>{p.id === 1 ? 'Monthly' : p.id === 12 ? 'Yearly' : `${p.id} mo`}</button>)}
+          </div>
+          <a class="de-btn de-btn--primary pr-card__cta" href={wa} target="_blank" rel="noopener" data-send>Send my plan on WhatsApp</a>
+          <p class="pb-fine">Estimate only. We confirm the final quote after a short call.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="de-section pr-faq">
+    <div class="de-container">
+      <div class="de-section__head de-reveal"><p class="de-eyebrow">FAQ</p><h2>Good questions.</h2></div>
+      <div class="pr-faq__list">
+        {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+  <script id="pr-cfg" type="application/json" set:html={JSON.stringify(cfg)} />
+  <script>import "../scripts/pricing.js";</script>
+</Base>
