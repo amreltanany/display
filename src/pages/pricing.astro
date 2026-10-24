@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
 import Cta from '../components/Cta.astro';
 import { hero, contact } from '../data.js';
 
@@ -68,7 +67,17 @@ const wa = contact.phoneHref;
 const cfg = { periods, wa, plans: plans.map(({ key, name, price }) => ({ key, name, price })) };
 ---
 <Base title="Pricing — Display Egypt Advertising" description="Marketing plans for every stage of growth, or build your own custom plan and see the price instantly.">
-  <Hero eyebrow="Pricing" title="Marketing plans that grow with you." text="Pick a ready plan, or build your own and watch the price update as you go. No hidden fees, ad budget stays yours." image={hero('010')} alt="" />
+  <section class="pr-hero">
+    <div class="de-container pr-hero__grid">
+      <div class="pr-hero__text">
+        <p class="de-eyebrow de-reveal">Pricing</p>
+        <h1 class="de-reveal">Marketing plans that grow with you.</h1>
+        <p class="de-reveal">Pick a ready plan, or build your own and watch the price update as you go. No hidden fees, and your ad budget stays yours.</p>
+        <div class="pr-hero__actions de-reveal"><a class="de-btn de-btn--primary" href="#plans">See the plans</a><a class="de-btn de-btn--ghost" href="#builder">Build your own</a></div>
+      </div>
+      <figure class="pr-hero__media de-reveal"><img src="/assets/images/team.webp" alt="The Display Egypt team around a table" width="1400" height="1400" fetchpriority="high"></figure>
+    </div>
+  </section>
 
   <section class="de-section de-section--ink pr" id="plans">
     <div class="de-container">

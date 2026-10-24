@@ -110,3 +110,17 @@
   .pr-toggle__btn { padding: 0.6rem 0.9rem; }
   .pr-custom { flex-direction: column; align-items: flex-start; }
 }
+
+/* hero: text + the team photo, shown in full (no dark overlay, no cropping) */
+.pr-hero { padding: clamp(7rem, 11vw, 9rem) 0 clamp(2.5rem, 5vw, 4rem); background: var(--de-black); color: #fff; }
+.pr-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+.pr-hero h1 { margin: 0.6rem 0 1rem; font-family: var(--de-display); font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.04; color: #fff; text-transform: uppercase; }
+.pr-hero__text > p:not(.de-eyebrow) { max-width: 34rem; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; color: rgba(255, 255, 255, 0.75); }
+.pr-hero__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+.pr-hero__media { margin: 0; border-radius: 1.2rem; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1); }
+.pr-hero__media img { display: block; width: 100%; height: auto; }
+@media (max-width: 860px) {
+  .pr-hero__grid { grid-template-columns: 1fr; }
+  .pr-hero__media { max-width: 32rem; width: 100%; margin-inline: auto; }
+}
+.pr-hero__actions .de-btn { flex: 1 1 11rem; justify-content: center; text-align: center; max-width: 16rem; }
