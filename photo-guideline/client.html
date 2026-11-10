@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>طريقة تصوير المنتجات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Montserrat:ital,wght@0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F2EA;--card:#fff;--ink:#1E1B18;--mute:#6E675E;--accent:#F2C55C;--beige:#D8BC98;--ok:#2F7D4F;--no:#B3362F;--line:#DDD4C4}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#8a857c}
+body{font-family:'Cairo',sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;background:var(--bg);position:relative;overflow:hidden;padding:15mm 14mm 16mm;margin:0 auto 8mm;page-break-after:always;display:flex;flex-direction:column}
+@media print{html,body{background:var(--bg)}.page{margin:0}}
+.en{font-family:'Montserrat',sans-serif;direction:ltr;unicode-bidi:isolate}
+.topbar{position:absolute;top:0;right:0;left:0;height:4mm;background:var(--accent)}
+.head{display:flex;align-items:center;gap:4mm;margin-bottom:6mm;border-bottom:1.5px solid var(--accent);padding-bottom:3mm}
+.head .num{font-family:'Montserrat';font-weight:700;font-size:26pt;color:var(--accent);line-height:1}
+.head h2{font-size:24pt;font-weight:900;line-height:1.2}
+.head .tag{margin-right:auto;font-family:'Montserrat';font-style:italic;font-weight:700;font-size:9pt;color:var(--mute)}
+.foot{position:absolute;bottom:6mm;right:14mm;left:14mm;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--mute)}
+.foot img{height:7mm}
+.grid{display:grid;gap:3.5mm}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}
+.tile{background:var(--card);border-radius:4mm;overflow:hidden;display:flex;flex-direction:column}
+.tile .pic{background:var(--beige);position:relative;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center}
+.tile .pic.tall{aspect-ratio:2/3}
+.tile .pic{overflow:hidden}.tile .pic svg,.tile .pic img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.tile .cap{padding:2.2mm 2mm 2.6mm;text-align:center;font-weight:700;font-size:10.5pt;line-height:1.3}
+.tile .cap small{display:block;font-weight:600;font-size:8pt;color:var(--mute)}
+.badge{position:absolute;top:2mm;right:2mm;width:7mm;height:7mm;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10pt;color:#fff;background:var(--ink);font-family:'Montserrat'}
+.badge.ok{background:var(--ok)}.badge.no{background:var(--no)}
+.tile.no .pic::after,.tile.ok .pic::after{content:"";position:absolute;inset:0;border:1.2mm solid var(--no);border-radius:4mm 4mm 0 0;z-index:2}
+.tile.ok .pic::after{border-color:var(--ok)}
+.badge{z-index:3}
+.label{display:flex;align-items:center;gap:2.5mm;font-weight:700;font-size:12pt;margin:5mm 0 3mm}
+.label i{width:6mm;height:6mm;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:9pt}
+.strip{display:flex;gap:3.5mm;margin-top:5mm}
+.chip{flex:1;background:var(--ink);color:var(--bg);border-radius:4mm;padding:3.5mm;display:flex;align-items:center;gap:3mm}
+.chip b{font-size:15pt;color:var(--accent);font-family:'Montserrat'}
+.chip span{font-size:9.5pt;font-weight:600;line-height:1.3}
+.cover{padding:0;background:var(--ink);color:var(--bg)}
+.cover .ph{height:190mm;background:url(assets/hero.jpg) center 35%/110% auto}
+.cover .logo{position:absolute;top:12mm;right:14mm;width:24mm;height:24mm;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cover .logo img{width:17mm}
+.cover .in{padding:12mm 14mm}
+.cover h1{font-size:40pt;font-weight:900;line-height:1.15}
+.cover .sub{font-family:'Montserrat';font-weight:700;font-style:italic;letter-spacing:2px;color:var(--accent);font-size:11pt;margin-top:2mm}
+.cover .idx{display:flex;gap:4mm;margin-top:9mm}
+.cover .idx div{flex:1;border-top:2px solid var(--accent);padding-top:2.5mm;font-weight:700;font-size:11pt}
+.cover .idx span{display:block;font-family:'Montserrat';color:var(--accent);font-size:10pt}
+.diagram{background:var(--card);border-radius:4mm;padding:3mm}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page cover">
+  <div class="ph"></div>
+  <div class="logo"><img src="assets/logo.png" alt=""></div>
+  <div class="in">
+    <h1>طريقة تصوير المنتجات</h1>
+    <div class="sub en">PRODUCT SHOOTING GUIDE</div>
+    <div class="idx">
+      <div><span>01</span>اللقطات</div>
+      <div><span>02</span>الوضعيات</div>
+      <div><span>03</span>الإضاءة والخلفية</div>
+      <div><span>04</span>الفيديو</div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOTS -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="head"><span class="num en">01</span><h2>اللقطات الأساسية</h2><span class="tag en">SHOT LIST</span></div>
+  <div class="grid g4">
+    <div class="tile"><div class="pic"><img src="assets/front.jpg" alt=""><span class="badge en">1</span></div><div class="cap">أمامي كامل</div></div>
+    <div class="tile"><div class="pic"><img src="assets/back.jpg" alt=""><span class="badge en">2</span></div><div class="cap">خلفي كامل</div></div>
+    <div class="tile"><div class="pic"><svg id="s-side"></svg><span class="badge en">3</span></div><div class="cap">جانبي</div></div>
+    <div class="tile"><div class="pic"><img src="assets/mid.jpg" alt=""><span class="badge en">4</span></div><div class="cap">نصف جسم</div></div>
+    <div class="tile"><div class="pic"><img src="assets/detail.jpg" alt=""><span class="badge en">5</span></div><div class="cap">الطباعة</div></div>
+    <div class="tile"><div class="pic"><svg id="s-fabric"></svg><span class="badge en">6</span></div><div class="cap">الخامة والخياطة</div></div>
+    <div class="tile"><div class="pic"><svg id="s-label"></svg><span class="badge en">7</span></div><div class="cap">الليبل</div></div>
+    <div class="tile"><div class="pic"><svg id="s-move"></svg><span class="badge en">8</span></div><div class="cap">حركة</div></div>
+  </div>
+  <div class="label" style="margin-top:6mm">الألوان</div>
+  <div class="grid g3">
+    <div class="tile"><div class="pic" style="aspect-ratio:6/5"><img src="assets/group.jpg" alt=""></div><div class="cap">كل الألوان معًا</div></div>
+    <div class="tile"><div class="pic" style="aspect-ratio:6/5"><img src="assets/white.jpg" alt=""></div><div class="cap">كل لون لوحده</div></div>
+    <div class="tile"><div class="pic" style="aspect-ratio:6/5"><svg id="s-colors"></svg></div><div class="cap">نفس الوقفة لكل لون</div></div>
+  </div>
+  <div class="foot"><span>طريقة تصوير المنتجات</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- POSES -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="head"><span class="num en">02</span><h2>الوضعيات</h2><span class="tag en">POSES</span></div>
+  <div class="grid g4">
+    <div class="tile ok"><div class="pic"><svg id="p1"></svg></div><div class="cap">وقفة مستقيمة</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p2"></svg></div><div class="cap">يد في الجيب</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p3"></svg></div><div class="cap">الوزن على رجل</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p4"></svg></div><div class="cap">لفّة ٤٥ درجة</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p5"></svg></div><div class="cap">ظهر مفرود</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p6"></svg></div><div class="cap">الكابيشو مرفوع</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p7"></svg></div><div class="cap">مسك الأربطة</div></div>
+    <div class="tile ok"><div class="pic"><svg id="p8"></svg></div><div class="cap">خطوة للأمام</div></div>
+  </div>
+  <div class="label"><i style="background:var(--no)">✕</i>تجنّب</div>
+  <div class="grid g4">
+    <div class="tile no"><div class="pic"><svg id="n1"></svg><span class="badge no">✕</span></div><div class="cap">اليد على الطباعة</div></div>
+    <div class="tile no"><div class="pic"><svg id="n2"></svg><span class="badge no">✕</span></div><div class="cap">تكتيف الذراعين</div></div>
+    <div class="tile no"><div class="pic"><svg id="n3"></svg><span class="badge no">✕</span></div><div class="cap">ظهر منحني</div></div>
+    <div class="tile no"><div class="pic"><svg id="n4"></svg><span class="badge no">✕</span></div><div class="cap">قماش مكرمش</div></div>
+  </div>
+  <div class="foot"><span>طريقة تصوير المنتجات</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- LIGHT -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="head"><span class="num en">03</span><h2>الإضاءة والخلفية</h2><span class="tag en">LIGHT &amp; BACKDROP</span></div>
+  <div class="diagram" style="height:90mm">
+    <svg viewBox="0 0 400 240" width="100%" height="100%" font-family="Cairo" font-size="10" text-anchor="middle">
+      <rect x="70" y="12" width="260" height="20" rx="3" fill="#D8BC98"/>
+      <text x="200" y="26" font-weight="700">خلفية بيج سادة</text>
+      <g fill="#F2C55C"><circle cx="110" cy="56" r="10"/><circle cx="290" cy="56" r="10"/></g>
+      <g stroke="#F2C55C" stroke-width="1.5"><path d="M110 46 110 34M100 50 92 40M120 50 128 40M290 46 290 34M280 50 272 40M300 50 308 40"/></g>
+      <text x="110" y="82" fill="#6E675E">إضاءة للخلفية</text><text x="290" y="82" fill="#6E675E">إضاءة للخلفية</text>
+      <circle cx="200" cy="110" r="16" fill="#7A1F2B"/><text x="200" y="114" fill="#fff" font-size="8.5">الموديل</text>
+      <path d="M200 34V92" stroke="#1E1B18" stroke-dasharray="3 3"/>
+      <rect x="168" y="54" width="64" height="16" rx="8" fill="#1E1B18"/><text x="200" y="65.5" fill="#F6F2EA" font-weight="700" font-size="9">٢ إلى ٣ متر</text>
+      <g transform="translate(96 152) rotate(-40)"><rect x="-30" y="-8" width="60" height="16" rx="3" fill="#1E1B18"/><rect x="-26" y="4" width="52" height="3" fill="#F2C55C"/></g>
+      <path d="M120 140 182 116" stroke="#F2C55C" stroke-width="3" stroke-dasharray="6 4"/>
+      <text x="80" y="196" font-weight="700" font-size="11">سوفت بوكس</text>
+      <g transform="translate(304 152) rotate(40)"><rect x="-26" y="-3" width="52" height="6" rx="2" fill="#fff" stroke="#1E1B18" stroke-width="1.5"/></g>
+      <path d="M284 140 218 116" stroke="#F2C55C" stroke-width="1.5" stroke-dasharray="3 4" opacity=".7"/>
+      <text x="318" y="196" font-weight="700" font-size="11">عاكس أبيض</text>
+      <rect x="184" y="198" width="32" height="20" rx="4" fill="#1E1B18"/><circle cx="200" cy="208" r="6" fill="#F2C55C"/><rect x="190" y="194" width="10" height="5" rx="1" fill="#1E1B18"/>
+      <text x="200" y="234" font-weight="700" font-size="11">الكاميرا</text>
+      <path d="M200 128V190" stroke="#1E1B18" stroke-dasharray="3 3"/>
+      <rect x="168" y="150" width="64" height="16" rx="8" fill="#1E1B18"/><text x="200" y="161.5" fill="#F6F2EA" font-weight="700" font-size="9">٣ إلى ٥ متر</text>
+    </svg>
+  </div>
+  <div class="grid g3" style="margin-top:5mm">
+    <div class="tile ok"><div class="pic" style="aspect-ratio:5/4"><svg id="l1"></svg><span class="badge ok">✓</span></div><div class="cap">بدون ظل على الخلفية</div></div>
+    <div class="tile ok"><div class="pic" style="aspect-ratio:5/4"><svg id="l2"></svg><span class="badge ok">✓</span></div><div class="cap">إضاءة ناعمة</div></div>
+    <div class="tile ok"><div class="pic" style="aspect-ratio:5/4"><svg id="l3"></svg><span class="badge ok">✓</span></div><div class="cap">خلفية مفرودة</div></div>
+    <div class="tile no"><div class="pic" style="aspect-ratio:5/4"><svg id="l4"></svg><span class="badge no">✕</span></div><div class="cap">ظل الموديل على الخلفية</div></div>
+    <div class="tile no"><div class="pic" style="aspect-ratio:5/4"><svg id="l5"></svg><span class="badge no">✕</span></div><div class="cap">إضاءة حادة</div></div>
+    <div class="tile no"><div class="pic" style="aspect-ratio:5/4"><svg id="l6"></svg><span class="badge no">✕</span></div><div class="cap">خلفية مكرمشة</div></div>
+  </div>
+  <div class="foot"><span>طريقة تصوير المنتجات</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- VIDEO -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="head"><span class="num en">04</span><h2>الفيديو</h2><span class="tag en">VIDEO</span></div>
+  <div class="grid g3">
+    <div class="tile"><div class="pic tall"><svg id="v1"></svg><span class="badge en">1</span></div><div class="cap">لفّة كاملة<small>الكاميرا ثابتة</small></div></div>
+    <div class="tile"><div class="pic tall"><svg id="v2"></svg><span class="badge en">2</span></div><div class="cap">مشي ناحية الكاميرا<small>جيمبال يرجع لورا</small></div></div>
+    <div class="tile"><div class="pic tall"><svg id="v3"></svg><span class="badge en">3</span></div><div class="cap">تقريب على الطباعة<small>حركة بطيئة</small></div></div>
+    <div class="tile"><div class="pic tall"><svg id="v4"></svg><span class="badge en">4</span></div><div class="cap">رفع الكابيشو<small>الكاميرا ثابتة</small></div></div>
+    <div class="tile"><div class="pic tall"><svg id="v5"></svg><span class="badge en">5</span></div><div class="cap">لمس القماش<small>تصوير بطيء</small></div></div>
+    <div class="tile"><div class="pic tall"><svg id="v6"></svg><span class="badge en">6</span></div><div class="cap">تبديل الألوان<small>نفس الحركة لكل لون</small></div></div>
+  </div>
+  <div class="strip">
+    <div class="chip"><svg width="9mm" height="14mm" viewBox="0 0 18 30"><rect x="1.5" y="1.5" width="15" height="27" rx="2.5" fill="none" stroke="#F2C55C" stroke-width="2.5"/></svg><span>فيديو طولي</span></div>
+    <div class="chip"><b>4K</b><span>أعلى جودة</span></div>
+    <div class="chip"><svg width="12mm" height="12mm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#F2C55C" stroke-width="2.2"/><path d="M12 6v6l4 3" stroke="#F2C55C" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><span>من ٦ إلى ١٥ ثانية</span></div>
+  </div>
+  <div class="foot"><span>طريقة تصوير المنتجات</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<script>
+const SKIN='#C89B7B',HAIR='#232020',J1='#A9C4DE',J2='#94B2D2',BG='#D8BC98';
+function shade(h,f){const n=parseInt(h.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;r=Math.round(r*f);g=Math.round(g*f);b=Math.round(b*f);return'#'+((1<<24)|(r<<16)|(g<<8)|b).toString(16).slice(1)}
+const R=d=>d*Math.PI/180;
+function limb(x,y,a1,a2,dir,L1,L2){const k=[x+dir*L1*Math.sin(R(a1)),y+L1*Math.cos(R(a1))];const e=[k[0]+dir*L2*Math.sin(R(a2)),k[1]+L2*Math.cos(R(a2))];return{k,e}}
+function line(p,w,c){return `<path d="M${p.s[0]} ${p.s[1]}L${p.k[0]} ${p.k[1]}L${p.e[0]} ${p.e[1]}" stroke="${c}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`}
+/* person: returns svg markup in 120x270 space */
+function person(o={}){
+  const c=o.color||'#7A1F2B',d=shade(c,.8),dd=shade(c,.65),v=o.view||'front';
+  const A=o.arms||{l:[6,2],r:[6,2]},Lg=o.legs||{l:[3,0],r:[3,0]};
+  let s='';
+  if(o.floor!==false)s+=`<ellipse cx="60" cy="262" rx="${v==='side'?24:32}" ry="4" fill="rgba(0,0,0,.12)"/>`;
+  // legs
+  const hips=v==='side'?[[57,148],[63,148]]:[[52,148],[68,148]];
+  [['l',-1,J1],['r',1,J2]].forEach(([n,dir,col],i)=>{const g=Lg[n];const p=limb(hips[i][0],hips[i][1],g[0],g[1],dir,52,52);p.s=hips[i];s+=line(p,15,col);s+=`<ellipse cx="${p.e[0]+(v==='side'?5:dir*3)}" cy="${p.e[1]+4}" rx="${v==='side'?11:9}" ry="4.5" fill="#F4F4F2"/>`;});
+  let up='';
+  const sh=v==='side'?[[60,64],[60,64]]:[[43,64],[77,64]];
+  const arm=(n,dir,i)=>{const a=A[n];if(!a)return'';const p=limb(sh[i][0],sh[i][1],a[0],a[1],dir,44,40);p.s=sh[i];let m=line(p,14,v==='back'?c:d);if(!a[2])m+=`<circle cx="${p.e[0]}" cy="${p.e[1]+2}" r="5.5" fill="${SKIN}"/>`;return m};
+  // hood up behind head
+  if(o.hood&&v!=='back')up+=`<ellipse cx="60" cy="31" rx="20" ry="22" fill="${d}"/>`;
+  if(o.hood&&v==='back')up+=`<ellipse cx="60" cy="31" rx="19" ry="21" fill="${d}"/>`;
+  // torso
+  const torso=v==='side'?'M47 58Q60 52 73 58L78 100L75 152H45L42 100Z':'M40 58Q60 50 80 58L85 100L81 152H39L35 100Z';
+  up+=`<rect x="54" y="40" width="12" height="16" fill="${shade(SKIN,.85)}"/>`;
+  up+=`<path d="${torso}" fill="${c}"/>`;
+  if(o.wrinkle)up+=`<g stroke="${dd}" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M44 72q6 6 2 14M76 74q-7 5-3 13M48 104q8 4 4 12M72 100q-6 6-2 14M56 136q4-6 10-2M42 120q6 2 6 8"/></g>`;
+  up+=`<rect x="${v==='side'?45:39}" y="146" width="${v==='side'?30:42}" height="6" fill="${d}"/>`;
+  if(v==='front'){up+=`<rect x="45" y="116" width="30" height="20" rx="4" fill="none" stroke="${dd}" stroke-width="1.3"/>`;
+    if(!o.hood)up+=`<path d="M45 57Q60 45 75 57L71 65Q60 58 49 65Z" fill="${d}"/>`;
+    up+=`<path d="M56 64v14M64 64v14" stroke="#EDE6DA" stroke-width="1.4" stroke-linecap="round"/>`;
+    up+=`<g transform="translate(68 84)"><path d="M0 12 4 0 8 12Z" fill="#8DB580"/><path d="M4 13 8 2 12 13Z" fill="#A9C8E0"/><path d="M-3 13 1 3 5 13Z" fill="#C9A06A"/></g>`;}
+  if(v==='back'){up+=`<path d="M44 56Q60 74 76 56L74 72Q60 82 46 72Z" fill="${d}"/>`;
+    up+=`<g transform="translate(60 96)"><path d="M-14 30-6 2 2 30Z" fill="#C9A06A"/><path d="M-6 32 3-4 12 32Z" fill="#8DB580"/><path d="M4 30 11 6 18 30Z" fill="#A9C8E0"/><rect x="-16" y="34" width="34" height="4" rx="1" fill="#EDE6DA"/></g>`;}
+  if(v==='side'&&!o.hood)up+=`<path d="M48 56Q58 46 70 56L66 64H50Z" fill="${d}"/>`;
+  // arms (behind/front)
+  up+=arm('l',-1,0)+arm('r',1,1);
+  // head
+  if(v==='back'){up+=`<circle cx="60" cy="30" r="14" fill="${HAIR}"/>`}
+  else if(v==='side'){up+=`<circle cx="62" cy="30" r="14" fill="${SKIN}"/><path d="M48 30a14 14 0 0 1 22-11c-6 0-9 3-10 8-1 4-3 8-9 10z" fill="${HAIR}"/><path d="M66 38q6 4 10-2q-2 7-9 8z" fill="${HAIR}"/>`}
+  else{up+=`<circle cx="60" cy="30" r="14" fill="${SKIN}"/><path d="M46 28a14 14 0 0 1 28 0c-3-7-9-10-14-10s-11 3-14 10z" fill="${HAIR}"/><path d="M50 34Q60 50 70 34Q67 43 60 44Q53 43 50 34Z" fill="${HAIR}"/><path d="M54 30h3M63 30h3" stroke="${HAIR}" stroke-width="1.6" stroke-linecap="round"/>`}
+  if(o.hood&&v!=='back')up+=`<path d="M41 34Q42 10 60 9Q78 10 79 34" fill="none" stroke="${dd}" stroke-width="3"/>`;
+  if(o.lean)up=`<g transform="rotate(${o.lean} 60 148)">${up}</g>`;
+  return o.tilt?`<g transform="rotate(${o.tilt} 60 262)">${s}${up}</g>`:s+up;
+}
+function frame(id,vb,inner,bg){const el=document.getElementById(id);el.setAttribute('viewBox',vb);el.setAttribute('preserveAspectRatio','xMidYMid slice');const [x,y,w,h]=vb.split(' ').map(Number);el.innerHTML=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${bg||BG}"/>`+inner}
+const FULL='-40 -12 200 280';
+const POCKET={l:[8,-40,1],r:[8,-40,1]};
+// SHOTS
+frame('s-side','-45 -10 210 280',person({view:'side',arms:{l:[4,2]}}));
+frame('s-fabric','34 70 52 69',person({})+`<g stroke="#5E1520" stroke-width=".5" opacity=".7"><path d="M34 100h52M34 103h52M34 106h52M34 109h52M34 112h52M34 115h52"/></g><circle cx="74" cy="92" r="9" fill="none" stroke="#F2C55C" stroke-width="1.4"/>`,'#7A1F2B');
+frame('s-label','0 0 80 107',`<rect width="80" height="107" fill="#7A1F2B"/><path d="M10 0Q40 34 70 0" fill="#5E1520"/><rect x="28" y="22" width="24" height="16" rx="1.5" fill="#F6F2EA"/><path d="M33 28h14M35 32h10" stroke="#1E1B18" stroke-width="1.6"/><path d="M28 22l-3 -3M52 22l3-3" stroke="#F6F2EA" stroke-width="1"/>`,'#7A1F2B');
+frame('s-move',FULL,person({arms:{l:[22,10],r:[-12,-30]},legs:{l:[-4,0],r:[16,-20]},tilt:-3})+`<g stroke="#1E1B18" stroke-width="2" stroke-linecap="round" opacity=".55"><path d="M-20 90h18M-26 110h22M-20 130h18"/></g>`);
+frame('s-colors','0 0 360 300',[['#F4F2EE',0],['#9C9C9C',90],['#7A1F2B',180],['#1E1B18',270]].map(([c,x])=>`<g transform="translate(${x-12} 14) scale(1)">${person({color:c,arms:POCKET,floor:false})}</g>`).join(''));
+// POSES
+frame('p1',FULL,person({arms:{l:[6,2],r:[6,2]}}));
+frame('p2',FULL,person({arms:{l:[8,-40,1],r:[10,4]},legs:{l:[2,0],r:[9,-6]}}));
+frame('p3',FULL,person({arms:POCKET,legs:{l:[1,0],r:[14,-14]},tilt:-2}));
+frame('p4',FULL,person({view:'side',arms:{l:[4,2]}}));
+frame('p5',FULL,person({view:'back',arms:{l:[6,2],r:[6,2]}}));
+frame('p6',FULL,person({hood:true,arms:POCKET}));
+frame('p7',FULL,person({arms:{l:[14,-140],r:[14,-140]}}));
+frame('p8',FULL,person({arms:{l:[22,10],r:[-12,-30]},legs:{l:[-4,0],r:[16,-20]},tilt:-3}));
+// AVOID
+frame('n1',FULL,person({arms:{l:[5,-128],r:[6,2]}}));
+frame('n2',FULL,person({arms:{l:[5,-100],r:[5,-100]}}));
+frame('n3',FULL,person({view:'side',arms:{l:[14,6]},lean:14}));
+frame('n4',FULL,person({wrinkle:true,arms:{l:[6,2],r:[6,2]}}));
+// LIGHT
+const LV='-121 -14 362 290';
+frame('l1',LV,person({arms:POCKET}));
+frame('l4',LV,`<path d="M-40 40Q-30 0 0 10L20 250H-60Z" fill="rgba(60,40,20,.28)"/>`+person({arms:POCKET}));
+frame('l2',LV,person({arms:POCKET})+`<path d="M60 58Q84 100 81 152" stroke="rgba(0,0,0,.08)" stroke-width="10" fill="none"/>`);
+frame('l5',LV,`<rect x="-121" y="-14" width="362" height="290" fill="#C9A982"/>`+person({arms:POCKET})+`<path d="M60 52L85 100L81 152H60Z" fill="rgba(0,0,0,.45)"/><path d="M60 16a14 14 0 0 1 0 28z" fill="rgba(0,0,0,.4)"/><circle cx="50" cy="26" r="3" fill="rgba(255,255,255,.75)"/>`);
+frame('l3',LV,person({arms:POCKET}));
+frame('l6',LV,`<g stroke="rgba(90,60,30,.35)" stroke-width="2" fill="none"><path d="M-60 20q30 30 10 70t30 80M150 10q-20 40 10 80t-10 90M-40 200q60-20 90 10M100 230q40-30 80-10M20 -5q-10 30 -40 40M120 60q30 10 50-10"/></g>`+person({arms:POCKET}));
+// VIDEO (9:16 frames)
+const V9='-30 -20 180 270';
+frame('v1','-50 -10 220 330',person({arms:POCKET})+`<g fill="none" stroke="#1E1B18" stroke-width="2.6"><path d="M8 276a52 14 0 1 0 104 0" /><path d="M112 276a52 14 0 0 0 -60 -13"/></g><path d="M40 258l12 5-10 8z" fill="#1E1B18"/><text x="60" y="318" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="20" fill="#1E1B18">360°</text>`);
+frame('v2',V9,`<g transform="translate(0 30)">${person({arms:{l:[-12,-30],r:[22,10]},legs:{l:[16,-20],r:[-4,0]}})}</g><path d="M138 120v120" stroke="#1E1B18" stroke-width="3"/><path d="M128 232l10 16 10-16z" fill="#1E1B18"/><g stroke="#1E1B18" stroke-width="2" stroke-linecap="round" opacity=".4"><path d="M-22 120h16M-28 140h22M-22 160h16"/></g>`);
+frame('v3','28 62 76 114',person({})+`<g stroke="#F2C55C" stroke-width="2" fill="none"><path d="M60 82h-6v6M86 82h6v6M60 112h-6v-6M86 112h6v-6"/></g><g stroke="#F6F2EA" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M38 70l8 8M94 70l-8 8M38 124l8-8M94 124l-8-8"/></g>`,'#7A1F2B');
+frame('v4',V9,person({hood:true,arms:{l:[28,-168],r:[28,-168]}})+`<path d="M118 60V14" stroke="#1E1B18" stroke-width="3"/><path d="M108 22l10-16 10 16z" fill="#1E1B18"/>`);
+frame('v5','26 60 80 120',person({arms:{l:[6,2],r:[-6,-118]}})+`<g transform="translate(36 166)"><rect width="34" height="14" rx="7" fill="#1E1B18"/><text x="17" y="10.5" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="8" fill="#F2C55C">0.5x</text></g>`,'#7A1F2B');
+frame('v6','-10 -10 360 540',[['#F4F2EE',-20],['#7A1F2B',100],['#1E1B18',220]].map(([c,x],i)=>`<g transform="translate(${x} ${i*110+40}) scale(.95)">${person({color:c,arms:POCKET})}</g>`).join('')+``);
+</script>
+</body>
+</html>
