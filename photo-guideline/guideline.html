@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>دليل تصوير الملابس</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Montserrat:ital,wght@0,500;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F2EA; --card:#FFFFFF; --soft:#ECE6DA; --ink:#1E1B18; --mute:#6E675E;
+  --accent:#F2C55C; --wine:#7A1F2B; --beige:#D8BC98; --line:#DDD4C4;
+  --ok:#2F7D4F; --no:#B3362F;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#8a857c}
+body{font-family:'Cairo',sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.65;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;background:var(--bg);position:relative;overflow:hidden;padding:16mm 15mm 18mm;margin:0 auto 8mm;page-break-after:always;display:flex;flex-direction:column}
+@media print{html,body{background:var(--bg)}.page{margin:0}}
+.en{font-family:'Montserrat',sans-serif;direction:ltr;unicode-bidi:isolate}
+.topbar{position:absolute;top:0;right:0;left:0;height:4mm;background:var(--accent)}
+.foot{position:absolute;bottom:7mm;right:15mm;left:15mm;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--mute);border-top:1px solid var(--line);padding-top:2.5mm}
+.foot img{height:7mm}
+.sec{display:flex;align-items:center;gap:4mm;margin-bottom:2mm}
+.sec .num{font-family:'Montserrat';font-weight:700;font-size:28pt;color:var(--accent);line-height:1}
+.sec h2{font-size:22pt;font-weight:900;line-height:1.2}
+.sec .tag{margin-right:auto;font-family:'Montserrat';font-style:italic;font-weight:700;font-size:9pt;color:var(--mute);letter-spacing:.5px}
+.rule{height:1.5px;background:linear-gradient(to left,var(--accent),transparent);margin:1mm 0 5mm}
+.lead{color:var(--mute);font-size:10.5pt;margin-bottom:5mm;max-width:165mm}
+h3{font-size:13pt;font-weight:700;margin-bottom:2mm}
+.grid{display:grid;gap:4mm}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border-radius:4mm;padding:4mm;box-shadow:0 .3mm 1mm rgba(0,0,0,.05)}
+.card.soft{background:var(--soft);box-shadow:none}
+.card h4{font-size:11.5pt;font-weight:700;margin-bottom:1mm;line-height:1.35}
+.card p,.card li{font-size:9pt;color:#3d3832;line-height:1.6}
+.dot{list-style:none}
+.dot li{position:relative;padding-right:5mm;margin-bottom:1.2mm}
+.dot li::before{content:"";position:absolute;right:0;top:2.2mm;width:2.4mm;height:2.4mm;border-radius:50%;background:var(--accent)}
+.kv{display:flex;justify-content:space-between;gap:3mm;border-bottom:1px dashed var(--line);padding:1.4mm 0;font-size:9.2pt}
+.kv:last-child{border-bottom:0}
+.kv b{font-weight:700}
+.kv .en{font-weight:700;color:var(--wine)}
+.pill{display:inline-block;background:var(--accent);color:var(--ink);font-weight:700;font-size:8pt;padding:.3mm 2.5mm;border-radius:10mm}
+.shot{background:var(--card);border-radius:4mm;overflow:hidden;display:flex;flex-direction:column}
+.shot .fig{background:var(--beige);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative}
+.shot .fig svg,.shot .fig img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .no{position:absolute;top:2mm;right:2mm;background:var(--ink);color:#fff;font-family:'Montserrat';font-weight:700;font-size:9pt;width:7mm;height:7mm;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.shot .body{padding:2.5mm 3mm 3mm}
+.shot h4{font-size:10.5pt;font-weight:700;line-height:1.35}
+.shot p{font-size:8pt;color:var(--mute);line-height:1.5}
+.shot .meta{margin-top:1.2mm;font-size:7.5pt;color:var(--wine);font-weight:700}
+.do,.dont{border-radius:4mm;padding:4mm}
+.do{background:#E6F1E9}.dont{background:#F7E4E2}
+.do h4{color:var(--ok)}.dont h4{color:var(--no)}
+.do li::before{background:var(--ok)}.dont li::before{background:var(--no)}
+.code{direction:ltr;text-align:left;font-family:'Montserrat',monospace;font-size:8.6pt;background:var(--ink);color:#F6F2EA;border-radius:3mm;padding:3.5mm 4mm;line-height:1.8;white-space:pre}
+.code .c{color:var(--accent)}
+.check{list-style:none}
+.check li{position:relative;padding-right:7mm;margin-bottom:1.6mm;font-size:9.2pt}
+.check li::before{content:"";position:absolute;right:0;top:1.2mm;width:3.6mm;height:3.6mm;border:1.5px solid var(--ink);border-radius:1mm;background:#fff}
+.diagram{background:var(--card);border-radius:4mm;padding:3mm;display:flex;align-items:center;justify-content:center}
+.small{font-size:8pt;color:var(--mute)}
+/* cover */
+.cover{padding:0;background:var(--ink);color:var(--bg)}
+.cover .ph{height:168mm;background:url(assets/hero.jpg) center 35%/110% auto}
+.cover .in{padding:12mm 15mm;flex:1;display:flex;flex-direction:column}
+.cover .logo{position:absolute;top:12mm;right:15mm;width:24mm;height:24mm;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cover .logo img{width:17mm}
+.cover h1{font-size:40pt;font-weight:900;line-height:1.15}
+.cover .sub{font-family:'Montserrat';font-weight:700;font-style:italic;letter-spacing:2px;color:var(--accent);font-size:11pt;margin-top:2mm}
+.cover .desc{color:#c9c2b6;font-size:11pt;margin-top:5mm;max-width:150mm}
+.cover .meta{margin-top:auto;display:flex;gap:10mm;font-size:9pt;color:#c9c2b6;border-top:1px solid #3a352f;padding-top:4mm}
+.cover .meta b{display:block;color:var(--bg);font-size:10.5pt}
+.toc{counter-reset:t}
+.toc .row{display:flex;align-items:baseline;gap:3mm;padding:2.6mm 0;border-bottom:1px solid var(--line)}
+.toc .row .n{font-family:'Montserrat';font-weight:700;color:var(--accent);font-size:14pt;width:10mm}
+.toc .row .t{font-weight:700;font-size:12pt}
+.toc .row .d{color:var(--mute);font-size:9pt;margin-right:auto}
+.swatch{display:flex;align-items:center;gap:3mm}
+.swatch i{width:10mm;height:10mm;border-radius:2mm;display:block;border:1px solid rgba(0,0,0,.08)}
+</style>
+</head>
+<body>
+
+<!-- reusable figures -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="pf" viewBox="0 0 100 260">
+      <path d="M36 150h13l-1 95H33z" fill="#A9C4DE"/><path d="M51 150h13l3 95H53z" fill="#9AB8D6"/>
+      <ellipse cx="40" cy="248" rx="9" ry="4" fill="#f4f4f4"/><ellipse cx="60" cy="248" rx="9" ry="4" fill="#f4f4f4"/>
+      <path d="M28 62 16 110l4 30h8l2-40z" fill="#6A1A25"/><path d="M72 62l12 48-4 30h-8l-2-40z" fill="#6A1A25"/>
+      <circle cx="24" cy="144" r="5" fill="#C89B7B"/><circle cx="76" cy="144" r="5" fill="#C89B7B"/>
+      <path d="M28 60Q50 50 72 60l8 40-4 55H24l-4-55z" fill="#7A1F2B"/>
+      <path d="M34 52Q50 40 66 52l-3 9H37z" fill="#5E1520"/>
+      <rect x="45" y="40" width="10" height="12" fill="#B98A6B"/>
+      <circle cx="50" cy="29" r="13" fill="#C89B7B"/><path d="M37 27a13 13 0 0 1 26 0c-3-6-9-8-13-8s-10 2-13 8z" fill="#222"/>
+      <path d="M54 92l4-12 4 12zM57 96l4-14 4 14z" fill="#8DB580"/>
+      <rect x="37" y="120" width="26" height="15" rx="3" fill="none" stroke="#5E1520" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="pb" viewBox="0 0 100 260">
+      <path d="M36 150h13l-1 95H33z" fill="#A9C4DE"/><path d="M51 150h13l3 95H53z" fill="#9AB8D6"/>
+      <ellipse cx="40" cy="248" rx="9" ry="4" fill="#f4f4f4"/><ellipse cx="60" cy="248" rx="9" ry="4" fill="#f4f4f4"/>
+      <path d="M28 62 16 110l4 30h8l2-40z" fill="#6A1A25"/><path d="M72 62l12 48-4 30h-8l-2-40z" fill="#6A1A25"/>
+      <path d="M28 60Q50 50 72 60l8 40-4 55H24l-4-55z" fill="#7A1F2B"/>
+      <rect x="45" y="40" width="10" height="12" fill="#B98A6B"/>
+      <circle cx="50" cy="29" r="13" fill="#222"/>
+      <path d="M34 50Q50 66 66 50l-2 18Q50 76 36 68z" fill="#5E1520"/>
+      <path d="M38 118l7-26 7 26zM46 120l8-32 8 32zM54 118l6-22 6 22z" fill="#8DB580"/>
+      <rect x="36" y="80" width="28" height="5" rx="1" fill="#E9DCC6"/>
+    </symbol>
+    <symbol id="ps" viewBox="0 0 100 260">
+      <path d="M42 150h14l2 95H44z" fill="#A9C4DE"/>
+      <ellipse cx="53" cy="248" rx="11" ry="4" fill="#f4f4f4"/>
+      <path d="M34 60Q50 52 64 60l6 40-3 55H33l-3-55z" fill="#7A1F2B"/>
+      <path d="M46 62 40 110l4 30h8l2-40z" fill="#5E1520"/>
+      <circle cx="49" cy="144" r="5" fill="#C89B7B"/>
+      <path d="M38 52Q48 42 62 52l-3 9H41z" fill="#5E1520"/>
+      <rect x="47" y="40" width="9" height="12" fill="#B98A6B"/>
+      <circle cx="52" cy="29" r="13" fill="#C89B7B"/><path d="M39 27a13 13 0 0 1 26 0c-4-5-10-8-15-6-4 1-8 3-11 6z" fill="#222"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 1. COVER -->
+<section class="page cover">
+  <div class="ph"></div>
+  <div class="logo"><img src="assets/logo.png" alt=""></div>
+  <div class="in">
+    <h1>دليل تصوير الملابس</h1>
+    <div class="sub en">APPAREL PHOTOGRAPHY GUIDELINE</div>
+    <p class="desc">مرجع موحّد لفريق التصوير والمونتاج — من تجهيز القطعة في الاستوديو وحتى تسليم الملفات النهائية للموقع والسوشيال ميديا. الهدف: أن تبدو كل صورة وكأنها من نفس الجلسة، مهما اختلف المصوّر أو الموسم.</p>
+    <div class="meta">
+      <div><b>النطاق</b>صور المنتج + الفيديو</div>
+      <div><b>الاستخدام</b>المتجر، إنستجرام، الإعلانات</div>
+      <div><b>الإصدار</b><span class="en">v2.0</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TOC -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><h2>المحتويات</h2><span class="tag en">CONTENTS</span></div>
+  <div class="rule"></div>
+  <div class="toc">
+    <div class="row"><span class="n en">01</span><span class="t">الأسلوب البصري</span><span class="d">الإحساس العام، الألوان، الثوابت</span></div>
+    <div class="row"><span class="n en">02</span><span class="t">المعدات وإعدادات الكاميرا</span><span class="d">كاميرا أو موبايل</span></div>
+    <div class="row"><span class="n en">03</span><span class="t">الإضاءة والخلفية</span><span class="d">مخطط الاستوديو</span></div>
+    <div class="row"><span class="n en">04</span><span class="t">تجهيز القطعة والموديل</span><span class="d">الكي، الستايلنج، الوضعيات</span></div>
+    <div class="row"><span class="n en">05</span><span class="t">قائمة اللقطات الإلزامية</span><span class="d">٨ لقطات لكل منتج</span></div>
+    <div class="row"><span class="n en">06</span><span class="t">التأطير وارتفاع الكاميرا</span><span class="d">المقاسات والهوامش</span></div>
+    <div class="row"><span class="n en">07</span><span class="t">الألوان المتعددة وصور الفلات لاي</span><span class="d">بدون موديل</span></div>
+    <div class="row"><span class="n en">08</span><span class="t">الفيديو</span><span class="d">ريلز وستوري وصفحة المنتج</span></div>
+    <div class="row"><span class="n en">09</span><span class="t">ما بعد التصوير والتسليم</span><span class="d">التعديل، التصدير، تسمية الملفات</span></div>
+    <div class="row"><span class="n en">10</span><span class="t">قائمة المراجعة النهائية</span><span class="d">قبل وأثناء وبعد الجلسة</span></div>
+  </div>
+  <div class="card soft" style="margin-top:8mm">
+    <h4>القاعدة الذهبية</h4>
+    <p>العميل لا يستطيع لمس القطعة — الصورة هي التي تلمسها نيابةً عنه. كل لقطة يجب أن تجيب عن سؤال: كيف يبدو المنتج؟ كيف يلبس؟ ما خامته؟ ما حجمه على الجسم؟ أي لقطة لا تجيب عن سؤال واضح لا داعي لها.</p>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 3. STYLE -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">01</span><h2>الأسلوب البصري</h2><span class="tag en">VISUAL STYLE</span></div>
+  <div class="rule"></div>
+  <p class="lead">شخصية البراند: دافئة، هادئة، واثقة. الصورة نظيفة وبسيطة والبطل دائمًا هو القطعة — لا الخلفية ولا الإكسسوارات.</p>
+  <div class="grid g2" style="grid-template-columns:1.05fr 1fr">
+    <div class="card" style="padding:0;overflow:hidden"><img src="assets/full.jpg" style="width:100%;height:118mm;object-fit:cover;display:block" alt=""></div>
+    <div style="display:flex;flex-direction:column;gap:4mm">
+      <div class="card">
+        <h4>لوحة ألوان الجلسة</h4>
+        <div class="grid g2" style="gap:2.5mm;margin-top:2mm">
+          <div class="swatch"><i style="background:#D8BC98"></i><div><b style="font-size:9pt">خلفية بيج</b><div class="small en">#D8BC98</div></div></div>
+          <div class="swatch"><i style="background:#F6F2EA"></i><div><b style="font-size:9pt">أوف وايت</b><div class="small en">#F6F2EA</div></div></div>
+          <div class="swatch"><i style="background:#A9C4DE"></i><div><b style="font-size:9pt">جينز فاتح</b><div class="small">بنطلون ثابت</div></div></div>
+          <div class="swatch"><i style="background:#FFFFFF"></i><div><b style="font-size:9pt">حذاء أبيض</b><div class="small">بدون لوجو ظاهر</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h4>الثوابت في كل جلسة</h4>
+        <ul class="dot">
+          <li>نفس لون الخلفية ونفس مسافة الموديل منها</li>
+          <li>نفس إعداد الإضاءة — يُصوَّر مرة ويُحفَظ</li>
+          <li>نفس البعد البؤري ونفس ارتفاع الكاميرا لكل نوع لقطة</li>
+          <li>نفس البنطلون والحذاء لكل الموديلات</li>
+          <li>تعبير وجه هادئ وطبيعي — بدون ابتسامة مبالغ فيها</li>
+        </ul>
+      </div>
+      <div class="card soft">
+        <h4>المزاج العام</h4>
+        <p>إضاءة ناعمة ودافئة، ظلال خفيفة جدًا، ألوان حقيقية بدون فلاتر. أقرب إلى كتالوج متجر عالمي منه إلى صورة إعلانية صاخبة.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 4. GEAR -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">02</span><h2>المعدات وإعدادات الكاميرا</h2><span class="tag en">GEAR &amp; SETTINGS</span></div>
+  <div class="rule"></div>
+  <p class="lead">الثبات أهم من غلاء المعدات. ثبّت الإعدادات من أول لقطة ولا تغيّرها خلال الجلسة حتى تتطابق كل الصور في الألوان والإضاءة.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>كاميرا احترافية</h3>
+      <div class="kv"><b>العدسة</b><span class="en">50mm / 85mm / 24-70mm</span></div>
+      <div class="kv"><b>صيغة الملف</b><span class="en">RAW + JPG</span></div>
+      <div class="kv"><b>الحساسية</b><span class="en">ISO 100–200</span></div>
+      <div class="kv"><b>فتحة العدسة — موديل</b><span class="en">f/5.6 – f/8</span></div>
+      <div class="kv"><b>فتحة العدسة — تفاصيل</b><span class="en">f/8 – f/11</span></div>
+      <div class="kv"><b>سرعة الغالق — فلاش</b><span class="en">1/160 – 1/200</span></div>
+      <div class="kv"><b>توازن الأبيض</b><span>يدوي من بطاقة رمادية</span></div>
+      <div class="kv"><b>التركيز</b><span>على العينين أو على الطباعة</span></div>
+      <p class="small" style="margin-top:2mm">استخدم الحامل الثلاثي للقطات التفاصيل والفلات لاي، ويُفضَّل التصوير الموصول باللابتوب لمراجعة الصور فورًا.</p>
+    </div>
+    <div class="card">
+      <h3>تصوير بالموبايل</h3>
+      <div class="kv"><b>العدسة</b><span>العدسة المقرّبة ×٢ أو ×٣</span></div>
+      <div class="kv"><b>الوضع</b><span>احترافي أو يدوي</span></div>
+      <div class="kv"><b>صيغة الملف</b><span class="en">RAW / ProRAW</span></div>
+      <div class="kv"><b>الحساسية</b><span>أقل قيمة ممكنة</span></div>
+      <div class="kv"><b>توازن الأبيض</b><span>ثابت وليس تلقائي</span></div>
+      <div class="kv"><b>الفلاتر وتحسين الوجه</b><span>مغلقة تمامًا</span></div>
+      <div class="kv"><b>وضع البورتريه</b><span>ممنوع — يشوّه الحواف</span></div>
+      <p class="small" style="margin-top:2mm">العدسة الواسعة تشوّه أبعاد الجسم والقطعة؛ ابتعد خطوتين واستخدم التقريب البصري بدلًا منها. امسح العدسة قبل كل جلسة.</p>
+    </div>
+  </div>
+  <div class="card soft" style="margin-top:4mm">
+    <h4>قائمة معدات الاستوديو</h4>
+    <div class="grid g3" style="gap:2mm">
+      <ul class="dot"><li>٢ سوفت بوكس كبير</li><li>عاكس أبيض أو فوم بورد</li><li>إضاءتان للخلفية</li></ul>
+      <ul class="dot"><li>خلفية ورق بيج بعرض ٢٫٧ متر</li><li>حامل ثلاثي</li><li>بطاقة رمادية للون</li></ul>
+      <ul class="dot"><li>مكواة بخار</li><li>مشابك وشريط لاصق</li><li>فرشاة إزالة الوبر</li></ul>
+    </div>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 5. LIGHT -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">03</span><h2>الإضاءة والخلفية</h2><span class="tag en">LIGHTING &amp; BACKDROP</span></div>
+  <div class="rule"></div>
+  <p class="lead">مخطط ثابت يُعاد بنفس المسافات في كل جلسة. التقط صورة لإعداد الاستوديو في أول يوم واحتفظ بها كمرجع.</p>
+  <div class="diagram" style="height:112mm">
+    <svg viewBox="0 0 400 240" width="100%" height="100%" font-family="Cairo" font-size="9">
+      <rect x="70" y="14" width="260" height="16" rx="3" fill="#D8BC98"/>
+      <text x="200" y="26" text-anchor="middle" font-weight="700">الخلفية — بيج</text>
+      <g fill="#F2C55C"><circle cx="110" cy="52" r="9"/><circle cx="290" cy="52" r="9"/></g>
+      <text x="110" y="74" text-anchor="middle" fill="#6E675E">إضاءة خلفية</text>
+      <text x="290" y="74" text-anchor="middle" fill="#6E675E">إضاءة خلفية</text>
+      <circle cx="200" cy="108" r="15" fill="#7A1F2B"/><text x="200" y="111" text-anchor="middle" fill="#fff" font-size="8">موديل</text>
+      <line x1="200" y1="30" x2="200" y2="92" stroke="#1E1B18" stroke-dasharray="3 3"/>
+      <text x="206" y="68" fill="#1E1B18" font-weight="700">٢ إلى ٣ م</text>
+      <g transform="translate(100 150) rotate(-40)"><rect x="-28" y="-6" width="56" height="12" rx="2" fill="#1E1B18"/></g>
+      <path d="M118 140 182 114" stroke="#F2C55C" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="78" y="186" fill="#1E1B18" font-weight="700">إضاءة رئيسية</text>
+      <text x="78" y="198" fill="#6E675E">سوفت بوكس ٤٥°</text>
+      <g transform="translate(300 150) rotate(40)"><rect x="-24" y="-3" width="48" height="6" rx="2" fill="#fff" stroke="#1E1B18"/></g>
+      <text x="282" y="186" fill="#1E1B18" font-weight="700">عاكس أبيض</text>
+      <text x="282" y="198" fill="#6E675E">لتخفيف الظل</text>
+      <rect x="186" y="200" width="28" height="18" rx="3" fill="#1E1B18"/><circle cx="200" cy="209" r="5" fill="#F2C55C"/>
+      <text x="200" y="232" text-anchor="middle" font-weight="700">الكاميرا</text>
+      <line x1="200" y1="124" x2="200" y2="198" stroke="#1E1B18" stroke-dasharray="3 3"/>
+      <text x="206" y="166" fill="#1E1B18" font-weight="700">٣ إلى ٥ م</text>
+    </svg>
+  </div>
+  <div class="grid g3" style="margin-top:4mm">
+    <div class="card"><h4>الإضاءة الرئيسية</h4><p>سوفت بوكس كبير بزاوية ٤٥° وأعلى من رأس الموديل قليلًا. الضوء الناعم يُظهر ملمس القماش بدون لمعان.</p></div>
+    <div class="card"><h4>إضاءة الخلفية</h4><p>إضاءتان على الخلفية لإلغاء ظل الموديل وتوحيد اللون. الخلفية أفتح من الموديل بنصف درجة تقريبًا.</p></div>
+    <div class="card"><h4>المسافة من الخلفية</h4><p>الموديل يقف على بعد ٢–٣ متر من الخلفية — يمنع الظل عليها ويمنع انعكاس لونها البيج على القطع الفاتحة.</p></div>
+  </div>
+  <div class="card soft" style="margin-top:4mm">
+    <h4>تنبيه للقطع البيضاء والسوداء</h4>
+    <p>الأبيض: خفّض التعريض قليلًا حتى لا تختفي الخياطة والتفاصيل. الأسود: أضف عاكسًا من الجانب الآخر لإظهار ملمس القماش. راجع المدرّج التكراري بعد كل لون.</p>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 6. PREP -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">04</span><h2>تجهيز القطعة والموديل</h2><span class="tag en">PREP &amp; POSING</span></div>
+  <div class="rule"></div>
+  <p class="lead">٨٠٪ من جودة صورة الملابس تُحسَم قبل الضغط على زر التصوير. القطعة المكوية جيدًا توفّر ساعات من التعديل.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>تجهيز القطعة</h3>
+      <ul class="dot">
+        <li>كيّ بالبخار من الداخل والخارج — خصوصًا الأكمام والكابيشو</li>
+        <li>إزالة الوبر والشعر بالفرشاة قبل كل لقطة</li>
+        <li>إزالة التيكيت الخارجي والخيوط الزائدة</li>
+        <li>اختيار المقاس الصحيح للموديل — القطعة لا تكون مشدودة ولا مكوّمة</li>
+        <li>شد الزيادة من الخلف بالمشابك في اللقطات الأمامية فقط</li>
+        <li>ترتيب أربطة الكابيشو بشكل متساوٍ ومتماثل</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ستايلنج الموديل</h3>
+      <ul class="dot">
+        <li>شعر مرتب ولحية محددة قبل الجلسة</li>
+        <li>بدون ساعات أو سلاسل أو إكسسوارات تشتت العين</li>
+        <li>تيشيرت أبيض تحت الهودي إذا ظهرت فتحة الرقبة</li>
+        <li>بنطلون وحذاء ثابتان من لوحة ألوان الجلسة</li>
+        <li>تجنّب أي لوجو لبراند آخر في الإطار</li>
+        <li>أظافر ويدين نظيفة — تظهر في لقطات التفاصيل</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin-top:5mm">الوضعيات</h3>
+  <div class="grid g2">
+    <div class="do">
+      <h4>افعل</h4>
+      <ul class="dot">
+        <li>وقفة مسترخية والوزن على قدم واحدة</li>
+        <li>يد في الجيب ويد طبيعية بجانب الجسم</li>
+        <li>نظرة للكاميرا ونظرة جانبية في كل وضعية</li>
+        <li>حركة خفيفة بين اللقطات: خطوة، لفّة، رفع الكابيشو</li>
+        <li>كتفان مستويان لإظهار القصّة الحقيقية</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>لا تفعل</h4>
+      <ul class="dot">
+        <li>وضع اليدين أو الذراعين فوق الطباعة</li>
+        <li>تكتيف الذراعين — يجعّد القماش ويخفي القصّة</li>
+        <li>انحناء الظهر في اللقطة الخلفية</li>
+        <li>وضعيات مبالغ فيها أو بعيدة عن طابع البراند</li>
+        <li>نظارات شمس أو قبعات تخفي الوجه</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 7. SHOT LIST -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">05</span><h2>قائمة اللقطات الإلزامية</h2><span class="tag en">SHOT LIST</span></div>
+  <div class="rule"></div>
+  <p class="lead">لكل منتج ولكل لون: ٨ لقطات بنفس الترتيب. الترتيب نفسه هو ترتيب الصور في صفحة المنتج على الموقع.</p>
+  <div class="grid g4" style="gap:3mm">
+    <div class="shot"><div class="fig"><img src="assets/front.jpg" alt=""><span class="no en">1</span></div><div class="body"><h4>أمامي كامل</h4><p>من الرأس للقدم، وقفة مستقيمة والطباعة ظاهرة بالكامل</p><div class="meta">صورة الغلاف</div></div></div>
+    <div class="shot"><div class="fig"><img src="assets/back.jpg" alt=""><span class="no en">2</span></div><div class="body"><h4>خلفي كامل</h4><p>الظهر مستقيم والقماش مفرود، والتصميم الخلفي واضح</p><div class="meta">صورة التبديل عند المرور</div></div></div>
+    <div class="shot"><div class="fig"><svg viewBox="-62 -12 224 280"><rect x="-62" y="-12" width="224" height="280" fill="#D8BC98"/><use href="#ps" width="100" height="260"/></svg><span class="no en">3</span></div><div class="body"><h4>جانبي ٤٥°</h4><p>يوضح عرض القطعة وطولها ووقعتها على الجسم</p><div class="meta">للقصّة والمقاس</div></div></div>
+    <div class="shot"><div class="fig"><img src="assets/mid.jpg" alt=""><span class="no en">4</span></div><div class="body"><h4>نصف جسم</h4><p>من الخصر لأعلى بزاوية خفيفة لإظهار القصّة والطباعة</p><div class="meta">للسوشيال ميديا</div></div></div>
+    <div class="shot"><div class="fig"><img src="assets/detail.jpg" alt=""><span class="no en">5</span></div><div class="body"><h4>تفاصيل الطباعة</h4><p>لقطة قريبة جدًا والطباعة موازية للعدسة وبدون انحناء</p><div class="meta">ماكرو أو قريبة</div></div></div>
+    <div class="shot"><div class="fig"><svg viewBox="0 0 80 100"><rect width="80" height="100" fill="#7A1F2B"/><g stroke="#5E1520" stroke-width="1.4" fill="none"><path d="M0 52h80"/><path d="M0 56h80" stroke-dasharray="2 2"/></g><g stroke="#8E2A37" stroke-width=".6"><path d="M0 64h80M0 70h80M0 76h80M0 82h80M0 88h80M0 94h80"/></g><circle cx="58" cy="30" r="11" fill="none" stroke="#F2C55C" stroke-width="1.2"/></svg><span class="no en">6</span></div><div class="body"><h4>الخامة والخياطة</h4><p>ملمس القماش، الأساور، الحواف، والخياطة الداخلية</p><div class="meta">إضاءة جانبية</div></div></div>
+    <div class="shot"><div class="fig"><svg viewBox="0 0 80 100"><rect width="80" height="100" fill="#7A1F2B"/><path d="M14 0Q40 28 66 0" fill="#5E1520"/><rect x="31" y="20" width="18" height="12" rx="1" fill="#F6F2EA"/><rect x="34" y="24" width="12" height="1.6" fill="#1E1B18"/><rect x="36" y="27.5" width="8" height="1.2" fill="#6E675E"/></svg><span class="no en">7</span></div><div class="body"><h4>الليبل والمقاس</h4><p>التيكيت الداخلي ولوجو البراند — يعزّز الثقة بالأصالة</p><div class="meta">لقطة ثابتة على حامل</div></div></div>
+    <div class="shot"><div class="fig"><svg viewBox="-40 -12 180 225"><rect x="-40" y="-12" width="180" height="225" fill="#D8BC98"/><g transform="rotate(-6 50 130)"><use href="#pf" width="100" height="260"/></g><path d="M-30 190q30-8 60 0" stroke="#1E1B18" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/></svg><span class="no en">8</span></div><div class="body"><h4>لقطة حركة</h4><p>خطوة للأمام أو رفع الكابيشو — تُظهر القطعة في الاستخدام</p><div class="meta">للإعلانات والريلز</div></div></div>
+  </div>
+  <div class="card soft" style="margin-top:4mm">
+    <h4>لقطات إضافية حسب نوع القطعة</h4>
+    <p>هودي: الكابيشو مرفوع ومنزّل، الجيب الأمامي. &nbsp;جاكيت: مفتوح ومغلق، السوستة، البطانة. &nbsp;تيشيرت: فتحة الرقبة والكم. &nbsp;بنطلون: الحزام، الجيوب الخلفية، نهاية الرجل.</p>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 8. FRAMING -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">06</span><h2>التأطير وارتفاع الكاميرا</h2><span class="tag en">FRAMING</span></div>
+  <div class="rule"></div>
+  <p class="lead">ارتفاع الكاميرا يغيّر أبعاد الجسم. التزم بالارتفاع المحدد لكل لقطة حتى تتطابق صور كل المنتجات في المتجر جنبًا إلى جنب.</p>
+  <div class="diagram" style="height:96mm">
+    <svg viewBox="0 0 420 220" width="100%" height="100%" font-family="Cairo" font-size="9">
+      <rect x="0" y="0" width="420" height="220" fill="#fff"/>
+      <line x1="10" y1="205" x2="410" y2="205" stroke="#DDD4C4"/>
+      <use href="#pf" x="300" y="10" width="75" height="195"/>
+      <g fill="#1E1B18">
+        <rect x="92" y="113" width="22" height="14" rx="2"/><rect x="92" y="58" width="22" height="14" rx="2"/><rect x="230" y="72" width="16" height="11" rx="2"/>
+      </g>
+      <g stroke="#F2C55C" stroke-width="1.5" stroke-dasharray="4 3">
+        <path d="M114 120 315 120"/><path d="M114 65 228 65"/><path d="M248 65 320 65"/><path d="M246 77 320 77"/>
+      </g>
+      <g text-anchor="middle"><text x="45" y="62" font-weight="700" font-size="10">نصف جسم</text><text x="45" y="76" fill="#6E675E">مستوى الصدر</text>
+      <text x="45" y="117" font-weight="700" font-size="10">كامل الجسم</text><text x="45" y="131" fill="#6E675E">مستوى الخصر</text>
+      <text x="238" y="100" font-weight="700" font-size="10">تفاصيل</text><text x="238" y="113" fill="#6E675E">قريبة وموازية للطباعة</text></g>
+    </svg>
+  </div>
+  <div class="grid g3" style="margin-top:4mm">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:3mm;margin-bottom:2mm"><span style="width:12mm;height:15mm;border:2px solid var(--ink);border-radius:1mm;display:block"></span><span class="pill en">4:5</span></div>
+      <h4>المتجر وإنستجرام</h4><p>المقاس الأساسي لكل الصور. <span class="en">2000×2500 px</span></p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:3mm;margin-bottom:2mm"><span style="width:9mm;height:16mm;border:2px solid var(--ink);border-radius:1mm;display:block"></span><span class="pill en">9:16</span></div>
+      <h4>ستوري وريلز</h4><p>اترك مساحة فارغة أعلى وأسفل للنصوص والأزرار. <span class="en">1080×1920 px</span></p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:3mm;margin-bottom:2mm"><span style="width:14mm;height:14mm;border:2px solid var(--ink);border-radius:1mm;display:block"></span><span class="pill en">1:1</span></div>
+      <h4>الإعلانات والكتالوج</h4><p>يُقص من صورة ٤:٥ — لذلك صوّر بهامش جانبي كافٍ. <span class="en">1080×1080 px</span></p>
+    </div>
+  </div>
+  <div class="card soft" style="margin-top:4mm">
+    <h4>قواعد الهوامش</h4>
+    <ul class="dot" style="columns:2;column-gap:8mm">
+      <li>الموديل في منتصف الإطار تمامًا</li>
+      <li>هامش أعلى الرأس ثابت: ٥–٧٪ من الارتفاع</li>
+      <li>هامش أسفل القدم مساوٍ لهامش الرأس</li>
+      <li>لا تقص عند المفاصل: الركبة أو الكوع أو الرسغ</li>
+      <li>الكاميرا مستوية — بدون ميل للأعلى أو الأسفل</li>
+      <li>صوّر أوسع قليلًا من المطلوب واترك القص للتعديل</li>
+    </ul>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 9. COLORS + FLATLAY -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">07</span><h2>الألوان المتعددة والفلات لاي</h2><span class="tag en">COLORWAYS &amp; FLAT LAY</span></div>
+  <div class="rule"></div>
+  <p class="lead">إذا كانت القطعة بأكثر من لون، يجب أن تبدو صور كل الألوان متطابقة في الزاوية والوضعية والإضاءة — الفرق الوحيد هو اللون.</p>
+  <div class="grid g3" style="gap:3mm">
+    <div class="shot"><div class="fig" style="aspect-ratio:1/1"><img src="assets/group.jpg" alt=""></div><div class="body"><h4>صورة جماعية</h4><p>كل الألوان معًا بترتيب ثابت من الفاتح للغامق — لصفحة المجموعة والإعلانات</p></div></div>
+    <div class="shot"><div class="fig" style="aspect-ratio:1/1"><img src="assets/white.jpg" alt=""></div><div class="body"><h4>صورة لكل لون</h4><p>نفس اللقطات الثماني لكل لون، بنفس الزاوية والارتفاع والوضعية</p></div></div>
+    <div class="shot"><div class="fig" style="aspect-ratio:1/1;background:#F6F2EA">
+      <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ECE6DA"/>
+        <g transform="translate(18 22)"><path d="M10 0Q32 -6 54 0l12 14-8 6-4-4v40H8V16l-4 4-8-6z" fill="#F6F2EA" stroke="#DDD4C4"/><path d="M8 56h48" stroke="#DDD4C4"/></g>
+        <g transform="translate(30 38) scale(.62)"><path d="M10 0Q32 -6 54 0l12 14-8 6-4-4v40H8V16l-4 4-8-6z" fill="#7A1F2B"/></g>
+        <g transform="translate(46 54) scale(.5)"><path d="M10 0Q32 -6 54 0l12 14-8 6-4-4v40H8V16l-4 4-8-6z" fill="#1E1B18"/></g>
+      </svg></div><div class="body"><h4>لقطة الخامة</h4><p>قطع الألوان متراكبة أو قريبة جدًا لإظهار الفرق الحقيقي بين درجات الألوان</p></div></div>
+  </div>
+  <div class="grid g2" style="margin-top:4mm">
+    <div class="card">
+      <h3>الفلات لاي</h3>
+      <ul class="dot">
+        <li>الكاميرا فوق القطعة تمامًا بزاوية ٩٠°</li>
+        <li>القطعة مكوية ومفرودة على ورق أوف وايت</li>
+        <li>الأكمام مطوية بشكل متماثل</li>
+        <li>نفس المسافة بين الكاميرا والأرض لكل القطع</li>
+        <li>إضاءة ناعمة من الجانبين بدون ظل حاد</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>مطابقة اللون</h3>
+      <ul class="dot">
+        <li>صوّر البطاقة الرمادية في أول لقطة لكل لون</li>
+        <li>قارن الصورة بالقطعة الحقيقية تحت ضوء النهار</li>
+        <li>لون الشاشة ليس مرجعًا — المرجع هو القطعة نفسها</li>
+        <li>أكثر سبب للمرتجعات: لون مختلف عن الصورة</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 10. VIDEO -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">08</span><h2>الفيديو</h2><span class="tag en">VIDEO</span></div>
+  <div class="rule"></div>
+  <p class="lead">فيديو قصير لكل منتج يرفع التحويل في صفحة المنتج والإعلانات. يُصوَّر في نفس الجلسة وبنفس الإضاءة والخلفية.</p>
+  <div class="grid g2" style="grid-template-columns:1fr 1.3fr">
+    <div class="card">
+      <h3>الإعدادات</h3>
+      <div class="kv"><b>الأبعاد</b><span class="en">9:16 vertical</span></div>
+      <div class="kv"><b>الدقة</b><span class="en">4K</span></div>
+      <div class="kv"><b>عدد الإطارات</b><span class="en">25 / 30 fps</span></div>
+      <div class="kv"><b>للتصوير البطيء</b><span class="en">60 fps</span></div>
+      <div class="kv"><b>سرعة الغالق</b><span>ضعف عدد الإطارات</span></div>
+      <div class="kv"><b>المدة لكل لقطة</b><span>٤–٨ ثوانٍ</span></div>
+      <div class="kv"><b>الثبات</b><span>حامل أو جيمبال</span></div>
+      <p class="small" style="margin-top:2mm">استخدم إضاءة مستمرة وليس فلاشًا. ثبّت التركيز والتعريض وتوازن الأبيض قبل التسجيل.</p>
+    </div>
+    <div class="card">
+      <h3>المقاطع المطلوبة لكل منتج</h3>
+      <ul class="dot">
+        <li><b>لفّة ٣٦٠°</b> — الموديل يلف ببطء في مكانه، الكاميرا ثابتة</li>
+        <li><b>مشي نحو الكاميرا</b> — ٣ إلى ٤ خطوات بإيقاع طبيعي</li>
+        <li><b>حركة تفاصيل</b> — تقريب بطيء على الطباعة والخياطة</li>
+        <li><b>حركة القطعة</b> — رفع الكابيشو، إدخال اليد في الجيب، شد الكم</li>
+        <li><b>ملمس القماش</b> — يد تمر على القماش بتصوير بطيء</li>
+        <li><b>تبديل الألوان</b> — نفس الحركة بكل لون للمونتاج المتتابع</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:4mm">
+    <div class="card soft"><h4>صفحة المنتج</h4><p>٦–١٠ ثوانٍ بدون موسيقى أو نص — لفّة ٣٦٠° وتفاصيل.</p></div>
+    <div class="card soft"><h4>ريلز وتيك توك</h4><p>١٥–٣٠ ثانية بإيقاع سريع، أول ثانيتين يجب أن تجذب الانتباه.</p></div>
+    <div class="card soft"><h4>الإعلانات</h4><p>٦–١٥ ثانية، المنتج ظاهر من أول إطار والسعر أو العرض في النهاية.</p></div>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 11. POST -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">09</span><h2>ما بعد التصوير والتسليم</h2><span class="tag en">POST-PRODUCTION</span></div>
+  <div class="rule"></div>
+  <div class="grid g2">
+    <div class="do">
+      <h4>مسموح في التعديل</h4>
+      <ul class="dot">
+        <li>تصحيح اللون ليطابق القطعة الحقيقية</li>
+        <li>توحيد لون الخلفية في كل الصور</li>
+        <li>إزالة الوبر والخيوط والتجاعيد البسيطة</li>
+        <li>تنظيف البشرة الخفيف — مع الحفاظ على الملمس</li>
+        <li>القص والمحاذاة حسب قواعد الهوامش</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>ممنوع في التعديل</h4>
+      <ul class="dot">
+        <li>تغيير لون القطعة أو تشبيعه</li>
+        <li>تنحيف الموديل أو تعديل شكل القطعة</li>
+        <li>فلاتر أو تأثيرات لونية</li>
+        <li>إخفاء عيوب حقيقية في المنتج</li>
+        <li>تعديل نسخة دون الاحتفاظ بالأصل</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin-top:5mm">مواصفات التصدير</h3>
+  <div class="grid g3">
+    <div class="card"><h4>الموقع</h4><div class="kv"><b>المقاس</b><span class="en">2000×2500</span></div><div class="kv"><b>الصيغة</b><span class="en">JPG / WebP</span></div><div class="kv"><b>الحجم</b><span>أقل من ٥٠٠ كيلو</span></div></div>
+    <div class="card"><h4>إنستجرام</h4><div class="kv"><b>البوست</b><span class="en">1080×1350</span></div><div class="kv"><b>الستوري</b><span class="en">1080×1920</span></div><div class="kv"><b>الصيغة</b><span class="en">JPG</span></div></div>
+    <div class="card"><h4>الأرشيف</h4><div class="kv"><b>المقاس</b><span>الأصلي كاملًا</span></div><div class="kv"><b>الصيغة</b><span class="en">RAW + TIFF</span></div><div class="kv"><b>الألوان</b><span class="en">sRGB</span></div></div>
+  </div>
+  <h3 style="margin-top:5mm">تسمية الملفات وتنظيم المجلدات</h3>
+  <div class="grid g2">
+<div class="code"><span class="c">SKU_COLOR_SHOT_NUMBER.jpg</span>
+
+HD-024_BURGUNDY_01-FRONT.jpg
+HD-024_BURGUNDY_02-BACK.jpg
+HD-024_BURGUNDY_05-PRINT.jpg
+HD-024_BLACK_01-FRONT.jpg</div>
+<div class="code"><span class="c">2026-11_COLLECTION/</span>
+ ├── 01_RAW/
+ ├── 02_SELECTS/
+ ├── 03_EDITED/
+ │    ├── WEB/
+ │    └── SOCIAL/
+ └── 04_VIDEO/</div>
+  </div>
+  <p class="small" style="margin-top:3mm">التسليم خلال ٣ أيام عمل من الجلسة، مع ملف قائمة يوضح عدد اللقطات المسلّمة لكل منتج ولون.</p>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+<!-- 12. CHECKLIST -->
+<section class="page">
+  <div class="topbar"></div>
+  <div class="sec"><span class="num en">10</span><h2>قائمة المراجعة النهائية</h2><span class="tag en">CHECKLIST</span></div>
+  <div class="rule"></div>
+  <p class="lead">تُطبع هذه الصفحة وتُعلَّق في الاستوديو. لا تنتهي الجلسة قبل التأشير على كل البنود.</p>
+  <div class="grid g3">
+    <div class="card">
+      <h3>قبل الجلسة</h3>
+      <ul class="check">
+        <li>قائمة المنتجات والألوان والمقاسات جاهزة</li>
+        <li>كل القطع مكوية ومعلّقة بالترتيب</li>
+        <li>الإضاءة مضبوطة حسب المخطط</li>
+        <li>صورة اختبار مع البطاقة الرمادية</li>
+        <li>البطاريات مشحونة وكروت الذاكرة فارغة</li>
+        <li>الموديل جاهز بالبنطلون والحذاء الثابتين</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>أثناء الجلسة</h3>
+      <ul class="check">
+        <li>اللقطات الثماني لكل لون</li>
+        <li>الطباعة لا تخفيها اليد أو التجاعيد</li>
+        <li>التركيز حاد على الوجه أو الطباعة</li>
+        <li>نفس ارتفاع الكاميرا لكل نوع لقطة</li>
+        <li>إزالة الوبر قبل كل لقطة تفاصيل</li>
+        <li>مقاطع الفيديو المطلوبة مسجلة</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>بعد الجلسة</h3>
+      <ul class="check">
+        <li>نسخة احتياطية في مكانين مختلفين</li>
+        <li>اللون مطابق للقطعة الحقيقية</li>
+        <li>الخلفية موحدة في كل الصور</li>
+        <li>القص حسب قواعد الهوامش</li>
+        <li>الملفات مسمّاة بالصيغة المعتمدة</li>
+        <li>التصدير بالمقاسات الثلاثة</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:6mm;background:var(--ink);color:var(--bg)">
+    <h3 style="color:var(--accent)">الأخطاء الأكثر شيوعًا</h3>
+    <div class="grid g2" style="gap:2mm 8mm">
+      <p style="color:#d8d1c5">١ — لون الصورة مختلف عن المنتج الحقيقي</p>
+      <p style="color:#d8d1c5">٢ — تجاعيد وقماش غير مكوي</p>
+      <p style="color:#d8d1c5">٣ — اليد فوق الطباعة في اللقطة الأمامية</p>
+      <p style="color:#d8d1c5">٤ — اختلاف ارتفاع الكاميرا بين المنتجات</p>
+      <p style="color:#d8d1c5">٥ — ظل الموديل على الخلفية</p>
+      <p style="color:#d8d1c5">٦ — نسيان اللقطة الخلفية أو لقطة الخامة</p>
+    </div>
+  </div>
+  <div class="foot"><span>دليل تصوير الملابس</span><img src="assets/logo.png" alt=""></div>
+</section>
+
+</body>
+</html>
