@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base solid title="You are offline — Display Egypt">
+  <section class="off">
+    <div class="de-container off__inner">
+      <img src="/assets/images/logo-mark.webp" alt="" width="486" height="288">
+      <h1>You are offline.</h1>
+      <p>Check your connection and try again. Pages you have already opened still work.</p>
+      <button class="de-btn de-btn--primary" type="button" onclick="location.reload()">Try again</button>
+    </div>
+  </section>
+</Base>
+<style>
+  .off { min-height: 70svh; display: grid; place-items: center; padding: 7rem 0 3rem; background: #000; color: #fff; text-align: center; }
+  .off__inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .off img { width: 6rem; height: auto; padding: 1.4rem 1rem; border-radius: 50%; background: var(--de-red); box-sizing: content-box; }
+  .off h1 { margin: 0.5rem 0 0; font-family: var(--de-display); text-transform: uppercase; color: #fff; }
+  .off p { max-width: 26rem; margin: 0; color: rgba(255, 255, 255, 0.7); }
+</style>
